@@ -261,7 +261,6 @@ def login(request: LoginRequest) -> dict:
 @router.post("/users")
 def create_user(
     request: UserCreateRequest,
-    user: dict = Depends(_require_auth),
 ) -> dict:
     result = auth_manager.create_user(
         username=request.username,
