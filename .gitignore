@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+.venv/
+venv/
+env/
+ENV/
+
+# Database runtime files (rebuilt from seed data on first run)
+data/*.db
+data/*.db-shm
+data/*.db-wal
+
+# FAISS index (rebuilt from seed data on first run)
+embeddings/index.faiss
+embeddings/metadata.json
+
+# Logs
+*.log
+uvicorn.log
+
+# Reports (generated at runtime)
+data/reports/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Qodo
+.qodo/

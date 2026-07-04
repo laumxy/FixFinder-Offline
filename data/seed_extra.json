@@ -1,0 +1,497 @@
+[
+  {
+    "category": "generators",
+    "problem": "Generator fails to start",
+    "aliases": ["genset won't start", "generator no start", "generator engine dead"],
+    "symptoms": [
+      "Engine cranks but does not fire",
+      "No spark at spark plug",
+      "Fuel in tank but engine does not run",
+      "Recoil cord pulls but nothing happens",
+      "Engine starts then stalls immediately"
+    ],
+    "causes": [
+      "Fouled or worn spark plug",
+      "Stale or contaminated fuel",
+      "Blocked carburetor jets",
+      "Low engine oil triggering oil-level shutdown",
+      "Faulty ignition coil or kill switch stuck in off position"
+    ],
+    "inspection_steps": [
+      "Check the fuel level and verify fuel is fresh and correct grade.",
+      "Remove the spark plug and inspect for fouling, cracks, or wear; check the gap.",
+      "Check engine oil level; low oil trips the automatic shutdown on most generators.",
+      "Inspect the air filter for blockage and the carburetor bowl for dirt or water.",
+      "Verify the fuel valve is open and the choke is in the correct start position."
+    ],
+    "repair_steps": [
+      "Replace a fouled or worn spark plug with the manufacturer-specified type and gap.",
+      "Drain stale fuel and refill with fresh petrol; add a fuel stabiliser for storage.",
+      "Clean the carburetor by removing the bowl and clearing jets with carb cleaner.",
+      "Top up engine oil to the correct level as shown on the dipstick.",
+      "Check and clean or replace the air filter if it is clogged.",
+      "Test the ignition coil with a spark tester; replace if no spark with a new plug."
+    ],
+    "tools": ["spark plug wrench", "spark tester", "carburetor cleaner", "fresh fuel", "oil dipstick", "screwdriver set", "multimeter"],
+    "safety": [
+      "Never operate a generator indoors or in an enclosed space due to carbon monoxide risk.",
+      "Allow the engine to cool before inspecting the spark plug or fuel system.",
+      "Keep fuel away from heat, sparks, and open flames during inspection.",
+      "Disconnect the spark plug lead before working on the carburetor."
+    ],
+    "prevention": ["Run the generator under load for 30 minutes monthly to keep the carburetor clean.", "Use fuel stabiliser in stored fuel.", "Service spark plug and air filter annually."],
+    "difficulty": "moderate",
+    "risk_level": "high",
+    "estimated_time": "30 minutes to 2 hours",
+    "estimated_cost": "Low to moderate depending on parts"
+  },
+  {
+    "category": "solar",
+    "problem": "Solar panel output too low",
+    "aliases": ["solar not charging", "solar panel weak", "low solar output", "panels not producing"],
+    "symptoms": [
+      "Battery not reaching full charge during the day",
+      "Inverter shows low or zero input from panels",
+      "Charge controller shows low panel voltage",
+      "Output drops significantly compared to rated watts",
+      "System works in morning but not afternoon"
+    ],
+    "causes": [
+      "Partial shading from trees, buildings, or dirt on panels",
+      "Dirty or dusty panel surface reducing light absorption",
+      "Faulty or degraded bypass diode in a panel",
+      "Loose or corroded wiring connections",
+      "Panel orientation or tilt angle not optimised for season"
+    ],
+    "inspection_steps": [
+      "Measure open-circuit voltage across each panel with a multimeter in direct sunlight.",
+      "Inspect panel surfaces for dirt, bird droppings, cracks, or shading objects.",
+      "Check all wiring connections at the combiner box, charge controller, and panels.",
+      "Verify charge controller settings match the battery bank type and capacity.",
+      "Check for partial shading at different times of day to identify obstruction patterns."
+    ],
+    "repair_steps": [
+      "Clean panels with water and a soft cloth or sponge; avoid abrasive materials.",
+      "Trim or remove shade-causing vegetation or reposition panels away from shadows.",
+      "Tighten or replace corroded MC4 connectors and check junction box seals.",
+      "Replace a panel with a failed bypass diode; check with IV-curve tracer if available.",
+      "Adjust tilt angle seasonally for maximum sun exposure at your latitude.",
+      "Reconfigure partial-shading panels with micro-inverters or power optimisers."
+    ],
+    "tools": ["multimeter", "MC4 disconnect tool", "soft cloth", "water", "cable tester", "torque wrench"],
+    "safety": [
+      "Solar panels produce voltage in any light; treat all wiring as live.",
+      "Disconnect the battery before working on wiring to avoid arc flash.",
+      "Work on panels early morning or late afternoon when output is lower.",
+      "Do not stand on panels; use appropriate roof-access safety equipment."
+    ],
+    "prevention": ["Clean panels quarterly.", "Trim vegetation near panels each season.", "Inspect wiring connections annually."],
+    "difficulty": "moderate",
+    "risk_level": "high",
+    "estimated_time": "1 to 3 hours",
+    "estimated_cost": "Low unless panels or diodes need replacement"
+  },
+  {
+    "category": "hvac",
+    "problem": "Air conditioner not cooling",
+    "aliases": ["AC not cold", "aircon warm air", "air conditioning not working"],
+    "symptoms": [
+      "Unit runs but blows warm or room-temperature air",
+      "Compressor cycles on and off rapidly",
+      "Ice forming on indoor unit or refrigerant lines",
+      "Unusual noise from outdoor unit",
+      "High electricity bill with no cooling improvement"
+    ],
+    "causes": [
+      "Low refrigerant charge due to leak",
+      "Dirty air filter blocking airflow through evaporator",
+      "Dirty condenser coils preventing heat rejection outdoors",
+      "Faulty or stuck expansion valve",
+      "Compressor failure or capacitor fault"
+    ],
+    "inspection_steps": [
+      "Check and replace the indoor air filter if dirty or clogged.",
+      "Inspect the outdoor condenser unit for blocked coils, debris, or vegetation.",
+      "Check the thermostat settings and verify it is set to cool mode below room temperature.",
+      "Listen for the compressor clicking on; if silent with fan running, suspect capacitor.",
+      "Look for ice on the indoor unit indicating low airflow or low refrigerant."
+    ],
+    "repair_steps": [
+      "Replace or clean the air filter to restore evaporator airflow.",
+      "Clean condenser coils with a coil cleaner and rinse with low-pressure water.",
+      "Remove ice by turning off cooling and running fan-only mode until ice melts.",
+      "Test and replace the start or run capacitor if the compressor does not engage.",
+      "Contact a certified HVAC technician for refrigerant recharge or compressor replacement."
+    ],
+    "tools": ["fin comb", "coil cleaner", "capacitor tester", "manifold gauge set", "screwdriver set", "protective gloves"],
+    "safety": [
+      "Disconnect power at the breaker before opening any AC panels.",
+      "Capacitors retain charge after power-off; discharge before touching.",
+      "Refrigerant handling requires EPA 608 certification; do not release to atmosphere.",
+      "Allow the outdoor unit to be clear of obstructions by at least 60 cm."
+    ],
+    "prevention": ["Replace air filters monthly or quarterly.", "Clean condenser coils annually before summer.", "Service the system with a certified technician every 1-2 years."],
+    "difficulty": "moderate",
+    "risk_level": "high",
+    "estimated_time": "1 to 4 hours",
+    "estimated_cost": "Low for filters; high for refrigerant recharge or compressor"
+  },
+  {
+    "category": "motorcycles",
+    "problem": "Motorcycle won't start",
+    "aliases": ["motorbike no start", "bike engine dead", "motorcycle starting problem"],
+    "symptoms": [
+      "Starter motor turns but engine does not fire",
+      "No power when key is turned on",
+      "Engine kicks but does not run",
+      "Engine starts briefly then dies",
+      "Clicking sound from starter circuit"
+    ],
+    "causes": [
+      "Dead or weak battery",
+      "Flooded engine from excessive choke use",
+      "Blocked carburetor or injector",
+      "Faulty kill switch or side-stand interlock engaged",
+      "Spark plug fouled or worn"
+    ],
+    "inspection_steps": [
+      "Check that the kill switch is in the RUN position and the side-stand is up.",
+      "Test battery voltage with a multimeter; should be above 12.4V.",
+      "Remove the spark plug and check for fouling, wetness, or worn electrode.",
+      "Smell the exhaust or air box for petrol indicating a flooded engine.",
+      "Check the fuel tap position and confirm there is fuel in the tank."
+    ],
+    "repair_steps": [
+      "Set the kill switch to RUN, lift the side-stand, and engage the clutch if required.",
+      "Charge or replace the battery if voltage is below 12V.",
+      "Clear a flooded engine by holding the throttle wide open while cranking for 5-10 seconds.",
+      "Replace a fouled spark plug with the correct type and gap for the engine.",
+      "Clean or rebuild the carburetor if the engine runs roughly or only with choke."
+    ],
+    "tools": ["multimeter", "spark plug wrench", "socket set", "carburetor cleaner", "jumper pack"],
+    "safety": [
+      "Keep fuel away from sparks during inspection.",
+      "Do not crank continuously for more than 10 seconds to avoid starter damage.",
+      "Ensure the motorcycle is in neutral or clutch is held before starting.",
+      "Allow the engine to reach operating temperature before hard riding."
+    ],
+    "prevention": ["Service the spark plug and air filter every 5,000-10,000 km.", "Keep the battery on a tender during storage.", "Drain the carburetor float bowl during long storage periods."],
+    "difficulty": "moderate",
+    "risk_level": "medium",
+    "estimated_time": "20 minutes to 2 hours",
+    "estimated_cost": "Low unless battery or carburetor replacement is needed"
+  },
+  {
+    "category": "laptops",
+    "problem": "Laptop overheating and shutting down",
+    "aliases": ["laptop thermal shutdown", "laptop too hot", "laptop fan noise overheating"],
+    "symptoms": [
+      "Fan runs loudly at high speed constantly",
+      "System throttles performance and becomes slow",
+      "Laptop shuts off suddenly under load",
+      "Bottom or keyboard area is very hot to touch",
+      "CPU temperature above 90 degrees Celsius in task manager"
+    ],
+    "causes": [
+      "Clogged heatsink or fan blocked by dust",
+      "Dried-out thermal paste between CPU and heatsink",
+      "Blocked ventilation slots due to soft surface use",
+      "Failing or stuck cooling fan",
+      "Background software causing excessive CPU load"
+    ],
+    "inspection_steps": [
+      "Install a temperature monitor and check CPU and GPU temperatures at idle and under load.",
+      "Listen for the fan; if silent under load, the fan may have failed.",
+      "Inspect ventilation slots for dust buildup using a flashlight.",
+      "Check Task Manager or Activity Monitor for processes consuming excessive CPU.",
+      "Confirm the laptop is used on a hard flat surface and not on a bed or carpet."
+    ],
+    "repair_steps": [
+      "Use compressed air to blow dust out of ventilation slots and fan grilles.",
+      "Open the bottom panel, remove the fan and heatsink, and clean thoroughly.",
+      "Apply fresh high-quality thermal paste to the CPU after removing the old paste.",
+      "Replace a seized or failing fan with the manufacturer part number.",
+      "End runaway processes and disable startup programs consuming unnecessary CPU."
+    ],
+    "tools": ["compressed air can", "precision screwdriver set", "thermal paste", "isopropyl alcohol", "lint-free cloth", "plastic spudger"],
+    "safety": [
+      "Power off and unplug the laptop; remove the battery if removable.",
+      "Ground yourself before touching internal components to prevent static damage.",
+      "Do not apply thermal paste to surrounding components or over-tighten screws.",
+      "Allow the system to cool fully before disassembly."
+    ],
+    "prevention": ["Clean laptop vents with compressed air every 6 months.", "Use the laptop on hard flat surfaces.", "Reapply thermal paste every 2-3 years or if throttling occurs."],
+    "difficulty": "moderate",
+    "risk_level": "medium",
+    "estimated_time": "30 minutes to 2 hours",
+    "estimated_cost": "Low unless fan replacement is required"
+  },
+  {
+    "category": "water_pumps",
+    "problem": "Water pump not priming or losing prime",
+    "aliases": ["pump won't prime", "centrifugal pump no water", "pump loses suction"],
+    "symptoms": [
+      "Pump motor runs but no water comes out",
+      "Pump delivers low flow and pressure",
+      "Pump hums loudly but stalls",
+      "Air spurting from discharge pipe intermittently",
+      "Pump works briefly then stops delivering water"
+    ],
+    "causes": [
+      "Air leak in suction pipe or fittings",
+      "Suction lift too high for pump design",
+      "Blocked or damaged foot valve at water source",
+      "Impeller clogged with debris or sand",
+      "Worn mechanical seal or casing cracks allowing air ingress"
+    ],
+    "inspection_steps": [
+      "Check all suction pipe joints and connections for air leaks by feeling for air draw or applying soapy water.",
+      "Measure the vertical distance from the water surface to the pump; most centrifugal pumps lift maximum 7-8 metres.",
+      "Remove and inspect the foot valve for debris, damage, or stuck flap.",
+      "Open the pump casing and inspect the impeller for blockage or damage.",
+      "Check the mechanical seal and casing for cracks or worn contact surfaces."
+    ],
+    "repair_steps": [
+      "Seal all suction pipe joints with PTFE tape and pipe sealant; tighten all fittings.",
+      "Manually prime the pump by filling the casing and suction pipe with water before starting.",
+      "Clean or replace the foot valve if stuck, blocked, or damaged.",
+      "Remove the casing and clear impeller blockages; replace a damaged impeller.",
+      "Replace the mechanical seal if leaking air or water around the shaft."
+    ],
+    "tools": ["pipe wrench", "PTFE tape", "pipe sealant", "screwdriver set", "bucket of water for priming", "pressure gauge"],
+    "safety": [
+      "Disconnect power before opening the pump casing.",
+      "Release pressure from the discharge side before disassembly.",
+      "Wear eye protection when flushing or pressurising the system.",
+      "Ensure the pump motor is properly earthed before running."
+    ],
+    "prevention": ["Install a check valve on the discharge side to retain prime.", "Clean the foot valve every 6 months.", "Inspect suction pipe joints annually for wear."],
+    "difficulty": "moderate",
+    "risk_level": "medium",
+    "estimated_time": "30 minutes to 2 hours",
+    "estimated_cost": "Low unless impeller or seal replacement is needed"
+  },
+  {
+    "category": "batteries",
+    "problem": "Lead-acid battery not holding charge",
+    "aliases": ["battery dies fast", "battery sulfation", "battery not charging properly"],
+    "symptoms": [
+      "Battery discharges quickly after full charge",
+      "Battery voltage drops under load below 10V",
+      "White powdery sulfate deposits on plates visible through casing",
+      "Battery feels warm during charging even at low current",
+      "Charger shows full but battery fails load test"
+    ],
+    "causes": [
+      "Sulfation from prolonged deep discharge or storage without charge",
+      "One or more dead cells within the battery",
+      "Overcharging causing water loss and plate damage",
+      "Corroded or loose terminals increasing resistance",
+      "Age: battery has exceeded 3-5 year service life"
+    ],
+    "inspection_steps": [
+      "Measure open-circuit voltage after 1 hour rest; below 12.4V indicates partial discharge or degradation.",
+      "Perform a load test at half the cold-cranking amp rating; voltage should stay above 9.6V.",
+      "Inspect terminals and cables for corrosion, looseness, or heat discolouration.",
+      "Check electrolyte level in serviceable batteries; low level indicates overcharge or age.",
+      "Check specific gravity with a hydrometer if cells are accessible."
+    ],
+    "repair_steps": [
+      "Clean corroded terminals with baking soda solution, wire brush, and apply terminal grease.",
+      "Attempt desulfation using a dedicated pulse charger if the battery is mildly sulfated.",
+      "Slow-charge a deeply discharged battery at 10% of its Ah rating for 10-16 hours.",
+      "Replace a battery that fails a load test, has dead cells, or is beyond 5 years old.",
+      "Check and calibrate the charging voltage to prevent overcharging; float should be 13.6-13.8V."
+    ],
+    "tools": ["multimeter", "battery load tester", "hydrometer", "wire brush", "battery terminal grease", "safety glasses", "gloves"],
+    "safety": [
+      "Batteries produce hydrogen gas; avoid sparks, flames, and smoking near them.",
+      "Wear eye protection and gloves when handling electrolyte.",
+      "Dispose of old batteries at an authorised recycling facility.",
+      "Disconnect the negative terminal first and reconnect it last."
+    ],
+    "prevention": ["Recharge batteries before they drop below 50% state of charge.", "Keep terminals clean and coated with grease.", "Store batteries fully charged and on a tender during long periods of non-use."],
+    "difficulty": "easy",
+    "risk_level": "medium",
+    "estimated_time": "30 minutes to 1 hour",
+    "estimated_cost": "Low for cleaning; high if replacement is required"
+  },
+  {
+    "category": "agriculture",
+    "problem": "Crop stunted growth and poor yield",
+    "aliases": ["crop not growing", "low harvest", "plants not developing", "small plants"],
+    "symptoms": [
+      "Plants are smaller than expected at this growth stage",
+      "Leaves are pale green or yellow",
+      "Roots are short, brown, or rotting",
+      "Fruit or grain is small and under-filled",
+      "Growth stops at a specific stage"
+    ],
+    "causes": [
+      "Soil nutrient deficiency especially nitrogen or phosphorus",
+      "Incorrect soil pH blocking nutrient uptake",
+      "Root damage from nematodes, grubs, or soil compaction",
+      "Inadequate moisture from drought or poor irrigation timing",
+      "Wrong variety planted for the season, climate, or soil type"
+    ],
+    "inspection_steps": [
+      "Dig up a plant and inspect roots for colour, length, and signs of rot or pests.",
+      "Test soil pH; most crops need 6.0-7.0; outside this range nutrients become unavailable.",
+      "Compare affected plants to healthy neighbours to identify a pattern by field location.",
+      "Review planting date, seed variety, and fertilizer records.",
+      "Count plant population per square metre to check if spacing and germination were adequate."
+    ],
+    "repair_steps": [
+      "Apply a balanced fertilizer or targeted nutrient based on visible deficiency symptoms.",
+      "Correct soil pH with lime if too acid or sulphur if too alkaline according to soil test.",
+      "Irrigate consistently to field capacity without waterlogging; use mulch to retain moisture.",
+      "Remove and dispose of severely infested plants to prevent pest spread.",
+      "Consult an agricultural extension officer for seed variety recommendations for next season."
+    ],
+    "tools": ["soil pH meter or test kit", "trowel", "watering equipment", "fertilizer spreader", "field notebook", "gloves"],
+    "safety": [
+      "Wear gloves and wash hands after handling fertilizers and pesticides.",
+      "Follow label rates; over-applying fertilizer can burn crops and contaminate water.",
+      "Keep children and animals away from treated fields as directed on product labels."
+    ],
+    "prevention": ["Rotate crops each season to break pest and disease cycles.", "Test soil before each season and correct pH early.", "Select certified seed varieties suited to local conditions."],
+    "difficulty": "moderate",
+    "risk_level": "low",
+    "estimated_time": "Ongoing seasonal management",
+    "estimated_cost": "Variable by crop area and inputs required"
+  },
+  {
+    "category": "livestock",
+    "problem": "Cattle showing signs of illness and lethargy",
+    "aliases": ["sick cow", "cattle disease", "animal off feed", "livestock not eating"],
+    "symptoms": [
+      "Animal is dull, separated from herd, and not eating",
+      "Temperature above 39.5 degrees Celsius",
+      "Diarrhoea or constipation",
+      "Laboured breathing or nasal discharge",
+      "Swollen joints, lameness, or reluctance to stand"
+    ],
+    "causes": [
+      "Bacterial infection such as pneumonia or blackleg",
+      "Tick-borne disease such as East Coast Fever or anaplasmosis",
+      "Internal parasite burden causing anaemia and weakness",
+      "Nutritional deficiency particularly in dry seasons",
+      "Plant toxicity from ingesting toxic vegetation"
+    ],
+    "inspection_steps": [
+      "Take rectal temperature; above 39.5 indicates infection in cattle.",
+      "Check mucous membranes for pale gums indicating anaemia from worms or tick fever.",
+      "Inspect skin and hair coat for ticks, especially in the ears and udder folds.",
+      "Check faeces for blood, mucus, or parasites.",
+      "Review vaccination and deworming history for the herd."
+    ],
+    "repair_steps": [
+      "Isolate the sick animal immediately to prevent disease spread.",
+      "Provide clean water and high-quality roughage; force fluids if dehydrated.",
+      "Contact a veterinarian for diagnosis and prescription of antibiotics or antiparasitic treatment.",
+      "Apply a registered pour-on or spray tickicide if heavy tick infestation is present.",
+      "Deworm the herd using an appropriate anthelmintic if parasite burden is confirmed."
+    ],
+    "tools": ["rectal thermometer", "gloves", "halter and restraint rope", "oral drenching gun", "tick remover", "field notebook"],
+    "safety": [
+      "Restrain the animal safely before examination to prevent injury.",
+      "Wear gloves when handling sick animals or faeces; some diseases are zoonotic.",
+      "Dispose of dead animals according to local regulations to prevent disease spread.",
+      "Do not administer prescription drugs without veterinary guidance."
+    ],
+    "prevention": ["Vaccinate against common local diseases annually.", "Deworm on a strategic schedule based on local parasite risk.", "Dip or spray cattle regularly for tick control."],
+    "difficulty": "moderate",
+    "risk_level": "high",
+    "estimated_time": "Immediate triage; treatment over several days",
+    "estimated_cost": "Variable by diagnosis and treatment required"
+  },
+  {
+    "category": "networking",
+    "problem": "Wi-Fi router not providing internet access",
+    "aliases": ["no internet wifi", "router not connecting", "wifi connected no internet"],
+    "symptoms": [
+      "Devices connect to Wi-Fi but browser shows no internet",
+      "Router power light on but WAN or internet light is off or red",
+      "All devices affected simultaneously",
+      "Ping to 8.8.8.8 fails but ping to router gateway succeeds",
+      "DNS resolution fails but direct IP access works"
+    ],
+    "causes": [
+      "ISP outage or WAN cable disconnected from router",
+      "Router firmware bug causing DHCP or NAT failure",
+      "Incorrect DNS settings after configuration change",
+      "PPPoE or authentication credentials expired or wrong",
+      "Overheated router causing internal component failure"
+    ],
+    "inspection_steps": [
+      "Check the router's WAN port LED; if off or red, the ISP link is down.",
+      "Verify the WAN cable is securely connected from the router to the modem or ISP port.",
+      "Access the router admin page and check WAN status and IP assignment.",
+      "Try restarting the router and modem in sequence: modem first, then router.",
+      "Test from a device connected by ethernet cable to rule out Wi-Fi as the cause."
+    ],
+    "repair_steps": [
+      "Power cycle the modem and router: unplug both, wait 30 seconds, restart modem first.",
+      "Check WAN cable connections at both ends and replace if damaged.",
+      "Log into router admin, navigate to WAN settings, and re-enter PPPoE credentials if required.",
+      "Reset DNS to 8.8.8.8 and 8.8.4.4 if resolution is failing after ISP line is confirmed up.",
+      "Update router firmware if a known bug is causing the issue.",
+      "Replace the router if it overheats or shows hardware failure after all software steps fail."
+    ],
+    "tools": ["ethernet cable", "laptop for admin access", "browser", "ping utility", "firmware file if updating"],
+    "safety": [
+      "Do not reset the router to factory defaults unless you have the ISP credentials and config noted.",
+      "Keep the router in a ventilated location away from direct heat.",
+      "Change the default admin password immediately on any new or reset router."
+    ],
+    "prevention": ["Keep router firmware updated.", "Position router in a well-ventilated area.", "Use a UPS to protect against power surge damage."],
+    "difficulty": "easy",
+    "risk_level": "low",
+    "estimated_time": "15 to 60 minutes",
+    "estimated_cost": "Free unless hardware replacement is required"
+  },
+  {
+    "category": "printers",
+    "problem": "Printer paper jam",
+    "aliases": ["paper stuck in printer", "printer jam", "paper not feeding"],
+    "symptoms": [
+      "Printer stops mid-print and shows jam error",
+      "Paper visible stuck inside the printer",
+      "Printer makes grinding or crunching noise during feed",
+      "Multiple sheets feed together causing a jam",
+      "Printer reports jam but no paper is visible"
+    ],
+    "causes": [
+      "Torn paper fragment left inside the printer from a previous jam",
+      "Paper loaded incorrectly or wrong paper size selected",
+      "Worn pick-up rollers failing to grip paper cleanly",
+      "Damp or curled paper sticking together during feed",
+      "Foreign object inside paper path"
+    ],
+    "inspection_steps": [
+      "Open all access panels and trays; look for paper fragments along the entire paper path.",
+      "Check the input tray for correct paper loading, correct guides, and paper size match.",
+      "Inspect the pick-up rollers for wear, glaze, or damage.",
+      "Check paper condition; damp or very curled paper causes multi-feed jams.",
+      "Run a printer self-test page to confirm the jam is cleared."
+    ],
+    "repair_steps": [
+      "Power off the printer before clearing any jam to prevent further damage.",
+      "Pull jammed paper slowly and evenly in the direction of the paper path to avoid tearing.",
+      "Remove all torn pieces; even a small fragment will cause another jam.",
+      "Clean worn pick-up rollers with isopropyl alcohol on a lint-free cloth.",
+      "Fan and straighten paper before loading; store paper in a dry sealed package."
+    ],
+    "tools": ["flashlight", "lint-free cloth", "isopropyl alcohol", "tweezers for small fragments"],
+    "safety": [
+      "Power off the printer before reaching inside the paper path.",
+      "Allow the fuser unit to cool for at least 5 minutes before touching; it operates at high temperature.",
+      "Do not use sharp metal tools inside the printer that could scratch drums or rollers."
+    ],
+    "prevention": ["Use good quality, dry paper within the printer's supported weight range.", "Clean pick-up rollers every 6 months.", "Never overload the paper tray beyond the marked capacity."],
+    "difficulty": "easy",
+    "risk_level": "low",
+    "estimated_time": "5 to 30 minutes",
+    "estimated_cost": "Free unless rollers need replacement"
+  }
+]

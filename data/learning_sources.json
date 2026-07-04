@@ -1,0 +1,10 @@
+{
+  "sources": [
+    {
+      "category": "appliances",
+      "source_type": "technical_blog",
+      "text": "Washing machine not draining can show symptoms such as standing water in the drum, clothes coming out soaked, a humming pump noise, or an error code near the end of the cycle. Common causes include a blocked drain filter, kinked drain hose, clogged pump, or failed drain pump. Safety: unplug the washing machine before opening any service panel and keep the floor dry to avoid slipping. Inspect the drain hose for kinks, check the filter access panel, and look for coins, lint, or small clothing items blocking the filter. Repair steps include unplugging the appliance, placing towels and a shallow tray under the filter, slowly opening the drain filter, cleaning debris from the filter, checking the drain hose, and testing a drain cycle. Tools include towels, shallow tray, screwdriver, flashlight, gloves, and pliers. If the pump hums but the impeller does not move after cleaning, replace the drain pump or call an appliance technician."
+    }
+  ],
+  "min_reliability": 0.55
+}

@@ -1,0 +1,239 @@
+[
+  {
+    "category": "roofing",
+    "problem": "Roof leak",
+    "aliases": ["ceiling leak", "rain leak", "leaking roof", "water stain ceiling"],
+    "symptoms": [
+      "Water stain on ceiling after rain",
+      "Dripping from attic or ceiling",
+      "Damp insulation near roof deck",
+      "Missing shingles or cracked roof tiles",
+      "Rust or gaps around flashing"
+    ],
+    "causes": [
+      "Damaged or missing shingles",
+      "Failed flashing around chimney, vent, or roof valley",
+      "Blocked gutters forcing water under roof edge",
+      "Cracked roof tile or punctured roof membrane"
+    ],
+    "inspection_steps": [
+      "Inspect the attic during daylight for water tracks, dark stains, or damp insulation.",
+      "Trace the stain upward along rafters because water often travels before dripping.",
+      "From the ground or a stable ladder, look for missing shingles, cracked tiles, lifted flashing, or blocked gutters.",
+      "Check roof penetrations such as vents, chimneys, skylights, and valleys before assuming the leak is above the ceiling stain."
+    ],
+    "repair_steps": [
+      "Place a bucket under active drips and move valuables away from the wet area.",
+      "Clear blocked gutters and downspouts so water can drain away from the roof edge.",
+      "Replace missing or damaged shingles with matching shingles fastened under the upper course.",
+      "Reseal small flashing gaps with roofing sealant after cleaning and drying the metal surface.",
+      "Replace badly corroded or loose flashing instead of only covering it with sealant."
+    ],
+    "tools": ["flashlight", "ladder", "work gloves", "roofing sealant", "replacement shingles or tiles", "pry bar", "roofing nails", "bucket"],
+    "safety": [
+      "Do not climb onto a wet, steep, or unstable roof.",
+      "Keep ladders on firm level ground and maintain three points of contact.",
+      "Avoid touching electrical wiring or fixtures near wet ceiling areas.",
+      "Call a roofing professional for high roofs, structural sagging, or widespread damage."
+    ],
+    "prevention": ["Clean gutters before rainy seasons.", "Inspect roof flashing and valleys twice a year.", "Replace cracked shingles or tiles before heavy rain."],
+    "difficulty": "moderate",
+    "risk_level": "high",
+    "estimated_time": "1 to 3 hours for minor exterior repair"
+  },
+  {
+    "category": "vehicles",
+    "problem": "Car engine not starting",
+    "aliases": ["car will not start", "engine won't start", "starter clicking", "no crank"],
+    "symptoms": [
+      "Engine does not crank",
+      "Clicking sound when turning key",
+      "Dashboard lights dim or go off",
+      "Engine cranks but does not start",
+      "Fuel smell or empty fuel gauge"
+    ],
+    "causes": [
+      "Weak or dead battery",
+      "Loose or corroded battery terminals",
+      "Faulty starter motor or starter relay",
+      "No fuel delivery",
+      "Ignition or sensor fault"
+    ],
+    "inspection_steps": [
+      "Turn on headlights and check whether they are bright, dim, or off.",
+      "Listen when turning the key: a click suggests battery, terminal, relay, or starter issues; cranking without firing suggests fuel or ignition issues.",
+      "Inspect battery terminals for looseness, corrosion, or broken cables.",
+      "Check fuel level and listen for a brief fuel pump sound when the key is turned to ON.",
+      "Look for dashboard warning lights and scan error codes if an OBD2 scanner is available."
+    ],
+    "repair_steps": [
+      "Clean and tighten battery terminals, connecting positive first and negative last.",
+      "Jump-start the car with correct polarity if the battery is weak and the cables are in good condition.",
+      "Recharge or replace the battery if it fails a battery load test.",
+      "If lights are strong but only a single click occurs, test the starter relay and starter motor circuit.",
+      "If the engine cranks but does not start, add fuel if empty and check fuel pump fuse, ignition spark, and stored fault codes."
+    ],
+    "tools": ["battery terminal brush", "wrench set", "jumper cables", "multimeter", "OBD2 scanner", "protective gloves", "safety glasses"],
+    "safety": [
+      "Keep sparks and flames away from the battery and fuel system.",
+      "Connect jumper cables with correct polarity to avoid electrical damage or injury.",
+      "Do not crank the engine continuously for more than a few seconds at a time.",
+      "Keep hands, clothing, and tools away from belts and fans."
+    ],
+    "prevention": ["Test the battery before extreme hot or cold seasons.", "Keep battery terminals clean and tight.", "Replace old fuel filters and follow service intervals."],
+    "difficulty": "moderate",
+    "risk_level": "medium",
+    "estimated_time": "20 minutes to 2 hours depending on cause"
+  },
+  {
+    "category": "plumbing",
+    "problem": "Water tap leaking",
+    "aliases": ["faucet dripping", "tap dripping", "leaky tap", "sink tap leak"],
+    "symptoms": [
+      "Water drips from tap spout when closed",
+      "Leak around tap handle",
+      "Water pools under sink",
+      "Tap handle feels loose",
+      "Whistling or uneven flow when tap is opened"
+    ],
+    "causes": [
+      "Worn washer or cartridge",
+      "Damaged O-ring around handle",
+      "Loose packing nut or retaining screw",
+      "Worn valve seat",
+      "Loose supply connection under sink"
+    ],
+    "inspection_steps": [
+      "Identify whether the leak comes from the spout, handle, base, or supply line below the sink.",
+      "Turn the tap fully closed and note whether dripping continues from the spout.",
+      "Check under the sink for wet supply connections or water trails.",
+      "Shut off the isolation valve and open the tap to confirm water flow has stopped before disassembly.",
+      "Remove the handle and inspect the washer, cartridge, O-ring, and valve seat for wear."
+    ],
+    "repair_steps": [
+      "Shut off the water supply valve under the sink or the main water valve.",
+      "Cover the drain so small screws and washers cannot fall into it.",
+      "Tighten a loose packing nut gently if the leak is around the handle.",
+      "Replace the worn washer, cartridge, or O-ring with a matching part.",
+      "Reassemble the tap, open the water supply slowly, and check for leaks.",
+      "Replace or professionally service the tap body if the valve seat is badly worn."
+    ],
+    "tools": ["adjustable wrench", "screwdriver", "replacement washer or cartridge", "replacement O-ring", "plumber's grease", "cloth", "bucket"],
+    "safety": [
+      "Always shut off water before opening the tap assembly.",
+      "Open the tap after shutoff to release remaining pressure.",
+      "Avoid overtightening fittings because it can crack parts or damage threads.",
+      "Keep the floor dry to prevent slipping."
+    ],
+    "prevention": ["Close taps gently instead of forcing handles tight.", "Replace washers and cartridges when dripping first appears.", "Inspect under-sink connections periodically for early moisture."],
+    "difficulty": "easy",
+    "risk_level": "low",
+    "estimated_time": "30 to 60 minutes"
+  },
+  {
+    "category": "electrical",
+    "problem": "Power outlet not working",
+    "aliases": ["socket dead", "outlet has no power", "plug not working"],
+    "symptoms": ["Appliance works in another outlet", "No power at one socket", "Breaker or GFCI has tripped", "Outlet faceplate feels warm", "Burn marks or buzzing near socket"],
+    "causes": ["Tripped breaker or GFCI protection", "Loose outlet wiring", "Failed outlet receptacle", "Overloaded circuit", "Damaged appliance plug"],
+    "inspection_steps": [
+      "Unplug devices from the affected outlet.",
+      "Check nearby GFCI outlets and reset only once if there is no burning smell or heat.",
+      "Check the breaker panel for a tripped breaker and note whether it trips again.",
+      "Inspect the outlet face for burn marks, cracks, buzzing, heat, or looseness without removing it while energized."
+    ],
+    "repair_steps": [
+      "Reset a tripped GFCI or breaker once after unplugging loads.",
+      "If power returns, plug in one device at a time to identify an overload or faulty appliance.",
+      "Stop using the outlet if it is hot, buzzing, burnt, loose, or repeatedly trips protection.",
+      "Have a qualified electrician replace damaged receptacles or repair loose wiring."
+    ],
+    "tools": ["plug-in outlet tester", "flashlight", "insulated screwdriver", "multimeter", "protective gloves"],
+    "safety": ["Do not remove outlet covers or touch wiring unless power is confirmed off.", "Call an electrician for heat, buzzing, burning smell, sparks, or repeated breaker trips.", "Keep water away from outlets and extension cords."],
+    "prevention": ["Avoid overloading one outlet with high-current appliances.", "Replace loose or cracked outlets promptly.", "Use GFCI protection in wet locations."],
+    "difficulty": "moderate",
+    "risk_level": "high",
+    "estimated_time": "10 minutes for reset, professional repair if wiring is involved"
+  },
+  {
+    "category": "appliances",
+    "problem": "Refrigerator not cooling",
+    "aliases": ["fridge warm", "freezer not cold", "refrigerator warm"],
+    "symptoms": ["Food spoils quickly", "Freezer is soft or melting", "Compressor runs constantly", "Condenser coils are dusty", "Door gasket does not seal"],
+    "causes": ["Dirty condenser coils", "Blocked air vents inside refrigerator", "Damaged door gasket", "Faulty evaporator fan", "Low refrigerant or sealed-system fault"],
+    "inspection_steps": [
+      "Check that the refrigerator has power and the temperature setting is not accidentally set warm.",
+      "Inspect door gaskets for gaps, tears, or dirt preventing a seal.",
+      "Look for blocked interior vents caused by food containers.",
+      "Unplug the refrigerator and inspect condenser coils for dust buildup.",
+      "Listen for the evaporator fan when the door switch is pressed."
+    ],
+    "repair_steps": [
+      "Move food away from interior vents to restore airflow.",
+      "Clean condenser coils with a coil brush or vacuum after unplugging the appliance.",
+      "Clean or replace a damaged door gasket if warm air is entering.",
+      "Defrost heavy ice buildup and check whether the fan resumes airflow.",
+      "Call an appliance technician if the compressor runs but cooling does not improve after airflow and coil cleaning."
+    ],
+    "tools": ["coil brush", "vacuum", "flashlight", "thermometer", "screwdriver", "cloth"],
+    "safety": ["Unplug the refrigerator before cleaning coils or removing panels.", "Do not puncture refrigerant lines.", "Discard unsafe food that stayed warm for too long."],
+    "prevention": ["Clean condenser coils every 6 to 12 months.", "Keep vents clear.", "Check door gasket seals periodically."],
+    "difficulty": "easy",
+    "risk_level": "medium",
+    "estimated_time": "30 to 90 minutes"
+  },
+  {
+    "category": "agriculture",
+    "problem": "Maize leaves turning yellow",
+    "aliases": ["corn yellow leaves", "maize yellowing", "crop chlorosis"],
+    "symptoms": ["Lower leaves turn pale yellow", "Plants grow slowly", "Yellowing appears after heavy rain", "Leaves show streaking or uneven color", "Soil remains waterlogged"],
+    "causes": ["Nitrogen deficiency", "Waterlogged soil reducing root oxygen", "Poor soil pH limiting nutrient uptake", "Root damage from pests", "Early disease stress"],
+    "inspection_steps": [
+      "Identify whether yellowing starts on older lower leaves or new growth.",
+      "Check soil moisture and drainage after rain or irrigation.",
+      "Inspect roots and lower stems for pest damage or rot.",
+      "Review fertilizer timing, amount, and whether nitrogen was applied.",
+      "Test soil pH and nutrients if yellowing affects a large area."
+    ],
+    "repair_steps": [
+      "Improve drainage around waterlogged rows where practical.",
+      "Apply a balanced fertilizer or nitrogen source according to local agronomy guidance and crop stage.",
+      "Avoid over-applying fertilizer because it can burn roots and waste money.",
+      "Remove severely diseased plants if symptoms show rot or spreading disease.",
+      "Consult an agricultural extension officer if symptoms spread quickly or pests are present."
+    ],
+    "tools": ["soil test kit", "hoe", "measuring cup", "fertilizer spreader", "field notebook", "gloves"],
+    "safety": ["Wear gloves when handling fertilizer or pesticides.", "Follow product labels and local agricultural guidance.", "Keep fertilizer and chemicals away from children, animals, and water sources."],
+    "prevention": ["Test soil before planting.", "Use proper spacing and drainage.", "Apply fertilizer at the recommended crop stage."],
+    "difficulty": "moderate",
+    "risk_level": "medium",
+    "estimated_time": "field inspection plus ongoing crop monitoring"
+  },
+  {
+    "category": "phones",
+    "problem": "Phone not charging",
+    "aliases": ["mobile not charging", "charger not working", "charging port issue"],
+    "symptoms": ["Battery percentage does not increase", "Charging icon appears and disappears", "Cable feels loose in port", "Phone charges with one cable but not another", "Port has dust or lint"],
+    "causes": ["Damaged charging cable or adapter", "Lint or debris inside charging port", "Loose or damaged charging port", "Battery protection due to heat", "Software charging state error"],
+    "inspection_steps": [
+      "Try a known-good cable and charger with the correct rating.",
+      "Inspect the charging port with a flashlight for lint, corrosion, or bent parts.",
+      "Check whether the phone is hot and allow it to cool before charging.",
+      "Restart the phone and test charging again.",
+      "Gently test whether the cable fits firmly without forcing it."
+    ],
+    "repair_steps": [
+      "Replace a visibly damaged or unreliable cable or adapter.",
+      "Power off the phone and gently remove lint from the port using a non-metallic pick.",
+      "Let an overheated phone cool in a shaded place before charging again.",
+      "Update or restart the phone if charging behavior appears software-related.",
+      "Use a qualified repair shop if the port is loose, corroded, bent, or still fails after cable and cleaning checks."
+    ],
+    "tools": ["flashlight", "known-good charger", "known-good cable", "non-metallic pick", "soft brush"],
+    "safety": ["Do not insert metal tools into the charging port.", "Do not charge a swollen, wet, or overheating phone.", "Stop using damaged chargers or cables."],
+    "prevention": ["Keep the charging port covered from dust when possible.", "Avoid pulling cables sideways.", "Use quality chargers with the correct rating."],
+    "difficulty": "easy",
+    "risk_level": "medium",
+    "estimated_time": "10 to 30 minutes for cable and port checks"
+  }
+]

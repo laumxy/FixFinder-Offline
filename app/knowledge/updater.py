@@ -1,0 +1,89 @@
+from typing import Any
+
+import requests
+
+from app.database.db import (
+    fetch_all_problem_records,
+    get_connection,
+    latest_version,
+    next_patch_version,
+    record_version,
+    upsert_problem,
+)
+from app.database.models import KnowledgeProblem, LearningRequest, LearningSource
+from app.knowledge.cleaner import KnowledgeCleaner
+from app.knowledge.extractor import KnowledgeExtractor
+from app.retrieval.faiss_index import FaissSearch
+from app.utils.logger import get_logger
+from fixfinder_engine.config import settings
+
+
+class KnowledgeUpdater:
+    def __init__(self) -> None:
+        self.extractor = KnowledgeExtractor()
+        self.cleaner = KnowledgeCleaner()
+        self.logger = get_logger(__name__)
+
+    def learn(self, request: LearningRequest) -> dict[str, Any]:
+        current_version = latest_version(settings.database_path)
+        new_version = next_patch_version(current_version)
+        existing = fetch_all_problem_records(settings.database_path)
+        existing_keys = {(item["category"], item["problem"].lower()) for item in existing}
+
+        accepted: list[KnowledgeProblem] = []
+        rejected = 0
+
+        for source in request.sources:
+            hydrated = self._hydrate_source(source)
+            extracted = self.extractor.extract(hydrated, new_version)
+            if not extracted:
+                rejected += 1
+                continue
+            if extracted.reliability_score < request.min_reliability:
+                rejected += 1
+                continue
+            key = (extracted.category, extracted.problem.lower())
+            if key in existing_keys:
+                rejected += 1
+                continue
+            accepted.append(extracted)
+            existing_keys.add(key)
+
+        if accepted:
+            with get_connection(settings.database_path) as connection:
+                for problem in accepted:
+                    upsert_problem(connection, problem)
+                total_records = int(connection.execute("SELECT COUNT(*) AS total FROM problems").fetchone()["total"])
+                record_version(connection, new_version, total_records, f"Learned {len(accepted)} structured records.")
+            self._rebuild_faiss()
+
+        return {
+            "status": "ok",
+            "previous_version": current_version,
+            "knowledge_version": new_version if accepted else current_version,
+            "accepted": len(accepted),
+            "rejected": rejected,
+            "message": "Knowledge base updated." if accepted else "No high-quality new knowledge accepted.",
+        }
+
+    def _hydrate_source(self, source: LearningSource) -> LearningSource:
+        if source.text or not source.url:
+            return source
+        try:
+            response = requests.get(source.url, timeout=12, headers={"User-Agent": "FixFinderOfflineAI/3.0"})
+            response.raise_for_status()
+            text = self.cleaner.clean_text(response.text)
+            return LearningSource(
+                url=source.url,
+                text=text,
+                category=source.category,
+                source_type=source.source_type,
+            )
+        except requests.RequestException as exc:
+            self.logger.warning("Failed to fetch learning source %s: %s", source.url, exc)
+            return source
+
+    def _rebuild_faiss(self) -> None:
+        records = fetch_all_problem_records(settings.database_path)
+        search = FaissSearch(settings.faiss_index_path, settings.faiss_metadata_path, settings.embedding_model_name)
+        search.rebuild(records)
