@@ -56,7 +56,7 @@ python seed_rv_repairs.py
 echo "[startup] RV repair procedures seeded."
 
 echo "[startup] Adding missing repairs to v2/v3 JSON ..."
-python _add_missing_repairs.py
+python patch_repairs.py
 echo "[startup] Missing repairs added."
 
 # ── 5. Generate embeddings (if missing) ───────────────────────────────────────

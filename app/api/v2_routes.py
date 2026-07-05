@@ -46,6 +46,7 @@ from pydantic import BaseModel, Field
 from ai_engine.retrieval_engine        import AIRetrievalEngine
 from ai_engine.diagnostic_engine       import AIDiagnosticEngine
 from ai_engine.repair_reasoning_engine import AIRepairReasoningEngine
+from ai_engine.rqu_engine              import RQUEngine
 
 router = APIRouter(prefix="/v2", tags=["AI Engine v2"])
 
@@ -57,6 +58,9 @@ _engine_lock   = threading.Lock()
 _retrieval_pool: dict[int, AIRetrievalEngine]        = {}
 _diagnostic_pool: dict[int, AIDiagnosticEngine]      = {}
 _repair_pool:  dict[int, AIRepairReasoningEngine]     = {}
+
+# RQU is stateless — one shared instance is enough
+_rqu = RQUEngine()
 
 _VALID_VERSIONS = {1, 2, 3}
 _VERSION_LABELS = {
@@ -150,6 +154,11 @@ class PlanRequest(BaseModel):
     top_k: int = Field(default=3, ge=1, le=5)
 
 
+class UnderstandRequest(BaseModel):
+    query: str = Field(..., min_length=2, max_length=2000,
+                       description="Raw user repair query to parse")
+
+
 # ===========================================================================
 # Root / Health
 # ===========================================================================
@@ -165,6 +174,7 @@ def v2_info() -> dict:
         },
         "endpoints": {
             "health":    "GET  /v2/health",
+            "understand":"POST /v2/understand",
             "search":    "POST /v2/{version}/search",
             "system":    "GET  /v2/{version}/systems/{id}",
             "symptom":   "GET  /v2/{version}/symptoms/{id}",
@@ -228,8 +238,40 @@ def v2_health() -> dict:
 
 
 # ===========================================================================
-# Retrieval endpoints
+# RQU — Repair Query Understanding
 # ===========================================================================
+
+@router.post(
+    "/understand",
+    summary="Repair Query Understanding (RQU)",
+    tags=["RQU"],
+    description=(
+        "Parse a raw user repair query into a structured Repair Understanding "
+        "Object (RUO).  Detects intent, equipment, component, symptoms, failure "
+        "types, environment, severity, safety risk, and ambiguity — entirely from "
+        "deterministic NLP rules.  No AI guessing.  Returns JSON only."
+    ),
+)
+def understand_query(body: UnderstandRequest) -> dict:
+    """
+    Transform a raw repair query into a structured RUO.
+
+    Example input:  `"My fridge won't light on propane"`
+
+    Returns a fully populated Repair Understanding Object with 16 fields
+    including equipment_category, symptoms, failure_types, severity,
+    safety_risk, ambiguity_score, and confidence.
+    """
+    try:
+        ruo = _rqu.understand(body.query)
+        return ruo
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc))
+    except Exception as exc:
+        raise HTTPException(
+            status_code=500,
+            detail=f"RQU engine error: {type(exc).__name__}: {exc}",
+        )
 
 @router.post(
     "/{version}/search",

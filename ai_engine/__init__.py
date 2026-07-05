@@ -38,10 +38,12 @@ Quick start
 from .retrieval_engine        import AIRetrievalEngine        # noqa: F401
 from .diagnostic_engine       import AIDiagnosticEngine       # noqa: F401
 from .repair_reasoning_engine import AIRepairReasoningEngine  # noqa: F401
+from .rqu_engine              import RQUEngine                # noqa: F401
 
 __all__ = [
     "AIRetrievalEngine",
     "AIDiagnosticEngine",
     "AIRepairReasoningEngine",
+    "RQUEngine",
 ]
-__version__ = "1.2.0"
+__version__ = "1.3.0"
