@@ -42,10 +42,14 @@ else
     echo "[startup] Versioned databases exist — skipping build."
 fi
 
-# ── 4. Import CSVs into the versioned databases (adds extra CSV data) ──────────
+# ── 4. Import CSVs and seed RV-specific symptoms ──────────────────────────────
 echo "[startup] Importing CSV data into versioned databases ..."
 python master_import.py
 echo "[startup] CSV import complete."
+
+echo "[startup] Seeding RV and appliance-specific symptoms ..."
+python seed_rv_symptoms.py
+echo "[startup] RV symptoms seeded."
 
 # ── 5. Generate embeddings (if missing) ───────────────────────────────────────
 EMB_MISSING=false
