@@ -83,7 +83,6 @@ def root() -> dict:
         "app": settings.app_name,
         "version": settings.app_version,
         "status": "running",
-        "deploy_commit": "a7d0952-fix2",
         "endpoints": {
             "health":            "GET  /health",
             "diagnose":          "POST /diagnose",
