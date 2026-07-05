@@ -297,6 +297,99 @@ def test_analyze_empty_text():
             f"Expected 422 for too-short text, got {r.status_code}")
 
 
+def test_extract_entities():
+    """POST /v2/extract-entities returns technical entities only."""
+    r = client.post(
+        "/v2/extract-entities",
+        json={
+            "query": (
+                "Dometic RM2652 fridge shows E1 at 12.4V and 3 psi "
+                "near the burner inside the RV"
+            )
+        },
+    )
+    _assert(r.status_code == 200,
+            f"extract-entities returned {r.status_code}: {r.text[:200]}")
+    d = r.json()
+    for key in (
+        "brands", "models", "equipment", "components", "parts",
+        "measurements", "temperatures", "voltages", "error_codes",
+        "locations", "units",
+    ):
+        _assert(key in d, f"Missing '{key}' in entity extraction response")
+    _assert("Dometic" in d["brands"], "Expected Dometic brand")
+    _assert("RM2652" in d["models"], "Expected RM2652 model")
+    _assert("E1" in d["error_codes"], "Expected E1 error code")
+    _assert(d["voltages"][0]["unit"] == "V", "Expected normalized voltage unit")
+    _assert("diagnosis" not in d, "Extractor must not diagnose")
+
+
+def test_resolve_equipment():
+    """POST /v2/resolve-equipment returns equipment category/name/confidence."""
+    r = client.post(
+        "/v2/resolve-equipment",
+        json={"query": "my water pump runs but no water comes out"},
+    )
+    _assert(r.status_code == 200,
+            f"resolve-equipment returned {r.status_code}: {r.text[:200]}")
+    d = r.json()
+    _assert(set(d.keys()) == {"equipment_category", "equipment_name", "confidence"},
+            f"Unexpected response keys: {sorted(d.keys())}")
+    _assert(d["equipment_category"] == "Pump",
+            f"Expected Pump category, got {d['equipment_category']!r}")
+    _assert(d["equipment_name"] == "Water Pump",
+            f"Expected Water Pump, got {d['equipment_name']!r}")
+    _assert(d["confidence"] >= 0.8,
+            f"Expected high confidence, got {d['confidence']!r}")
+
+
+def test_intent_search_home_diagnostic():
+    """POST /v2/intent-search picks a knowledge version for a home/RV query."""
+    r = client.post(
+        "/v2/intent-search",
+        json={"query": "RV fridge won't light on propane", "top_k": 5},
+    )
+    _assert(r.status_code == 200,
+            f"intent-search returned {r.status_code}: {r.text[:200]}")
+    d = r.json()
+    _assert(d["intent_classification"]["primary_intent"] == "DIAGNOSE_PROBLEM",
+            "Expected DIAGNOSE_PROBLEM intent")
+    _assert(d["selected_knowledge"]["version"] == 1,
+            f"Expected Home Maintenance knowledge, got {d['selected_knowledge']}")
+    _assert(d["knowledge_action"] == "analyze_symptoms",
+            f"Unexpected knowledge action: {d['knowledge_action']!r}")
+    _assert(len(d["matches"]) > 0, "Expected at least one knowledge match")
+
+
+def test_intent_search_electronics_diagnostic():
+    """POST /v2/intent-search uses electronics knowledge for electronics queries."""
+    r = client.post(
+        "/v2/intent-search",
+        json={"query": "laptop screen dead won't turn on", "top_k": 5},
+    )
+    _assert(r.status_code == 200,
+            f"intent-search returned {r.status_code}: {r.text[:200]}")
+    d = r.json()
+    _assert(d["selected_knowledge"]["version"] == 2,
+            f"Expected Electronics knowledge, got {d['selected_knowledge']}")
+
+
+def test_intent_search_safety_short_circuit():
+    """POST /v2/intent-search returns safety_alert without knowledge matches."""
+    r = client.post(
+        "/v2/intent-search",
+        json={"query": "I smell gas inside the RV", "top_k": 5},
+    )
+    _assert(r.status_code == 200,
+            f"intent-search safety returned {r.status_code}: {r.text[:200]}")
+    d = r.json()
+    _assert(d["intent_classification"]["primary_intent"] == "SAFETY",
+            "Expected SAFETY intent")
+    _assert(d["knowledge_action"] == "safety_alert",
+            f"Unexpected knowledge action: {d['knowledge_action']!r}")
+    _assert(d["matches"] == [], "Safety short-circuit should not return matches")
+
+
 def test_get_tree(version: int, fx: dict):
     """GET /{version}/tree/{symptom_code} returns a complete tree or 404."""
     r = client.get(f"/v2/{version}/tree/{fx['tree_code']}")
@@ -454,6 +547,11 @@ _STANDALONE_TESTS = [
     ("invalid_version",     test_invalid_version_search),
     ("empty_search_query",  test_empty_search_query),
     ("analyze_empty_text",  test_analyze_empty_text),
+    ("resolve_equipment",   test_resolve_equipment),
+    ("extract_entities",    test_extract_entities),
+    ("intent_search_home",  test_intent_search_home_diagnostic),
+    ("intent_search_electronics", test_intent_search_electronics_diagnostic),
+    ("intent_search_safety", test_intent_search_safety_short_circuit),
 ]
 
 _PER_VERSION_TESTS = [
@@ -478,6 +576,11 @@ _PER_VERSION_TESTS = [
     ("generate_plan",             test_generate_plan),
     ("plan_steps_nonempty",       test_plan_steps_nonempty),
 ]
+
+# The functions above are reusable helpers for the custom runner. Pytest should
+# collect only the generated per-version wrappers below.
+for _, _fn in _PER_VERSION_TESTS:
+    _fn.__test__ = False
 
 # inject pytest-compatible wrappers into module namespace
 def _make_pytest_standalone(name, fn):

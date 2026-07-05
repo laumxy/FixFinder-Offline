@@ -47,6 +47,9 @@ from ai_engine.retrieval_engine        import AIRetrievalEngine
 from ai_engine.diagnostic_engine       import AIDiagnosticEngine
 from ai_engine.repair_reasoning_engine import AIRepairReasoningEngine
 from ai_engine.rqu_engine              import RQUEngine
+from ai_engine.ice_engine              import ICEEngine
+from ai_engine.tee_engine              import TechnicalEntityExtractor
+from ai_engine.equipment_engine        import EquipmentResolver
 
 router = APIRouter(prefix="/v2", tags=["AI Engine v2"])
 
@@ -61,6 +64,9 @@ _repair_pool:  dict[int, AIRepairReasoningEngine]     = {}
 
 # RQU is stateless — one shared instance is enough
 _rqu = RQUEngine()
+_ice = ICEEngine()
+_tee = TechnicalEntityExtractor()
+_equipment_resolver = EquipmentResolver()
 
 _VALID_VERSIONS = {1, 2, 3}
 _VERSION_LABELS = {
@@ -159,6 +165,13 @@ class UnderstandRequest(BaseModel):
                        description="Raw user repair query to parse")
 
 
+class IntentSearchRequest(BaseModel):
+    query: str = Field(..., min_length=2, max_length=2000,
+                       description="Raw user repair query to classify and route")
+    top_k: int = Field(default=5, ge=1, le=20,
+                       description="Number of knowledge matches to return")
+
+
 # ===========================================================================
 # Root / Health
 # ===========================================================================
@@ -175,6 +188,9 @@ def v2_info() -> dict:
         "endpoints": {
             "health":    "GET  /v2/health",
             "understand":"POST /v2/understand",
+            "resolve_equipment": "POST /v2/resolve-equipment",
+            "extract_entities": "POST /v2/extract-entities",
+            "intent_search": "POST /v2/intent-search",
             "search":    "POST /v2/{version}/search",
             "system":    "GET  /v2/{version}/systems/{id}",
             "symptom":   "GET  /v2/{version}/symptoms/{id}",
@@ -272,6 +288,281 @@ def understand_query(body: UnderstandRequest) -> dict:
             status_code=500,
             detail=f"RQU engine error: {type(exc).__name__}: {exc}",
         )
+
+
+@router.post(
+    "/resolve-equipment",
+    summary="Equipment Resolution",
+    tags=["Equipment"],
+    description=(
+        "Determine exactly which equipment the user is referring to. Returns "
+        "equipment_category, equipment_name, and confidence only. This endpoint "
+        "does not diagnose or provide repair guidance."
+    ),
+)
+def resolve_equipment(body: UnderstandRequest) -> dict:
+    """
+    Resolve the target equipment from a raw query.
+
+    Example input: `"My water pump runs but no water comes out"`
+    """
+    try:
+        return _equipment_resolver.resolve(body.query)
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc))
+    except Exception as exc:
+        raise HTTPException(
+            status_code=500,
+            detail=f"Equipment resolver error: {type(exc).__name__}: {exc}",
+        )
+
+
+@router.post(
+    "/extract-entities",
+    summary="Technical Entity Extraction (TEE)",
+    tags=["TEE"],
+    description=(
+        "Extract technical entities from a raw repair query. Returns brands, "
+        "models, equipment, components, parts, measurements, temperatures, "
+        "voltages, error codes, locations, and units. This endpoint never "
+        "diagnoses or provides repair guidance."
+    ),
+)
+def extract_entities(body: UnderstandRequest) -> dict:
+    """
+    Extract technical entities only.
+
+    Example input: `"Dometic RM2652 fridge shows E1 at 12.4V near the burner"`
+    """
+    try:
+        return _tee.extract(body.query)
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc))
+    except Exception as exc:
+        raise HTTPException(
+            status_code=500,
+            detail=f"TEE engine error: {type(exc).__name__}: {exc}",
+        )
+
+
+@router.post(
+    "/classify",
+    summary="Intent Classification Engine (ICE)",
+    tags=["ICE"],
+    description=(
+        "Accepts either a raw query (string) or a pre-built RUO dict and "
+        "returns an Intent Classification Object with primary_intent, "
+        "secondary_intent, user_goal, intent_confidence, and routing_hint. "
+        "Allowed intents: DIAGNOSE_PROBLEM, REPAIR_GUIDANCE, IDENTIFY_COMPONENT, "
+        "ERROR_CODE_LOOKUP, MAINTENANCE, INSTALLATION, CONFIGURATION, "
+        "PART_LOOKUP, SAFETY, VERIFY_REPAIR, ESCALATE."
+    ),
+)
+def classify_intent(body: UnderstandRequest) -> dict:
+    """
+    Full RQU → ICE pipeline in one call.
+
+    Parses the raw query into a RUO, then classifies the intent.
+    Returns the complete Intent Classification Object including
+    a ruo_summary and routing_hint for the orchestrator.
+    """
+    try:
+        ruo = _rqu.understand(body.query)
+        ico = _ice.classify(ruo)
+        return ico
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc))
+    except Exception as exc:
+        raise HTTPException(
+            status_code=500,
+            detail=f"ICE engine error: {type(exc).__name__}: {exc}",
+        )
+
+
+_VERSION_BY_CATEGORY = {
+    "Home Maintenance": 1,
+    "Electronics": 2,
+    "Industrial / Automotive": 3,
+}
+
+_DOMAIN_KEYWORDS: dict[int, tuple[str, ...]] = {
+    1: (
+        "roof", "leak", "shingle", "plumb", "faucet", "toilet", "pipe",
+        "water", "hvac", "furnace", "fridge", "refrigerator", "propane",
+        "stove", "oven", "outlet", "breaker", "gutter", "basement",
+        "sump", "window", "door", "garage", "heater", "drain",
+    ),
+    2: (
+        "phone", "iphone", "samsung", "laptop", "macbook", "screen",
+        "battery", "charger", "computer", "pc", "monitor", "tv",
+        "television", "tablet", "router", "network", "printer", "console",
+        "ps5", "xbox", "camera",
+    ),
+    3: (
+        "car", "truck", "vehicle", "engine", "brake", "transmission",
+        "oil", "alternator", "radiator", "exhaust", "motor", "generator",
+        "excavator", "tractor", "forklift", "hydraulic", "diesel",
+        "motorcycle", "industrial", "compressor",
+    ),
+}
+
+_ENTITY_TYPE_BY_INTENT = {
+    "IDENTIFY_COMPONENT": "system",
+    "CONFIGURATION": "system",
+    "MAINTENANCE": "repair",
+    "INSTALLATION": "repair",
+    "PART_LOOKUP": "repair",
+    "REPAIR_GUIDANCE": "repair",
+}
+
+
+def _domain_boost(query: str, version: int) -> float:
+    query_lower = query.lower()
+    hits = sum(1 for kw in _DOMAIN_KEYWORDS.get(version, ()) if kw in query_lower)
+    return round(min(hits * 0.05, 0.25), 4)
+
+
+def _preferred_version_from_ruo(ruo: dict[str, Any]) -> Optional[int]:
+    return _VERSION_BY_CATEGORY.get(ruo.get("equipment_category", ""))
+
+
+def _selection_reason(ruo_version: Optional[int], selected_version: int) -> str:
+    if ruo_version == selected_version:
+        return "RQU equipment category and highest adjusted knowledge score agree."
+    if ruo_version:
+        return "Highest adjusted knowledge score overrode the RQU category hint."
+    return "Selected from the highest adjusted knowledge score."
+
+
+@router.post(
+    "/intent-search",
+    summary="Intent-aware knowledge selection",
+    tags=["ICE"],
+    description=(
+        "Runs RQU and ICE, chooses the most relevant knowledge-base version, "
+        "and returns ranked knowledge matches for the user's intent. This is "
+        "the backend equivalent of understand -> classify -> pick knowledge."
+    ),
+)
+def intent_search(body: IntentSearchRequest) -> dict:
+    """
+    Classify a user query and pick the best matching knowledge base.
+
+    The route searches all three versioned knowledge bases, then applies:
+    - the RQU equipment-category version hint,
+    - domain keyword boosts,
+    - intent-specific routing.
+    """
+    try:
+        ruo = _rqu.understand(body.query)
+        ico = _ice.classify(ruo)
+        primary_intent = ico["primary_intent"]
+        ruo_version = _preferred_version_from_ruo(ruo)
+
+        if primary_intent == "SAFETY":
+            selected_version = ruo_version or 1
+            return {
+                "query": body.query,
+                "repair_understanding": ruo,
+                "intent_classification": ico,
+                "selected_knowledge": {
+                    "version": selected_version,
+                    "version_label": _VERSION_LABELS[selected_version],
+                    "reason": "Safety intent short-circuits knowledge search.",
+                },
+                "knowledge_action": "safety_alert",
+                "matches": [],
+            }
+
+        if primary_intent == "ESCALATE":
+            selected_version = ruo_version or 1
+            return {
+                "query": body.query,
+                "repair_understanding": ruo,
+                "intent_classification": ico,
+                "selected_knowledge": {
+                    "version": selected_version,
+                    "version_label": _VERSION_LABELS[selected_version],
+                    "reason": "Escalation intent should ask for help or more detail.",
+                },
+                "knowledge_action": "escalate",
+                "matches": [],
+            }
+
+        matches: list[dict[str, Any]] = []
+        knowledge_action = "analyze_symptoms"
+
+        if primary_intent in {
+            "DIAGNOSE_PROBLEM",
+            "ERROR_CODE_LOOKUP",
+            "VERIFY_REPAIR",
+        }:
+            for version in sorted(_VALID_VERSIONS):
+                for match in _get_diagnostic(version).analyze_symptoms(
+                    body.query, top_k=body.top_k
+                ):
+                    boost = _domain_boost(body.query, version)
+                    if ruo_version == version:
+                        boost += 0.15
+                    adjusted_score = round((match.get("score") or 0) + boost, 4)
+                    matches.append({
+                        **match,
+                        "version": version,
+                        "version_label": _VERSION_LABELS[version],
+                        "raw_score": match.get("score"),
+                        "domain_boost": round(boost, 4),
+                        "adjusted_score": adjusted_score,
+                    })
+        else:
+            knowledge_action = "semantic_search"
+            entity_type = _ENTITY_TYPE_BY_INTENT.get(primary_intent)
+            for version in sorted(_VALID_VERSIONS):
+                for result in _get_retrieval(version).search(
+                    query_text=body.query,
+                    top_k=body.top_k,
+                    entity_type_filter=entity_type,
+                ):
+                    boost = _domain_boost(body.query, version)
+                    if ruo_version == version:
+                        boost += 0.15
+                    adjusted_score = round((result.get("score") or 0) + boost, 4)
+                    matches.append({
+                        **result,
+                        "version": version,
+                        "version_label": _VERSION_LABELS[version],
+                        "raw_score": result.get("score"),
+                        "domain_boost": round(boost, 4),
+                        "adjusted_score": adjusted_score,
+                    })
+
+        matches.sort(key=lambda item: item["adjusted_score"], reverse=True)
+        matches = matches[:body.top_k]
+        for rank, match in enumerate(matches, start=1):
+            match["rank"] = rank
+
+        selected_version = (
+            matches[0]["version"] if matches
+            else ruo_version if ruo_version
+            else 1
+        )
+
+        return {
+            "query": body.query,
+            "repair_understanding": ruo,
+            "intent_classification": ico,
+            "selected_knowledge": {
+                "version": selected_version,
+                "version_label": _VERSION_LABELS[selected_version],
+                "reason": _selection_reason(ruo_version, selected_version),
+            },
+            "knowledge_action": knowledge_action,
+            "matches": matches,
+        }
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc))
+    except Exception as exc:
+        raise _engine_error(exc, "intent_search")
+
 
 @router.post(
     "/{version}/search",

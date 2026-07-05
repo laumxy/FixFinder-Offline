@@ -71,6 +71,7 @@ if _HERE not in sys.path:
 from ai_engine.retrieval_engine        import AIRetrievalEngine        # noqa: E402
 from ai_engine.diagnostic_engine       import AIDiagnosticEngine       # noqa: E402
 from ai_engine.repair_reasoning_engine import AIRepairReasoningEngine  # noqa: E402
+from app.api.v2_routes                 import router as v2_router      # noqa: E402
 
 # ---------------------------------------------------------------------------
 # Logging
@@ -317,6 +318,7 @@ def create_app() -> FastAPI:
 
         return response
 
+    application.include_router(v2_router)
     return application
 
 
