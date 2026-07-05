@@ -7,19 +7,17 @@ echo "=== FixFinder startup ==="
 if [ ! -f "data/fixfinder.db" ]; then
     echo "[startup] Database not found — seeding from data/seed_data.json ..."
     python scripts/init_db.py
+    echo "[startup] Loading extra seed data from data/seed_extra.json ..."
+    python scripts/load_extra_seed.py
     echo "[startup] Database ready."
 else
     echo "[startup] Database already exists — skipping seed."
 fi
 
-# ── 2. Build FAISS index if it doesn't exist ──────────────────────────────────
-if [ ! -f "embeddings/index.faiss" ]; then
-    echo "[startup] FAISS index not found — building ..."
-    python scripts/build_index.py
-    echo "[startup] FAISS index ready."
-else
-    echo "[startup] FAISS index already exists — skipping rebuild."
-fi
+# ── 2. Build FAISS index (always rebuild to match database content) ────────────
+echo "[startup] Building FAISS index ..."
+python scripts/build_index.py
+echo "[startup] FAISS index ready."
 
 # ── 3. Start the API server ───────────────────────────────────────────────────
 echo "[startup] Starting uvicorn on port ${PORT:-8000} ..."
