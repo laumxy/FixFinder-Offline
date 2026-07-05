@@ -1,0 +1,19 @@
+id,part_name,unit,cost,coverage
+PT-PHN-001,Screen Assembly (iPhone 15 Pro Max),Unit,279.99,1 device
+PT-PHN-002,iPhone 15 Battery (3274 mAh),Unit,69.99,1 device
+PT-PHN-003,Lightning/USB-C Charging Port Flex,Unit,29.99,1 device
+PT-PHN-004,Rear Camera Module (iPhone 15),Unit,149.99,1 device
+PT-PHN-005,Samsung Galaxy S24 AMOLED Screen,Unit,249.99,1 device
+PT-TAB-001,iPad Pro 12.9 Display Assembly,Unit,349.99,1 device
+PT-TAB-002,iPad Battery Replacement Kit,Kit,49.99,1 device
+PT-LAP-001,MacBook Pro 16 Battery,Unit,199.99,1 device
+PT-LAP-002,Dell XPS 15 Keyboard Assembly,Unit,89.99,1 device
+PT-LAP-003,Laptop Thermal Paste (3g),Tube,8.99,1 device
+PT-LAP-004,Laptop Cooling Fan (Generic 60mm),Unit,24.99,1 device
+PT-DKT-001,DDR5 16GB RAM Stick,Unit,59.99,1 slot
+PT-DKT-002,500W ATX Power Supply,Unit,79.99,1 system
+PT-DKT-003,1TB NVMe SSD (PCIe 4.0),Unit,89.99,1 device
+PT-TV-001,"TV Backlight Strip (55"")",Set,34.99,1 TV panel
+PT-TV-002,T-Con Board (Universal 4K),Unit,44.99,1 TV
+PT-GAM-001,PS5 Disc Drive Laser Lens,Unit,39.99,1 console
+PT-CAM-001,Canon EOS R5 Shutter Assembly,Unit,299.99,1 camera

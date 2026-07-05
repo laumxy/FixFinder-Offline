@@ -1,0 +1,252 @@
+{
+  "RP-ROF-001": {
+    "id": "RP-ROF-001",
+    "name": "Replacing Asphalt Shingles",
+    "category": "Roofing",
+    "difficulty": "Moderate",
+    "estimated_time": "2-3 hours",
+    "estimated_time_minutes": 150,
+    "tools_required": [
+      "Safety harness and roof anchor",
+      "Roofing ladder with standoffs",
+      "Pry bar / flat bar",
+      "Hammer",
+      "Utility knife",
+      "Caulk gun",
+      "Chalk line",
+      "Tape measure"
+    ],
+    "materials_required": [
+      "Matching asphalt shingles",
+      "Roofing nails (1-3/4 inch)",
+      "Roofing cement / sealant",
+      "Roofing felt (if underlayment damaged)"
+    ],
+    "safety_notes": "Always wear a safety harness on any roof above 6/12 pitch. Work in dry conditions only. Never work on a wet or icy roof.",
+    "pre_repair_checks": [
+      "Confirm weather forecast is clear for at least 24 hours",
+      "Inspect attic for any additional water damage",
+      "Verify replacement shingles match in color and style"
+    ],
+    "procedure_steps": [
+      {
+        "step": 1,
+        "title": "Secure the Work Area",
+        "detail": "Set up roofing ladder with standoffs so it does not rest on gutters. Attach safety harness to a properly installed roof anchor at the ridge. Clear any debris from the work area."
+      },
+      {
+        "step": 2,
+        "title": "Remove Damaged Shingles",
+        "detail": "Slide the pry bar under the damaged shingle to break the adhesive seal. Remove the roofing nails from the damaged shingle and the two shingles above it that overlap it. Slide out the damaged shingle without disturbing surrounding ones."
+      },
+      {
+        "step": 3,
+        "title": "Inspect and Repair Underlayment",
+        "detail": "Check the roofing felt/underlayment beneath the removed shingle. If torn or wet, cut out the damaged section and patch with a new piece of felt, overlapping 6 inches and securing with roofing nails. Apply roofing cement over the patch edges."
+      },
+      {
+        "step": 4,
+        "title": "Install New Shingle",
+        "detail": "Slide the new shingle into position, aligning it with the surrounding shingles and the chalk line. Nail it down with four roofing nails, placing them 1 inch from each side and 1 inch above the bottom of the overlying shingle's cutout. Do not over-drive nails."
+      },
+      {
+        "step": 5,
+        "title": "Re-nail Overlying Shingles",
+        "detail": "Replace the nails removed from the overlying shingles. Lift each tab carefully, apply a small dab of roofing cement under the lifted tabs to re-activate adhesion, and nail back in place."
+      }
+    ],
+    "post_repair_checks": [
+      "Press down on all shingle tabs to ensure adhesive contact",
+      "Seal all nail heads with roofing cement",
+      "Check from the ground that the repaired section aligns visually",
+      "Monitor the attic for 48 hours after next rainfall"
+    ],
+    "warnings": [
+      "Do not walk on shingles in hot weather as they can crack",
+      "Never use a pressure washer on asphalt shingles"
+    ]
+  },
+  "RP-PLB-001": {
+    "id": "RP-PLB-001",
+    "name": "Replacing Toilet Flapper",
+    "category": "Plumbing",
+    "difficulty": "Easy",
+    "estimated_time": "15-30 minutes",
+    "estimated_time_minutes": 22,
+    "tools_required": [
+      "Adjustable wrench (optional)",
+      "Sponge or towel",
+      "Bucket"
+    ],
+    "materials_required": [
+      "Universal toilet flapper (or model-specific flapper)",
+      "Rubber gloves"
+    ],
+    "safety_notes": "No electrical hazard. Wear rubber gloves. Water may be cold.",
+    "pre_repair_checks": [
+      "Confirm flapper is the issue: add food coloring to tank — if color appears in bowl without flushing, flapper is leaking",
+      "Note the toilet brand/model to get a matching flapper"
+    ],
+    "procedure_steps": [
+      {
+        "step": 1,
+        "title": "Shut Off Water Supply",
+        "detail": "Turn the shutoff valve behind the toilet clockwise until fully closed. Flush the toilet to drain most of the tank water."
+      },
+      {
+        "step": 2,
+        "title": "Remove Tank Lid",
+        "detail": "Lift the porcelain tank lid and set it aside safely on a folded towel to avoid cracking it."
+      },
+      {
+        "step": 3,
+        "title": "Remove Old Flapper",
+        "detail": "Unhook the flapper ears from the overflow tube pegs on both sides. Disconnect the chain from the flush handle arm. Remove the old flapper and discard it."
+      },
+      {
+        "step": 4,
+        "title": "Install New Flapper",
+        "detail": "Slide the new flapper ears over the overflow tube pegs. Attach the chain to the flush handle arm, leaving about 1/2 inch of slack — enough for the flapper to seat fully but lift completely when flushed."
+      },
+      {
+        "step": 5,
+        "title": "Test and Adjust",
+        "detail": "Turn the water supply back on and allow the tank to fill. Flush several times and observe the flapper seating. Adjust chain length if needed. Verify no water leaks into the bowl by adding food coloring to the tank."
+      }
+    ],
+    "post_repair_checks": [
+      "Confirm tank fills to the fill line without overflowing",
+      "Check food coloring test after 15 minutes with no flush",
+      "Ensure the flapper sits flush with no gaps around the seal"
+    ],
+    "warnings": [
+      "A chain that is too short will keep the flapper from seating",
+      "A chain with too much slack can get caught under the flapper"
+    ]
+  },
+  "RP-ELC-001": {
+    "id": "RP-ELC-001",
+    "name": "Circuit Breaker Replacement",
+    "category": "Electrical",
+    "difficulty": "Moderate",
+    "estimated_time": "30-60 minutes",
+    "estimated_time_minutes": 45,
+    "tools_required": [
+      "Non-contact voltage tester",
+      "Flathead screwdriver",
+      "Phillips screwdriver",
+      "Needle-nose pliers",
+      "Electrical tape",
+      "Flashlight"
+    ],
+    "materials_required": [
+      "Replacement breaker (same brand, amperage, and pole type as original)",
+      "Rubber-soled work boots"
+    ],
+    "safety_notes": "WARNING: The main lugs in the panel remain live even with the main breaker off. Do not touch the large wires at the top of the panel. If uncomfortable, hire a licensed electrician.",
+    "pre_repair_checks": [
+      "Identify the failed breaker (tripped to middle position or won't reset)",
+      "Purchase exact-match replacement breaker (brand and model number on side of breaker)",
+      "Notify household occupants that power will be off"
+    ],
+    "procedure_steps": [
+      {
+        "step": 1,
+        "title": "Turn Off Main Breaker",
+        "detail": "Flip the main breaker at the top of the panel to OFF. Use a non-contact tester to verify branch circuits are de-energized. Note: the main service wires at the top of the panel are still live — do not touch them."
+      },
+      {
+        "step": 2,
+        "title": "Remove Panel Cover",
+        "detail": "Unscrew the panel cover screws with a screwdriver and carefully remove the cover. Set it aside. Take a photo of the wiring layout before proceeding."
+      },
+      {
+        "step": 3,
+        "title": "Disconnect the Wire from the Faulty Breaker",
+        "detail": "Locate the breaker to replace. Loosen the terminal screw and pull the hot wire (typically black) free. Note which terminal it came from."
+      },
+      {
+        "step": 4,
+        "title": "Remove the Faulty Breaker",
+        "detail": "Grip the breaker and pull the outer edge away from the panel bus bar with a firm rocking motion until it unclips. Slide it out of the panel."
+      },
+      {
+        "step": 5,
+        "title": "Install the New Breaker",
+        "detail": "Hook the new breaker onto the bus bar at the inner edge first, then press the outer edge firmly until it clicks into place. The breaker should be in the OFF position."
+      },
+      {
+        "step": 6,
+        "title": "Connect Wire and Restore Power",
+        "detail": "Insert the hot wire into the new breaker's terminal and tighten the screw firmly. Replace the panel cover. Turn the main breaker back ON, then flip the new breaker to ON. Test the circuit with the voltage tester and by operating affected devices."
+      }
+    ],
+    "post_repair_checks": [
+      "Verify correct amperage on new breaker matches circuit wire gauge",
+      "Test all outlets and fixtures on the replaced circuit",
+      "Monitor for 24 hours to confirm breaker does not trip again"
+    ],
+    "warnings": [
+      "Main service lugs remain energized even with main breaker off",
+      "Never replace a breaker with a higher-amperage unit to stop tripping"
+    ]
+  },
+  "RP-APL-001": {
+    "id": "RP-APL-001",
+    "name": "Refrigerator Start Relay Replacement",
+    "category": "Appliances",
+    "difficulty": "Easy",
+    "estimated_time": "30-45 minutes",
+    "estimated_time_minutes": 37,
+    "tools_required": [
+      "Nut driver or 1/4\" socket",
+      "Flathead screwdriver",
+      "Multimeter (optional)"
+    ],
+    "materials_required": [
+      "Replacement start relay (model-specific — check sticker inside fridge door for model number)"
+    ],
+    "safety_notes": "Unplug the refrigerator before any repair. Allow capacitors to discharge for 5 minutes after unplugging.",
+    "pre_repair_checks": [
+      "Confirm compressor is not running (no hum from bottom-rear of fridge)",
+      "Verify fridge is getting power (interior light on)",
+      "Identify refrigerator model number and order correct relay"
+    ],
+    "procedure_steps": [
+      {
+        "step": 1,
+        "title": "Unplug and Access Compressor",
+        "detail": "Unplug the refrigerator from the wall outlet. Pull it away from the wall. Remove the rear access panel (if present) using the nut driver to expose the compressor at the bottom."
+      },
+      {
+        "step": 2,
+        "title": "Locate the Start Relay",
+        "detail": "Find the start relay — a small rectangular or cylindrical component plugged into the side of the compressor. It may have a wire harness attached."
+      },
+      {
+        "step": 3,
+        "title": "Remove the Old Relay",
+        "detail": "Disconnect the wire harness. Pull the relay straight off the compressor terminal pins with firm, even pressure. Shake it next to your ear — a rattle confirms it is faulty."
+      },
+      {
+        "step": 4,
+        "title": "Test with Multimeter (Optional)",
+        "detail": "Set multimeter to continuity or resistance mode. Place probes on the relay terminals. A failed relay shows no continuity between the start and run terminals."
+      },
+      {
+        "step": 5,
+        "title": "Install New Relay",
+        "detail": "Press the new relay firmly onto the compressor terminal pins in the same orientation as the original. Reconnect the wire harness. Replace the access panel."
+      }
+    ],
+    "post_repair_checks": [
+      "Plug the refrigerator back in and listen for compressor hum within 5 minutes",
+      "Check fridge temperature after 4 hours — should be at or below 40°F",
+      "Monitor for 24 hours to confirm stable cooling"
+    ],
+    "warnings": [
+      "Do not operate the compressor without the relay — it will burn out",
+      "Ensure the relay orientation matches the original; some are polarized"
+    ]
+  }
+}

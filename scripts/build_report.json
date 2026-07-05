@@ -1,0 +1,314 @@
+{
+  "generated_at": "2026-07-05T10:42:56Z",
+  "overall_status": "PASS",
+  "summary": {
+    "versions_built": 3,
+    "total_phases": 33,
+    "passed": 9,
+    "failed": 0,
+    "skipped": 24,
+    "total_duration_s": 0.26
+  },
+  "versions": [
+    {
+      "version": 1,
+      "version_label": "Home Maintenance",
+      "overall_status": "PASS",
+      "phases_run": 11,
+      "passed": 3,
+      "failed": 0,
+      "skipped": 8,
+      "total_duration_s": 0.13,
+      "phases": [
+        {
+          "phase": 1,
+          "name": "Master Taxonomy",
+          "status": "SKIP",
+          "duration_s": 0.0,
+          "message": "Manually authored \u2014 skipped",
+          "detail": ""
+        },
+        {
+          "phase": 2,
+          "name": "Database Schema",
+          "status": "PASS",
+          "duration_s": 0.025,
+          "message": "fixfinder_v1.db verified \u2014 13 tables",
+          "detail": ""
+        },
+        {
+          "phase": 3,
+          "name": "SQLite Database",
+          "status": "PASS",
+          "duration_s": 0.006,
+          "message": "systems=39, symptoms=51, repair_procedures=15, parts_inventory=47",
+          "detail": ""
+        },
+        {
+          "phase": 4,
+          "name": "CSV Generation",
+          "status": "SKIP",
+          "duration_s": 0.0,
+          "message": "3 CSV files already exist (use --force to rebuild)",
+          "detail": ""
+        },
+        {
+          "phase": 5,
+          "name": "JSON Generation",
+          "status": "SKIP",
+          "duration_s": 0.0,
+          "message": "2 JSON files already exist (use --force to rebuild)",
+          "detail": ""
+        },
+        {
+          "phase": 6,
+          "name": "Embedding Generation",
+          "status": "SKIP",
+          "duration_s": 0.0,
+          "message": "embeddings.json exists (30 embeddings \u2014 use --force to rebuild)",
+          "detail": ""
+        },
+        {
+          "phase": 7,
+          "name": "FAISS Index",
+          "status": "SKIP",
+          "duration_s": 0.0,
+          "message": "index.faiss exists (30 vectors, dim=768 \u2014 use --force to rebuild)",
+          "detail": ""
+        },
+        {
+          "phase": 8,
+          "name": "AI Retrieval Engine tests",
+          "status": "SKIP",
+          "duration_s": 0.0,
+          "message": "--skip-tests",
+          "detail": ""
+        },
+        {
+          "phase": 9,
+          "name": "AI Diagnostic Engine tests",
+          "status": "SKIP",
+          "duration_s": 0.0,
+          "message": "--skip-tests",
+          "detail": ""
+        },
+        {
+          "phase": 10,
+          "name": "AI Repair Reasoning Engine tests",
+          "status": "SKIP",
+          "duration_s": 0.0,
+          "message": "--skip-tests",
+          "detail": ""
+        },
+        {
+          "phase": 11,
+          "name": "Validation Suite",
+          "status": "PASS",
+          "duration_s": 0.097,
+          "message": "95/95 tests passed (100.0%) \u2014 PASS",
+          "detail": ""
+        }
+      ]
+    },
+    {
+      "version": 2,
+      "version_label": "Electronics",
+      "overall_status": "PASS",
+      "phases_run": 11,
+      "passed": 3,
+      "failed": 0,
+      "skipped": 8,
+      "total_duration_s": 0.07,
+      "phases": [
+        {
+          "phase": 1,
+          "name": "Master Taxonomy",
+          "status": "SKIP",
+          "duration_s": 0.0,
+          "message": "Manually authored \u2014 skipped",
+          "detail": ""
+        },
+        {
+          "phase": 2,
+          "name": "Database Schema",
+          "status": "PASS",
+          "duration_s": 0.007,
+          "message": "fixfinder_v2.db verified \u2014 13 tables",
+          "detail": ""
+        },
+        {
+          "phase": 3,
+          "name": "SQLite Database",
+          "status": "PASS",
+          "duration_s": 0.005,
+          "message": "systems=41, symptoms=48, repair_procedures=15, parts_inventory=41",
+          "detail": ""
+        },
+        {
+          "phase": 4,
+          "name": "CSV Generation",
+          "status": "SKIP",
+          "duration_s": 0.0,
+          "message": "3 CSV files already exist (use --force to rebuild)",
+          "detail": ""
+        },
+        {
+          "phase": 5,
+          "name": "JSON Generation",
+          "status": "SKIP",
+          "duration_s": 0.0,
+          "message": "2 JSON files already exist (use --force to rebuild)",
+          "detail": ""
+        },
+        {
+          "phase": 6,
+          "name": "Embedding Generation",
+          "status": "SKIP",
+          "duration_s": 0.0,
+          "message": "embeddings.json exists (30 embeddings \u2014 use --force to rebuild)",
+          "detail": ""
+        },
+        {
+          "phase": 7,
+          "name": "FAISS Index",
+          "status": "SKIP",
+          "duration_s": 0.0,
+          "message": "index.faiss exists (30 vectors, dim=768 \u2014 use --force to rebuild)",
+          "detail": ""
+        },
+        {
+          "phase": 8,
+          "name": "AI Retrieval Engine tests",
+          "status": "SKIP",
+          "duration_s": 0.0,
+          "message": "--skip-tests",
+          "detail": ""
+        },
+        {
+          "phase": 9,
+          "name": "AI Diagnostic Engine tests",
+          "status": "SKIP",
+          "duration_s": 0.0,
+          "message": "--skip-tests",
+          "detail": ""
+        },
+        {
+          "phase": 10,
+          "name": "AI Repair Reasoning Engine tests",
+          "status": "SKIP",
+          "duration_s": 0.0,
+          "message": "--skip-tests",
+          "detail": ""
+        },
+        {
+          "phase": 11,
+          "name": "Validation Suite",
+          "status": "PASS",
+          "duration_s": 0.056,
+          "message": "95/95 tests passed (100.0%) \u2014 PASS",
+          "detail": ""
+        }
+      ]
+    },
+    {
+      "version": 3,
+      "version_label": "Industrial / Automotive",
+      "overall_status": "PASS",
+      "phases_run": 11,
+      "passed": 3,
+      "failed": 0,
+      "skipped": 8,
+      "total_duration_s": 0.07,
+      "phases": [
+        {
+          "phase": 1,
+          "name": "Master Taxonomy",
+          "status": "SKIP",
+          "duration_s": 0.0,
+          "message": "Manually authored \u2014 skipped",
+          "detail": ""
+        },
+        {
+          "phase": 2,
+          "name": "Database Schema",
+          "status": "PASS",
+          "duration_s": 0.006,
+          "message": "fixfinder_v3.db verified \u2014 13 tables",
+          "detail": ""
+        },
+        {
+          "phase": 3,
+          "name": "SQLite Database",
+          "status": "PASS",
+          "duration_s": 0.006,
+          "message": "systems=37, symptoms=47, repair_procedures=15, parts_inventory=43",
+          "detail": ""
+        },
+        {
+          "phase": 4,
+          "name": "CSV Generation",
+          "status": "SKIP",
+          "duration_s": 0.0,
+          "message": "3 CSV files already exist (use --force to rebuild)",
+          "detail": ""
+        },
+        {
+          "phase": 5,
+          "name": "JSON Generation",
+          "status": "SKIP",
+          "duration_s": 0.0,
+          "message": "2 JSON files already exist (use --force to rebuild)",
+          "detail": ""
+        },
+        {
+          "phase": 6,
+          "name": "Embedding Generation",
+          "status": "SKIP",
+          "duration_s": 0.0,
+          "message": "embeddings.json exists (30 embeddings \u2014 use --force to rebuild)",
+          "detail": ""
+        },
+        {
+          "phase": 7,
+          "name": "FAISS Index",
+          "status": "SKIP",
+          "duration_s": 0.0,
+          "message": "index.faiss exists (30 vectors, dim=768 \u2014 use --force to rebuild)",
+          "detail": ""
+        },
+        {
+          "phase": 8,
+          "name": "AI Retrieval Engine tests",
+          "status": "SKIP",
+          "duration_s": 0.0,
+          "message": "--skip-tests",
+          "detail": ""
+        },
+        {
+          "phase": 9,
+          "name": "AI Diagnostic Engine tests",
+          "status": "SKIP",
+          "duration_s": 0.0,
+          "message": "--skip-tests",
+          "detail": ""
+        },
+        {
+          "phase": 10,
+          "name": "AI Repair Reasoning Engine tests",
+          "status": "SKIP",
+          "duration_s": 0.0,
+          "message": "--skip-tests",
+          "detail": ""
+        },
+        {
+          "phase": 11,
+          "name": "Validation Suite",
+          "status": "PASS",
+          "duration_s": 0.054,
+          "message": "95/95 tests passed (100.0%) \u2014 PASS",
+          "detail": ""
+        }
+      ]
+    }
+  ]
+}

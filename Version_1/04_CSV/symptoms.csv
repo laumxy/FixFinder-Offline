@@ -1,0 +1,22 @@
+id,category,symptom,severity,causes
+PRB-ROF-001,Roofing,Missing Shingles,High,Wind damage/age
+PRB-ROF-002,Roofing,Roof Leak,High,Damaged flashing/cracked shingles
+PRB-ROF-003,Roofing,Sagging Roof Deck,Critical,Water damage/structural failure
+PRB-ROF-004,Roofing,Granule Loss on Shingles,Medium,Age/weathering
+PRB-FND-001,Foundation,Foundation Cracks,High,Settling/hydrostatic pressure
+PRB-FND-002,Foundation,Water Intrusion in Basement,High,Poor drainage/crack in foundation
+PRB-PLM-001,Plumbing,Dripping Faucet,Low,Worn washer/O-ring
+PRB-PLM-002,Plumbing,Low Water Pressure,Medium,Buildup/faulty pressure regulator
+PRB-PLM-003,Plumbing,Slow Drain,Medium,Clog/grease buildup
+PRB-PLM-004,Plumbing,No Hot Water,High,Failed heating element/pilot light out
+PRB-ELC-001,Electrical,Tripping Breaker,High,Overloaded circuit/short circuit
+PRB-ELC-002,Electrical,Dead Outlet,Medium,Tripped GFCI/faulty wiring
+PRB-HVC-001,HVAC,AC Not Cooling,High,Low refrigerant/dirty coils
+PRB-HVC-002,HVAC,Furnace Not Heating,High,Faulty ignitor/dirty filter
+PRB-HVC-003,HVAC,Unusual HVAC Noise,Medium,Loose parts/failing motor
+PRB-HVC-004,HVAC,High Energy Bills,Medium,Dirty filter/duct leaks/aging unit
+PRB-EXT-001,Exterior,Peeling Paint/Siding,Medium,Moisture infiltration/UV damage
+PRB-WIN-001,Windows,Foggy Window Panes,Medium,Failed seal on double pane
+PRB-WIN-002,Windows,Drafty Windows,Medium,Worn weatherstripping/failed caulk
+PRB-GRG-001,Garage,Garage Door Won't Open,Medium,Dead battery/broken spring/misaligned sensor
+PRB-SMP-001,Basement,Sump Pump Failure,Critical,Power failure/float stuck/burned motor

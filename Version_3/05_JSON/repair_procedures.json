@@ -1,0 +1,283 @@
+{
+  "RP-CAR-001": {
+    "id": "RP-CAR-001",
+    "name": "O2 Sensor Replacement",
+    "category": "Cars",
+    "difficulty": "Easy",
+    "estimated_time": "30-60 minutes",
+    "estimated_time_minutes": 45,
+    "tools_required": [
+      "OBD-II scanner",
+      "O2 sensor socket (22mm with wire slot)",
+      "Ratchet and extensions",
+      "Breaker bar",
+      "Penetrating oil (PB Blaster or equivalent)",
+      "Jack and jack stands (if sensor is underneath)",
+      "Safety glasses"
+    ],
+    "materials_required": [
+      "Replacement O2 sensor (match exact part number from OBD code and vehicle VIN)",
+      "Anti-seize compound (if not pre-applied to new sensor)"
+    ],
+    "safety_notes": "Allow exhaust system to cool fully before touching. Hot exhaust pipes cause severe burns. Use jack stands — never work under a vehicle supported only by a floor jack.",
+    "pre_repair_checks": [
+      "Confirm which sensor is faulty: Bank 1/Bank 2, Sensor 1 (upstream) or Sensor 2 (downstream)",
+      "Apply penetrating oil to sensor threads the evening before repair if possible",
+      "Verify replacement sensor is the correct type (wideband vs. narrowband)"
+    ],
+    "procedure_steps": [
+      {
+        "step": 1,
+        "title": "Locate the Faulty Sensor",
+        "detail": "Using the DTC code and OBD-II data, identify which sensor needs replacement. Bank 1 Sensor 1 is upstream on the engine side with cylinder #1. Trace the sensor wire to physically locate it on the exhaust pipe or manifold."
+      },
+      {
+        "step": 2,
+        "title": "Disconnect Electrical Connector",
+        "detail": "Trace the sensor wire to its electrical connector, typically clipped to the firewall or frame. Press the tab and pull the connector apart. Do not pull on the wires themselves."
+      },
+      {
+        "step": 3,
+        "title": "Remove Old Sensor",
+        "detail": "Apply penetrating oil around the sensor base and let it soak for 10 minutes. Use the O2 sensor socket with a breaker bar to break the sensor loose — turn counterclockwise. If it won't budge, apply more penetrating oil and wait. Forcing it risks rounding the sensor or stripping threads."
+      },
+      {
+        "step": 4,
+        "title": "Clean Threads",
+        "detail": "Inspect the thread bung in the exhaust pipe. Clean any debris with a wire brush or thread chaser tap. If threads are damaged, a thread repair kit will be needed."
+      },
+      {
+        "step": 5,
+        "title": "Install New Sensor",
+        "detail": "Apply anti-seize compound to the new sensor threads if not pre-applied. Thread the sensor in by hand first to avoid cross-threading. Tighten to 30-44 Nm (22-33 ft-lb) with the torque wrench. Reconnect the electrical connector."
+      },
+      {
+        "step": 6,
+        "title": "Clear Codes and Test",
+        "detail": "Connect OBD-II scanner and clear the DTC. Start the engine and let it reach operating temperature. Perform a short drive cycle (city and highway). Rescan to confirm the code does not return."
+      }
+    ],
+    "post_repair_checks": [
+      "Confirm CEL is off after one full drive cycle",
+      "Monitor O2 sensor live data — upstream should oscillate between 0.1-0.9V",
+      "Check for exhaust leaks at the sensor bung"
+    ],
+    "warnings": [
+      "Never overtighten O2 sensors — threads in the exhaust bung strip easily",
+      "Some sensors require a PCM relearn drive cycle before the CEL clears"
+    ]
+  },
+  "RP-HEQ-001": {
+    "id": "RP-HEQ-001",
+    "name": "Excavator Track Replacement",
+    "category": "Heavy Equipment",
+    "difficulty": "Expert",
+    "estimated_time": "8-12 hours",
+    "estimated_time_minutes": 600,
+    "tools_required": [
+      "Track press or track pin driver set",
+      "Hydraulic jack (20+ ton)",
+      "Master pin removal tool",
+      "Sledgehammer (10 lb)",
+      "Torque wrench (0-600 Nm)",
+      "Grease pump and grease gun",
+      "Chain hoist or crane (for heavy track sections)",
+      "Safety glasses and steel-toe boots"
+    ],
+    "materials_required": [
+      "Replacement track assembly (confirm pitch, width, and link count for machine model)",
+      "Track master pin and retaining clip",
+      "High-pressure grease (for track adjuster)"
+    ],
+    "safety_notes": "NEVER work under an excavator supported only by the arm. Always block the machine on cribbing. Tracks under spring tension can snap back violently when the master pin is removed — keep clear of the sides. Minimum two-person operation.",
+    "pre_repair_checks": [
+      "Order replacement track matched to machine model and current pad width",
+      "Verify replacement track link count matches original",
+      "Have all tools staged before beginning — track work requires continuous attention"
+    ],
+    "procedure_steps": [
+      {
+        "step": 1,
+        "title": "Position and Secure Machine",
+        "detail": "Drive the excavator onto level, firm ground. Lower the bucket to the ground. Support the undercarriage on timber cribbing under the main frame. Verify the track to be replaced is accessible and the machine cannot roll."
+      },
+      {
+        "step": 2,
+        "title": "Release Track Tension",
+        "detail": "Locate the track adjuster grease valve on the front idler. Using a wrench, slowly open the valve to release grease and relieve track tension. Open only enough to allow slack — do not fully remove the valve."
+      },
+      {
+        "step": 3,
+        "title": "Raise the Track Off the Ground",
+        "detail": "Use the hydraulic excavator arm to lift the side being serviced. Position blocking under the machine frame to hold it raised with the track hanging freely."
+      },
+      {
+        "step": 4,
+        "title": "Remove the Master Pin",
+        "detail": "Rotate the track by hand to bring the master pin to an accessible position (usually the top run, between idler and sprocket). Use the master pin driver and sledgehammer to drive out the master pin. Stand clear of the track sides when the pin releases — the track will drop and snap."
+      },
+      {
+        "step": 5,
+        "title": "Remove Old Track",
+        "detail": "With the master pin removed, the track comes apart at the master link. Guide the old track off the idler and sprocket. Use a chain hoist if the track section is too heavy to handle safely by hand (track assemblies typically weigh 500-2000 lbs depending on machine size)."
+      },
+      {
+        "step": 6,
+        "title": "Inspect Undercarriage Components",
+        "detail": "Before installing the new track, inspect all rollers (bottom and top), the front idler, and the drive sprocket for wear. Replace worn components now — labor costs make it uneconomical to do later."
+      },
+      {
+        "step": 7,
+        "title": "Install New Track and Master Pin",
+        "detail": "Route the new track over the sprocket, idler, and all rollers. Align the master link ends and drive the master pin in from the outside using the pin driver and hammer. Install the retaining clip in the correct orientation. Re-pressurize the track adjuster with grease until track sag is within machine specification (typically 20-30mm measured at the top run midpoint)."
+      }
+    ],
+    "post_repair_checks": [
+      "Measure track sag and confirm within specification",
+      "Operate machine through full range of motion and check for unusual noise",
+      "Re-check track tension after first 8 hours of operation — new tracks stretch"
+    ],
+    "warnings": [
+      "Track spring tension is extremely high — incorrect master pin removal causes serious injury",
+      "Never run a machine with incorrect track tension — too tight damages rollers; too loose causes de-tracking"
+    ]
+  },
+  "RP-GEN-001": {
+    "id": "RP-GEN-001",
+    "name": "Generator Control Panel Repair",
+    "category": "Generators",
+    "difficulty": "Expert",
+    "estimated_time": "2-4 hours",
+    "estimated_time_minutes": 180,
+    "tools_required": [
+      "Digital multimeter (True RMS)",
+      "Insulated screwdrivers (flathead and Phillips)",
+      "Wire stripper/crimper",
+      "Needle-nose pliers",
+      "Oscilloscope (optional, for waveform analysis)",
+      "Torque screwdriver",
+      "Laptop with generator diagnostic software (if applicable)"
+    ],
+    "materials_required": [
+      "Replacement control board or specific relay/fuse (identify fault code first)",
+      "Electrical contact cleaner",
+      "Dielectric grease",
+      "Wire connectors and heat-shrink tubing"
+    ],
+    "safety_notes": "DANGER: Generator output voltage (120/240V AC) is lethal. Ensure generator is completely shut down and the output breaker is OPEN before working on control panel wiring. Lock out / tag out the start circuit.",
+    "pre_repair_checks": [
+      "Document all fault codes from the control module before clearing",
+      "Take a high-resolution photo of all wiring connections before disconnecting anything",
+      "Identify replacement part number from control panel label or generator service manual"
+    ],
+    "procedure_steps": [
+      {
+        "step": 1,
+        "title": "Shut Down and Lock Out Generator",
+        "detail": "Stop the generator, turn the key to OFF, open the main output circuit breaker, and disconnect the battery negative terminal. Attach a lockout tag to the start switch. Wait 5 minutes for capacitors in the AVR (Automatic Voltage Regulator) to discharge."
+      },
+      {
+        "step": 2,
+        "title": "Access Control Panel",
+        "detail": "Remove control panel cover screws and open the panel. Photograph the complete wiring layout. Label all multi-pin connectors with tape and a marker before disconnecting."
+      },
+      {
+        "step": 3,
+        "title": "Test Individual Components",
+        "detail": "Test fuses for continuity. Test relays by applying 12V DC to the coil and checking for contact switching. Measure voltage at the battery charging circuit. Check the AVR output voltage (should be 12-14V DC to field winding)."
+      },
+      {
+        "step": 4,
+        "title": "Replace Faulty Component",
+        "detail": "Remove the faulty relay, fuse holder, or control board. Install replacement, ensuring identical part specification. If replacing the full control board, transfer all labeled wiring connections one at a time from old to new board."
+      },
+      {
+        "step": 5,
+        "title": "Clean Connections",
+        "detail": "Apply electrical contact cleaner to all multi-pin connectors. Allow to dry. Apply a thin coat of dielectric grease to connector pins to prevent future corrosion. Check all terminal screw connections are tight."
+      },
+      {
+        "step": 6,
+        "title": "Test and Validate",
+        "detail": "Reconnect battery. Attempt to start the generator per manufacturer procedure. Measure output voltage (should be 120V ±5% at no load). Connect a test load and measure under-load voltage and frequency stability. Clear any remaining fault codes."
+      }
+    ],
+    "post_repair_checks": [
+      "Verify output voltage: 120V AC ±5% no-load, ±10% full-load",
+      "Verify output frequency: 60 Hz ±0.5 Hz (or 50 Hz per region)",
+      "Run generator under 75% rated load for 30 minutes and monitor temperature"
+    ],
+    "warnings": [
+      "120/240V AC output is present immediately on starting — keep panel cover secure",
+      "Incorrect AVR adjustment causes over-voltage and can destroy connected equipment"
+    ]
+  },
+  "RP-SOL-001": {
+    "id": "RP-SOL-001",
+    "name": "Solar Panel Cleaning",
+    "category": "Solar Systems",
+    "difficulty": "Easy",
+    "estimated_time": "1-3 hours",
+    "estimated_time_minutes": 120,
+    "tools_required": [
+      "Soft-bristle brush (non-abrasive, with telescoping handle)",
+      "Rubber squeegee",
+      "Garden hose with gentle spray nozzle (or deionized water feed pump)",
+      "Safety harness and roof anchor (for pitched roof installations)",
+      "Soft microfiber cloths",
+      "Bucket"
+    ],
+    "materials_required": [
+      "Deionized or distilled water (tap water leaves mineral deposits)",
+      "pH-neutral soap (a small amount, optional for heavy soiling)",
+      "Deionized water squeegee rinse"
+    ],
+    "safety_notes": "Work in early morning or late afternoon when panels are cool — cleaning hot panels with cold water can cause thermal shock and micro-cracking. Never use a pressure washer on solar panels. On pitched roofs, always use a safety harness.",
+    "pre_repair_checks": [
+      "Turn off the solar system at the inverter (AC disconnect and DC isolator)",
+      "Check inverter monitoring to confirm current baseline output before cleaning",
+      "Inspect panels from ground first — if physical damage is found, cleaning alone will not fix output issues"
+    ],
+    "procedure_steps": [
+      {
+        "step": 1,
+        "title": "Shut Down the Solar System",
+        "detail": "Switch the inverter to 'OFF' mode via the inverter display or app. Open the AC disconnect and DC isolator switches on the inverter. This ensures panels are de-energized from the inverter side. Note: panels still produce DC voltage in sunlight — avoid touching wires or connectors."
+      },
+      {
+        "step": 2,
+        "title": "Rinse Panels with Water",
+        "detail": "Using a garden hose on a gentle setting or deionized water feed, rinse all panels from top to bottom to remove loose dust and debris. Do not use high-pressure spray — it can drive water under panel frame seals and damage junction boxes."
+      },
+      {
+        "step": 3,
+        "title": "Scrub with Soft Brush",
+        "detail": "Mix a small amount of pH-neutral soap in water if panels are heavily soiled with bird droppings or pollen. Using the telescoping soft-bristle brush, gently scrub each panel in straight lines — do not use circular motions as they can leave swirl marks that reduce light transmission."
+      },
+      {
+        "step": 4,
+        "title": "Rinse and Squeegee",
+        "detail": "Rinse all soap off completely with deionized water from top to bottom. Use the rubber squeegee to remove remaining water from the glass surface. This prevents mineral spotting."
+      },
+      {
+        "step": 5,
+        "title": "Dry and Inspect",
+        "detail": "Allow panels to air dry or wipe gently with a clean microfiber cloth. While on the roof, inspect panel frames, mounting hardware, and wiring conduit for any loose fittings, corrosion, or pest damage."
+      },
+      {
+        "step": 6,
+        "title": "Restart System and Compare Output",
+        "detail": "Close DC isolator and AC disconnect. Turn the inverter back ON. Monitor the inverter display or app for 30 minutes under clear conditions. Compare watt output to the pre-cleaning baseline and to the expected irradiance-adjusted output. A 5-25% increase is typical after cleaning significantly soiled panels."
+      }
+    ],
+    "post_repair_checks": [
+      "Confirm inverter is operating without fault codes after restart",
+      "Compare output kW to pre-cleaning baseline — document improvement",
+      "Schedule recurring cleaning: every 6 months in dry climates, annually in wet climates"
+    ],
+    "warnings": [
+      "Do not use abrasive materials — scratches permanently reduce panel output",
+      "Avoid cleaning in full midday sun — panels reach 60-70°C and cold water causes micro-cracks"
+    ]
+  }
+}

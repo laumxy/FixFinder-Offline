@@ -1,0 +1,403 @@
+{
+  "DT-ROF-001": {
+    "id": "DT-ROF-001",
+    "name": "Roof Leak Diagnostic Tree",
+    "symptom_code": "PRB-ROF-002",
+    "category": "Roofing",
+    "total_steps": 5,
+    "avg_resolution_time_minutes": 45,
+    "success_rate_percentage": 92.0,
+    "steps": [
+      {
+        "step": 1,
+        "title": "Locate the Entry Point",
+        "instruction": "Inspect the attic with a flashlight during or just after rain. Look for water stains, mold, or wet insulation to trace the water trail back to its entry point.",
+        "tools": [
+          "Flashlight",
+          "Moisture meter"
+        ],
+        "decision": "Is the entry point visible in the attic?"
+      },
+      {
+        "step": 2,
+        "title": "Inspect Flashing",
+        "instruction": "Check all metal flashing around chimneys, vents, skylights, and valleys. Look for lifted edges, cracks, or gaps in sealant.",
+        "tools": [
+          "Binoculars",
+          "Pry bar",
+          "Caulk gun"
+        ],
+        "decision": "Is the flashing damaged or missing sealant?"
+      },
+      {
+        "step": 3,
+        "title": "Inspect Shingles",
+        "instruction": "Walk the roof safely and check for missing, cracked, curled, or blistered shingles. Pay special attention to areas above the interior water stain.",
+        "tools": [
+          "Safety harness",
+          "Roofing ladder"
+        ],
+        "decision": "Are shingles missing or visibly damaged?"
+      },
+      {
+        "step": 4,
+        "title": "Check Roof Valleys and Gutters",
+        "instruction": "Inspect the roof valleys for debris buildup and damaged valley flashing. Check gutters for blockages that could cause water to back up under shingles.",
+        "tools": [
+          "Gutter scoop",
+          "Garden hose"
+        ],
+        "decision": "Is there debris or damage in the valley/gutter area?"
+      },
+      {
+        "step": 5,
+        "title": "Water Test",
+        "instruction": "With a helper inside the attic, slowly run a hose over different roof sections from bottom to top, starting at the suspected area. Wait several minutes per section.",
+        "tools": [
+          "Garden hose",
+          "Two-way radio"
+        ],
+        "decision": "Did the helper observe water entry during the hose test?"
+      }
+    ],
+    "decision_points": [
+      {
+        "id": "DP-1",
+        "question": "Is flashing the source?",
+        "yes": "RP-ROF-002",
+        "no": "Check shingles"
+      },
+      {
+        "id": "DP-2",
+        "question": "Are shingles the source?",
+        "yes": "RP-ROF-001",
+        "no": "Check valleys"
+      },
+      {
+        "id": "DP-3",
+        "question": "Is valley/gutter the cause?",
+        "yes": "RP-ROF-003",
+        "no": "Consult professional roofer"
+      }
+    ],
+    "resolution_paths": [
+      {
+        "path_id": "RES-1",
+        "condition": "Damaged or missing shingles identified",
+        "action": "Replace damaged shingles",
+        "repair_code": "RP-ROF-001",
+        "estimated_time_minutes": 120,
+        "difficulty": "Moderate"
+      },
+      {
+        "path_id": "RES-2",
+        "condition": "Flashing cracked or poorly sealed",
+        "action": "Re-seal or replace flashing",
+        "repair_code": "RP-ROF-002",
+        "estimated_time_minutes": 60,
+        "difficulty": "Moderate"
+      },
+      {
+        "path_id": "RES-3",
+        "condition": "Valley debris or gutter backup",
+        "action": "Clear gutters and repair valley flashing",
+        "repair_code": "RP-ROF-003",
+        "estimated_time_minutes": 90,
+        "difficulty": "Easy"
+      },
+      {
+        "path_id": "RES-4",
+        "condition": "Source cannot be located",
+        "action": "Engage licensed roofing contractor for full inspection",
+        "repair_code": null,
+        "estimated_time_minutes": null,
+        "difficulty": "Expert"
+      }
+    ]
+  },
+  "DT-PLB-001": {
+    "id": "DT-PLB-001",
+    "name": "Low Water Pressure Diagnostic Tree",
+    "symptom_code": "PRB-PLM-002",
+    "category": "Plumbing",
+    "total_steps": 4,
+    "avg_resolution_time_minutes": 30,
+    "success_rate_percentage": 88.0,
+    "steps": [
+      {
+        "step": 1,
+        "title": "Verify Scope",
+        "instruction": "Turn on multiple faucets throughout the house. Determine if low pressure is isolated to one fixture, one area (hot or cold only), or house-wide.",
+        "tools": [
+          "Pressure gauge"
+        ],
+        "decision": "Is the low pressure isolated to one fixture?"
+      },
+      {
+        "step": 2,
+        "title": "Check the Pressure Regulator",
+        "instruction": "Locate the pressure reducing valve (PRV) near the main shutoff. Attach a pressure gauge to an outdoor hose bib. Normal is 40-80 psi. Below 40 psi indicates PRV or supply issue.",
+        "tools": [
+          "Water pressure gauge",
+          "Adjustable wrench"
+        ],
+        "decision": "Is pressure below 40 psi at the main?"
+      },
+      {
+        "step": 3,
+        "title": "Inspect Shutoff Valves",
+        "instruction": "Confirm the main shutoff valve and any secondary shutoffs are fully open. A partially closed valve is a common cause of sudden pressure drops.",
+        "tools": [
+          "Flashlight"
+        ],
+        "decision": "Are all shutoff valves fully open?"
+      },
+      {
+        "step": 4,
+        "title": "Check for Mineral Buildup",
+        "instruction": "Remove aerators from affected faucets and clean them. Inspect showerheads for mineral deposits. For galvanized pipes, buildup may require pipe replacement.",
+        "tools": [
+          "Pliers",
+          "Vinegar solution",
+          "Brush"
+        ],
+        "decision": "Did cleaning aerators/showerheads restore pressure?"
+      }
+    ],
+    "decision_points": [
+      {
+        "id": "DP-1",
+        "question": "Single fixture affected?",
+        "yes": "Clean aerator/showerhead",
+        "no": "Check main pressure"
+      },
+      {
+        "id": "DP-2",
+        "question": "PRV pressure out of range?",
+        "yes": "RP-PLB-002",
+        "no": "Check shutoffs"
+      },
+      {
+        "id": "DP-3",
+        "question": "Shutoff partially closed?",
+        "yes": "Open valve fully",
+        "no": "Check for pipe buildup/leak"
+      }
+    ],
+    "resolution_paths": [
+      {
+        "path_id": "RES-1",
+        "condition": "Clogged aerator or showerhead",
+        "action": "Clean or replace aerator/showerhead",
+        "repair_code": "RP-PLB-003",
+        "estimated_time_minutes": 15,
+        "difficulty": "Easy"
+      },
+      {
+        "path_id": "RES-2",
+        "condition": "Faulty pressure reducing valve",
+        "action": "Adjust or replace PRV",
+        "repair_code": "RP-PLB-002",
+        "estimated_time_minutes": 60,
+        "difficulty": "Moderate"
+      },
+      {
+        "path_id": "RES-3",
+        "condition": "Partially closed shutoff valve",
+        "action": "Fully open the shutoff valve",
+        "repair_code": null,
+        "estimated_time_minutes": 5,
+        "difficulty": "Easy"
+      }
+    ]
+  },
+  "DT-ELC-001": {
+    "id": "DT-ELC-001",
+    "name": "Outlet Not Working Diagnostic Tree",
+    "symptom_code": "PRB-ELC-002",
+    "category": "Electrical",
+    "total_steps": 3,
+    "avg_resolution_time_minutes": 20,
+    "success_rate_percentage": 95.0,
+    "steps": [
+      {
+        "step": 1,
+        "title": "Test the Outlet",
+        "instruction": "Plug a known-working device into the dead outlet. Also test adjacent outlets. Use a non-contact voltage tester to confirm whether voltage is present at the outlet.",
+        "tools": [
+          "Non-contact voltage tester",
+          "Outlet tester"
+        ],
+        "decision": "Does the voltage tester detect power at the outlet?"
+      },
+      {
+        "step": 2,
+        "title": "Check GFCI Outlets and Breaker",
+        "instruction": "Locate any GFCI outlets in the same bathroom, kitchen, garage, or exterior. Press the RESET button firmly on all GFCI outlets. Also check the main panel for a tripped breaker (switch in middle position).",
+        "tools": [
+          "Flashlight"
+        ],
+        "decision": "Did resetting the GFCI or breaker restore power?"
+      },
+      {
+        "step": 3,
+        "title": "Inspect Wiring at Outlet",
+        "instruction": "Turn off the breaker for that circuit. Remove the outlet cover and outlet from the box. Inspect wires for loose connections, burn marks, or broken wires.",
+        "tools": [
+          "Screwdrivers",
+          "Needle-nose pliers",
+          "Voltage tester"
+        ],
+        "decision": "Are wires loose or is there visible burn damage?"
+      }
+    ],
+    "decision_points": [
+      {
+        "id": "DP-1",
+        "question": "No voltage at outlet?",
+        "yes": "Check GFCI/breaker",
+        "no": "Faulty device, outlet OK"
+      },
+      {
+        "id": "DP-2",
+        "question": "GFCI or breaker reset fixed it?",
+        "yes": "Monitor for recurrence",
+        "no": "Inspect outlet wiring"
+      },
+      {
+        "id": "DP-3",
+        "question": "Wiring loose or burnt?",
+        "yes": "RP-ELC-001",
+        "no": "Replace outlet receptacle"
+      }
+    ],
+    "resolution_paths": [
+      {
+        "path_id": "RES-1",
+        "condition": "Tripped GFCI or breaker",
+        "action": "Reset GFCI or reset circuit breaker",
+        "repair_code": null,
+        "estimated_time_minutes": 5,
+        "difficulty": "Easy"
+      },
+      {
+        "path_id": "RES-2",
+        "condition": "Loose wiring at outlet",
+        "action": "Re-secure wire connections and replace outlet",
+        "repair_code": "RP-ELC-002",
+        "estimated_time_minutes": 30,
+        "difficulty": "Moderate"
+      },
+      {
+        "path_id": "RES-3",
+        "condition": "Breaker trips repeatedly",
+        "action": "Replace circuit breaker",
+        "repair_code": "RP-ELC-001",
+        "estimated_time_minutes": 45,
+        "difficulty": "Moderate"
+      }
+    ]
+  },
+  "DT-APL-001": {
+    "id": "DT-APL-001",
+    "name": "Refrigerator Not Cooling Diagnostic Tree",
+    "symptom_code": "PRB-APL-001",
+    "category": "Appliances",
+    "total_steps": 4,
+    "avg_resolution_time_minutes": 35,
+    "success_rate_percentage": 85.0,
+    "steps": [
+      {
+        "step": 1,
+        "title": "Verify Temperature and Power",
+        "instruction": "Check thermostat setting (should be 37°F fridge / 0°F freezer). Confirm the unit is plugged in and the compressor is running (listen for hum at the back bottom).",
+        "tools": [
+          "Refrigerator thermometer"
+        ],
+        "decision": "Is the compressor running?"
+      },
+      {
+        "step": 2,
+        "title": "Inspect Condenser Coils",
+        "instruction": "Pull the refrigerator away from the wall. Locate condenser coils at the back or underneath. Check for heavy dust buildup which restricts heat dissipation.",
+        "tools": [
+          "Coil brush",
+          "Vacuum with brush attachment"
+        ],
+        "decision": "Are condenser coils heavily coated with dust?"
+      },
+      {
+        "step": 3,
+        "title": "Check Door Seals",
+        "instruction": "Close the door on a piece of paper. If the paper pulls out easily, the door gasket is failing and warm air is entering. Inspect the full perimeter of both doors.",
+        "tools": [
+          "Paper test strip",
+          "Flashlight"
+        ],
+        "decision": "Is the door gasket failing the paper test?"
+      },
+      {
+        "step": 4,
+        "title": "Test Start Relay",
+        "instruction": "Unplug the fridge. Pull the start relay off the compressor side terminal. Shake it next to your ear. A rattling sound indicates a failed relay.",
+        "tools": [
+          "Multimeter",
+          "Nut driver"
+        ],
+        "decision": "Does the start relay rattle or fail continuity test?"
+      }
+    ],
+    "decision_points": [
+      {
+        "id": "DP-1",
+        "question": "Compressor not running?",
+        "yes": "Test start relay",
+        "no": "Check airflow/seals"
+      },
+      {
+        "id": "DP-2",
+        "question": "Condenser coils heavily dusty?",
+        "yes": "Clean coils",
+        "no": "Check door seals"
+      },
+      {
+        "id": "DP-3",
+        "question": "Door gasket failing?",
+        "yes": "Replace door gasket",
+        "no": "Test start relay"
+      },
+      {
+        "id": "DP-4",
+        "question": "Start relay rattles/fails test?",
+        "yes": "RP-APL-001",
+        "no": "Compressor likely failed – call technician"
+      }
+    ],
+    "resolution_paths": [
+      {
+        "path_id": "RES-1",
+        "condition": "Dusty condenser coils",
+        "action": "Clean condenser coils with brush and vacuum",
+        "repair_code": "RP-APL-002",
+        "estimated_time_minutes": 20,
+        "difficulty": "Easy"
+      },
+      {
+        "path_id": "RES-2",
+        "condition": "Failing door gasket",
+        "action": "Replace refrigerator door gasket",
+        "repair_code": "RP-APL-003",
+        "estimated_time_minutes": 30,
+        "difficulty": "Easy"
+      },
+      {
+        "path_id": "RES-3",
+        "condition": "Failed start relay",
+        "action": "Replace compressor start relay",
+        "repair_code": "RP-APL-001",
+        "estimated_time_minutes": 20,
+        "difficulty": "Easy"
+      }
+    ]
+  }
+}

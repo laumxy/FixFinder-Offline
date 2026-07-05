@@ -1,0 +1,18 @@
+id,system,subcategory,brand,lifespan,maintenance
+CAR-001,Toyota Camry,Sedans,Toyota,15,6
+CAR-002,Honda Civic,Sedans,Honda,14,6
+CAR-003,Ford F-150,Trucks,Ford,15,6
+CAR-004,Chevrolet Silverado 1500,Trucks,Chevrolet,14,6
+CAR-005,Tesla Model 3,Electric Vehicles,Tesla,12,12
+CAR-006,BMW 3 Series,Luxury Sedans,BMW,12,6
+MCY-001,Harley-Davidson Sportster,Motorcycles,Harley-Davidson,20,6
+MCY-002,Honda CBR600RR,Sport Bikes,Honda,15,6
+HVY-001,Caterpillar 320 Excavator,Heavy Equipment,Caterpillar,20,3
+HVY-002,John Deere 5075E Tractor,Agricultural,John Deere,20,3
+HVY-003,Forklift (Toyota 8FGU25),Material Handling,Toyota,15,3
+GEN-001,Diesel Generator (20kW),Generators,Cummins,20,6
+CMP-001,Air Compressor (60 gal),Compressors,Ingersoll Rand,15,6
+PMP-001,Industrial Centrifugal Pump,Pumps,Grundfos,15,6
+MOT-001,AC Induction Motor (5HP),Electric Motors,ABB,20,6
+VAN-001,Ford Transit Van,Commercial Vans,Ford,12,6
+SUV-001,Toyota Land Cruiser,SUVs,Toyota,20,6

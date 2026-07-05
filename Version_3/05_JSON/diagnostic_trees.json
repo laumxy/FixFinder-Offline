@@ -1,0 +1,392 @@
+{
+  "DT-CAR-001": {
+    "id": "DT-CAR-001",
+    "name": "Check Engine Light Diagnostic Tree",
+    "symptom_code": "PRB-CAR-001",
+    "category": "Cars",
+    "total_steps": 4,
+    "avg_resolution_time_minutes": 40,
+    "success_rate_percentage": 87.0,
+    "steps": [
+      {
+        "step": 1,
+        "title": "Read Fault Codes",
+        "instruction": "Connect an OBD-II scanner to the port under the dashboard (driver's side). Read all stored and pending DTCs. Note all codes before clearing. A solid CEL is non-urgent; a flashing CEL indicates an active misfire — do not drive at highway speed.",
+        "tools": [
+          "OBD-II scanner or Bluetooth dongle + app"
+        ],
+        "decision": "Are there any P0 (powertrain) codes stored?"
+      },
+      {
+        "step": 2,
+        "title": "Research Code Priority",
+        "instruction": "Identify the primary code (first stored code). Group codes: fuel system (P01xx), ignition (P03xx), catalyst/emissions (P04xx), oxygen sensors (P013x-P015x). Address primary code first — secondary codes often clear once root cause is fixed.",
+        "tools": [
+          "OBD-II scanner",
+          "Repair manual or AllData"
+        ],
+        "decision": "Is the primary code related to oxygen sensor or fuel system?"
+      },
+      {
+        "step": 3,
+        "title": "Inspect Oxygen Sensors",
+        "instruction": "With the engine warm, use a live data scanner to monitor O2 sensor waveforms. Upstream sensor should oscillate 0.1-0.9V rapidly. A flat waveform or stuck voltage indicates a failed sensor.",
+        "tools": [
+          "OBD-II scanner with live data",
+          "Digital multimeter"
+        ],
+        "decision": "Is the upstream or downstream O2 sensor waveform abnormal?"
+      },
+      {
+        "step": 4,
+        "title": "Inspect MAF Sensor and Vacuum Lines",
+        "instruction": "Check the MAF sensor reading at idle (should be ~2-7 g/s for most 4-cyl engines). Inspect all vacuum hoses for cracks, disconnections, or collapse. Spray carburetor cleaner around intake manifold gaskets to detect vacuum leaks.",
+        "tools": [
+          "OBD-II live data scanner",
+          "Carburetor cleaner spray",
+          "Vacuum gauge"
+        ],
+        "decision": "Is MAF reading out of spec or are vacuum leaks detected?"
+      }
+    ],
+    "decision_points": [
+      {
+        "id": "DP-1",
+        "question": "Flashing CEL (active misfire)?",
+        "yes": "Do not drive — diagnose immediately; P0300 misfires",
+        "no": "Read and prioritize codes"
+      },
+      {
+        "id": "DP-2",
+        "question": "O2 sensor code with flat waveform?",
+        "yes": "RP-CAR-001",
+        "no": "Check MAF and vacuum"
+      },
+      {
+        "id": "DP-3",
+        "question": "Vacuum leak detected?",
+        "yes": "Repair intake gaskets/hoses",
+        "no": "Further diagnostics or dealer scan"
+      }
+    ],
+    "resolution_paths": [
+      {
+        "path_id": "RES-1",
+        "condition": "Faulty oxygen sensor confirmed by waveform or code",
+        "action": "Replace oxygen sensor",
+        "repair_code": "RP-CAR-001",
+        "estimated_time_minutes": 45,
+        "difficulty": "Easy"
+      },
+      {
+        "path_id": "RES-2",
+        "condition": "Vacuum leak at intake",
+        "action": "Replace intake manifold gasket or repair vacuum hose",
+        "repair_code": "RP-CAR-002",
+        "estimated_time_minutes": 120,
+        "difficulty": "Moderate"
+      },
+      {
+        "path_id": "RES-3",
+        "condition": "MAF sensor out of range",
+        "action": "Clean or replace MAF sensor",
+        "repair_code": "RP-CAR-003",
+        "estimated_time_minutes": 30,
+        "difficulty": "Easy"
+      }
+    ]
+  },
+  "DT-HEQ-001": {
+    "id": "DT-HEQ-001",
+    "name": "Excavator Hydraulic System Diagnostic Tree",
+    "symptom_code": "PRB-HVY-001",
+    "category": "Heavy Equipment",
+    "total_steps": 4,
+    "avg_resolution_time_minutes": 60,
+    "success_rate_percentage": 85.0,
+    "steps": [
+      {
+        "step": 1,
+        "title": "Check Hydraulic Fluid Level and Condition",
+        "instruction": "With the machine on level ground and all cylinders retracted, check the hydraulic tank sight glass. Level should be at or above the MIN mark. Check fluid color: milky = water contamination; dark/burnt smell = overheating degradation.",
+        "tools": [
+          "Sight glass check (no tools)",
+          "Sample bottle for fluid analysis"
+        ],
+        "decision": "Is fluid level low or fluid condition degraded?"
+      },
+      {
+        "step": 2,
+        "title": "Inspect for External Leaks",
+        "instruction": "Walk around the machine and inspect all hydraulic hoses, cylinders, and fittings. Look for wet areas, fluid trails, or pooling under the machine. Clean suspected areas with rags and cycle the circuit to identify active leak points.",
+        "tools": [
+          "Clean rags",
+          "Flashlight",
+          "Pressure-safe gloves"
+        ],
+        "decision": "Is an external leak source visible?"
+      },
+      {
+        "step": 3,
+        "title": "Measure System Pressure",
+        "instruction": "Connect a hydraulic pressure gauge at the main relief valve port. Start the engine and measure standby pressure (typically 200-350 bar depending on machine). Then stall the circuit against a solid load and measure relief pressure. Compare to service manual specs.",
+        "tools": [
+          "Hydraulic pressure test gauge (0-600 bar)",
+          "Service manual"
+        ],
+        "decision": "Is main relief pressure below specification?"
+      },
+      {
+        "step": 4,
+        "title": "Cylinder Drift Test",
+        "instruction": "Lift a full bucket load and raise the boom. Shut off the engine. Observe for cylinder drift over 5 minutes. Drift indicates internal cylinder seal leak or control valve leak. Identify which cylinder is drifting.",
+        "tools": [
+          "Full load in bucket",
+          "Stopwatch"
+        ],
+        "decision": "Is there measurable cylinder drift after engine shutdown?"
+      }
+    ],
+    "decision_points": [
+      {
+        "id": "DP-1",
+        "question": "Fluid low or contaminated?",
+        "yes": "Top up/change fluid and inspect for source",
+        "no": "Check for leaks"
+      },
+      {
+        "id": "DP-2",
+        "question": "External leak found?",
+        "yes": "RP-HEQ-002 (hose/seal repair)",
+        "no": "Measure system pressure"
+      },
+      {
+        "id": "DP-3",
+        "question": "Relief pressure below spec?",
+        "yes": "Adjust or replace main relief valve",
+        "no": "Perform cylinder drift test"
+      }
+    ],
+    "resolution_paths": [
+      {
+        "path_id": "RES-1",
+        "condition": "Ruptured hydraulic hose",
+        "action": "Replace hydraulic hose assembly",
+        "repair_code": "RP-HEQ-002",
+        "estimated_time_minutes": 90,
+        "difficulty": "Moderate"
+      },
+      {
+        "path_id": "RES-2",
+        "condition": "Failed cylinder seals (cylinder drift)",
+        "action": "Rebuild or replace hydraulic cylinder",
+        "repair_code": "RP-HEQ-003",
+        "estimated_time_minutes": 240,
+        "difficulty": "Expert"
+      },
+      {
+        "path_id": "RES-3",
+        "condition": "Main relief valve pressure low",
+        "action": "Adjust or replace main relief valve",
+        "repair_code": "RP-HEQ-004",
+        "estimated_time_minutes": 120,
+        "difficulty": "Expert"
+      }
+    ]
+  },
+  "DT-GEN-001": {
+    "id": "DT-GEN-001",
+    "name": "Generator Not Starting Diagnostic Tree",
+    "symptom_code": "PRB-GEN-001",
+    "category": "Generators",
+    "total_steps": 4,
+    "avg_resolution_time_minutes": 35,
+    "success_rate_percentage": 88.0,
+    "steps": [
+      {
+        "step": 1,
+        "title": "Check Battery and Starter Circuit",
+        "instruction": "Test battery voltage with a multimeter — should be 12.4V or above at rest. Test voltage during cranking — should not drop below 9.5V. Check battery terminals for corrosion. Verify the E-Stop (emergency stop) button is released.",
+        "tools": [
+          "Multimeter",
+          "Battery load tester"
+        ],
+        "decision": "Is battery voltage above 12.4V and cranking voltage above 9.5V?"
+      },
+      {
+        "step": 2,
+        "title": "Check Fuel System",
+        "instruction": "Verify fuel tank is at least 1/4 full. Check fuel shutoff valve is open. Inspect the fuel filter for clogging (replace if not changed in last 500 hours). Check fuel lines for kinks or cracks. For diesel, check for air in fuel lines (bleed if needed).",
+        "tools": [
+          "Fuel pressure gauge",
+          "Flashlight"
+        ],
+        "decision": "Is there adequate clean fuel reaching the injection system?"
+      },
+      {
+        "step": 3,
+        "title": "Inspect Air Intake and Filter",
+        "instruction": "Remove and inspect the air filter. A clogged filter causes hard starting and black smoke. Check the intake for obstructions (bird nests are common in outdoor generators).",
+        "tools": [
+          "None"
+        ],
+        "decision": "Is the air filter heavily clogged or intake obstructed?"
+      },
+      {
+        "step": 4,
+        "title": "Check Governor and Throttle",
+        "instruction": "Inspect the throttle linkage for binding or damage. Verify the governor arm moves freely. Check for fault codes on the generator control module if equipped with digital controls.",
+        "tools": [
+          "Generator diagnostic software (if available)",
+          "Inspection mirror"
+        ],
+        "decision": "Is the throttle/governor mechanism binding or are control module faults present?"
+      }
+    ],
+    "decision_points": [
+      {
+        "id": "DP-1",
+        "question": "Battery/starting circuit issue?",
+        "yes": "Charge or replace battery / repair starter",
+        "no": "Check fuel"
+      },
+      {
+        "id": "DP-2",
+        "question": "Fuel starvation confirmed?",
+        "yes": "Replace fuel filter / bleed fuel lines",
+        "no": "Check air intake"
+      },
+      {
+        "id": "DP-3",
+        "question": "Governor/throttle binding?",
+        "yes": "RP-GEN-001",
+        "no": "Injector or compression test needed"
+      }
+    ],
+    "resolution_paths": [
+      {
+        "path_id": "RES-1",
+        "condition": "Dead or weak starting battery",
+        "action": "Charge or replace generator battery",
+        "repair_code": "RP-GEN-002",
+        "estimated_time_minutes": 30,
+        "difficulty": "Easy"
+      },
+      {
+        "path_id": "RES-2",
+        "condition": "Clogged fuel filter or air in diesel fuel",
+        "action": "Replace fuel filter and bleed fuel system",
+        "repair_code": "RP-GEN-003",
+        "estimated_time_minutes": 45,
+        "difficulty": "Moderate"
+      },
+      {
+        "path_id": "RES-3",
+        "condition": "Governor or control panel fault",
+        "action": "Repair or replace generator control panel",
+        "repair_code": "RP-GEN-001",
+        "estimated_time_minutes": 180,
+        "difficulty": "Expert"
+      }
+    ]
+  },
+  "DT-SOL-001": {
+    "id": "DT-SOL-001",
+    "name": "Solar Output Dropping Diagnostic Tree",
+    "symptom_code": "PRB-SOL-001",
+    "category": "Solar Systems",
+    "total_steps": 4,
+    "avg_resolution_time_minutes": 45,
+    "success_rate_percentage": 91.0,
+    "steps": [
+      {
+        "step": 1,
+        "title": "Compare Output to Baseline",
+        "instruction": "Review inverter monitoring data or app. Compare current daily output (kWh) to the same period in prior years and to the manufacturer's performance ratio. A drop over 20% vs. baseline warrants investigation.",
+        "tools": [
+          "Inverter monitoring app / web portal",
+          "Irradiance data (pvwatts.nrel.gov)"
+        ],
+        "decision": "Is output more than 20% below historical baseline for this season?"
+      },
+      {
+        "step": 2,
+        "title": "Inspect Panels for Shading and Soiling",
+        "instruction": "Visually inspect all panels from ground level with binoculars or drone. Look for: bird droppings, pollen/dust buildup, leaves, nearby tree growth causing new shading, or physical damage (cracks, delamination, discoloration).",
+        "tools": [
+          "Binoculars or drone",
+          "Flashlight"
+        ],
+        "decision": "Is soiling, shading, or physical damage observed on any panel?"
+      },
+      {
+        "step": 3,
+        "title": "Check Inverter Faults and String Voltages",
+        "instruction": "Access the inverter display or monitoring portal. Check for fault codes or alarm logs. Use a multimeter to measure open-circuit voltage (Voc) at each string input on the inverter. Compare measured Voc to spec (typically: panels_in_string × Voc_per_panel × 0.85 for temperature correction).",
+        "tools": [
+          "Multimeter (1000V DC rated)",
+          "Wiring diagram",
+          "Inverter manual"
+        ],
+        "decision": "Is any string voltage significantly below expected value?"
+      },
+      {
+        "step": 4,
+        "title": "Isolate Underperforming Panels",
+        "instruction": "Use a clamp meter to measure current at each panel or use a thermal camera to identify hotspots (failed cells appear as hot spots). An IV curve tracer gives the most precise panel-level data.",
+        "tools": [
+          "DC clamp meter",
+          "IV curve tracer (optional)",
+          "Thermal camera"
+        ],
+        "decision": "Is one or more panels producing significantly less current?"
+      }
+    ],
+    "decision_points": [
+      {
+        "id": "DP-1",
+        "question": "Output within 20% of baseline?",
+        "yes": "Seasonal variation — no action needed",
+        "no": "Inspect panels"
+      },
+      {
+        "id": "DP-2",
+        "question": "Soiling or shading confirmed?",
+        "yes": "RP-SOL-001 (panel cleaning) / trim trees",
+        "no": "Check inverter strings"
+      },
+      {
+        "id": "DP-3",
+        "question": "String voltage low on one string?",
+        "yes": "Isolate individual panels in that string",
+        "no": "Inverter internal fault — contact installer"
+      }
+    ],
+    "resolution_paths": [
+      {
+        "path_id": "RES-1",
+        "condition": "Panel soiling (dust, pollen, bird droppings)",
+        "action": "Clean all panels",
+        "repair_code": "RP-SOL-001",
+        "estimated_time_minutes": 90,
+        "difficulty": "Easy"
+      },
+      {
+        "path_id": "RES-2",
+        "condition": "Faulty panel with hotspot or failed cell string",
+        "action": "Replace failed solar panel",
+        "repair_code": "RP-SOL-002",
+        "estimated_time_minutes": 120,
+        "difficulty": "Moderate"
+      },
+      {
+        "path_id": "RES-3",
+        "condition": "Inverter fault code or internal failure",
+        "action": "Reset or replace inverter / contact manufacturer",
+        "repair_code": "RP-SOL-003",
+        "estimated_time_minutes": 180,
+        "difficulty": "Expert"
+      }
+    ]
+  }
+}

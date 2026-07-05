@@ -1,0 +1,21 @@
+id,part_name,unit,cost,coverage
+PT-CAR-001,Oil Filter,Unit,9.99,"5,000 miles"
+PT-CAR-002,Engine Air Filter,Unit,14.99,"15,000 miles"
+PT-CAR-003,Spark Plug Set (4-pack),Set,24.99,"30,000 miles"
+PT-CAR-004,Front Brake Pads (Ceramic),Set,39.99,1 axle
+PT-CAR-005,Front Brake Rotor,Unit,49.99,1 wheel
+PT-CAR-006,Serpentine Belt,Unit,29.99,1 engine
+PT-CAR-007,Car Battery (Group 24F),Unit,129.99,1 vehicle
+PT-CAR-008,Oxygen Sensor (Upstream),Unit,44.99,1 sensor
+PT-CAR-009,Cabin Air Filter,Unit,12.99,"12,000 miles"
+PT-CAR-010,Fuel Filter,Unit,19.99,"30,000 miles"
+PT-CAR-011,Thermostat + Gasket Kit,Kit,22.99,1 engine
+PT-CAR-012,Radiator Coolant (1 gal),Jug,16.99,1 flush
+PT-CAR-013,Power Steering Fluid (32 oz),Bottle,9.49,1 top-up
+PT-HVY-001,"Hydraulic Hose Assembly (3/4"")",Unit,89.99,1 circuit
+PT-HVY-002,Hydraulic Cylinder Seal Kit,Kit,54.99,1 cylinder
+PT-HVY-003,Cat 320 Final Drive Filter,Unit,39.99,1000 hours
+PT-GEN-001,Generator Fuel Filter (Diesel),Unit,14.99,250 hours
+PT-MOT-001,AC Motor Bearing Set (6205 2RS),Set,18.99,1 motor
+PT-MCY-001,Motorcycle Drive Chain (530),Unit,59.99,1 motorcycle
+PT-MCY-002,Motorcycle Brake Pads (Front),Set,19.99,1 caliper

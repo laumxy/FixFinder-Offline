@@ -1,0 +1,19 @@
+id,category,symptom,severity,causes
+PRB-PHN-001,Phones,Battery Not Charging,High,Port damage/faulty cable/battery failure
+PRB-PHN-002,Phones,Cracked Screen,High,Physical impact/drop damage
+PRB-PHN-003,Phones,Rapid Battery Drain,Medium,Background apps/degraded battery/software bug
+PRB-PHN-004,Phones,Phone Overheating,High,Overloaded CPU/faulty battery/blocked vents
+PRB-PHN-005,Phones,No Cellular Signal,High,SIM failure/antenna damage/carrier issue
+PRB-TAB-001,Tablets,Touch Screen Unresponsive,High,Digitizer failure/software crash/moisture
+PRB-TAB-002,Tablets,Won't Turn On,Critical,Dead battery/logic board failure
+PRB-LAP-001,Laptops,Laptop Overheating,High,Clogged fan/dried thermal paste
+PRB-LAP-002,Laptops,Keyboard Keys Not Working,Medium,Spill damage/mechanical failure/driver issue
+PRB-LAP-003,Laptops,No Display Output,Critical,GPU failure/display cable/backlight failure
+PRB-LAP-004,Laptops,Battery Not Holding Charge,Medium,Battery cell degradation/charge cycles exhausted
+PRB-DKT-001,Desktops,Blue Screen of Death (BSOD),Critical,Driver conflict/RAM failure/storage failure
+PRB-DKT-002,Desktops,PC Won't POST,Critical,Faulty RAM/CPU/dead PSU/BIOS issue
+PRB-TV-001,TVs,Dead Pixels / Screen Lines,High,Panel damage/T-Con board failure
+PRB-TV-002,TVs,No Picture but Has Sound,High,Backlight failure/mainboard issue
+PRB-NET-001,Networking,Slow Wi-Fi / Drops,Medium,Interference/firmware issue/antenna failure
+PRB-GAM-001,Gaming,Disc Drive Not Reading,Medium,Laser lens dirty/motor failure
+PRB-CAM-001,Cameras,Autofocus Not Working,Medium,Dirty lens contacts/AF motor failure

@@ -1,0 +1,18 @@
+id,category,symptom,severity,causes
+PRB-CAR-001,Cars,Check Engine Light,Variable,O2 sensor/MAF sensor/catalytic converter
+PRB-CAR-002,Cars,Engine Overheating,Critical,Low coolant/failed thermostat/blown head gasket
+PRB-CAR-003,Cars,Hard to Start / No Start,High,Dead battery/faulty starter/fuel pump failure
+PRB-CAR-004,Cars,Rough Idle / Misfires,High,Fouled spark plugs/dirty injectors/vacuum leak
+PRB-CAR-005,Cars,Brake Grinding / Squealing,Critical,Worn pads/warped rotors
+PRB-CAR-006,Cars,Transmission Slipping,High,Low fluid/worn clutch pack/solenoid failure
+PRB-CAR-007,Cars,Power Steering Loss,High,Low fluid/pump failure/broken belt
+PRB-CAR-008,Cars,AC Not Blowing Cold,Medium,Low refrigerant/compressor failure/condenser leak
+PRB-TRK-001,Trucks,Diesel Smoke (Black/White),High,Injector issue/glow plug failure/EGR clog
+PRB-EV-001,Electric Vehicles,Reduced Range,Medium,Battery degradation/cold weather/auxiliary load
+PRB-EV-002,Electric Vehicles,Charging Failure,High,Charger fault/BMS error/charge port damage
+PRB-MCY-001,Motorcycles,Chain Slack / Noise,High,Stretched chain/worn sprocket
+PRB-HVY-001,Heavy Equipment,Hydraulic Leak,High,Seal failure/cracked hose/damaged cylinder
+PRB-HVY-002,Heavy Equipment,Engine Power Loss,High,Clogged air filter/fuel restriction/turbo failure
+PRB-GEN-001,Generators,Generator Won't Start,Critical,Dead battery/fuel issue/governor fault
+PRB-CMP-001,Compressors,Compressor Won't Build Pressure,High,Worn rings/valve failure/belt slip
+PRB-MOT-001,Motors,Motor Overheating,High,Overload/blocked ventilation/bearing failure

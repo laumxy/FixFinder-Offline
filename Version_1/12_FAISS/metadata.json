@@ -1,0 +1,143 @@
+{
+  "version": "1.0",
+  "dimension": 768,
+  "index_type": "IndexFlatIP",
+  "total_entries": 30,
+  "index_path": "Version_1/12_FAISS\\index.faiss",
+  "id_mapping": {
+    "0": "ROF-001",
+    "1": "ROF-002",
+    "2": "ROF-003",
+    "3": "PLM-001",
+    "4": "PLM-003",
+    "5": "ELC-001",
+    "6": "HVC-001",
+    "7": "HVC-002",
+    "8": "WIN-001",
+    "9": "SMP-001",
+    "10": "PRB-ROF-001",
+    "11": "PRB-ROF-002",
+    "12": "PRB-ROF-003",
+    "13": "PRB-PLM-001",
+    "14": "PRB-PLM-002",
+    "15": "PRB-PLM-004",
+    "16": "PRB-ELC-001",
+    "17": "PRB-ELC-002",
+    "18": "PRB-HVC-001",
+    "19": "PRB-HVC-002",
+    "20": "RP-ROF-001",
+    "21": "RP-PLB-001",
+    "22": "RP-ELC-001",
+    "23": "RP-APL-001",
+    "24": "RP-HVC-001",
+    "25": "RP-PLM-002",
+    "26": "RP-WIN-001",
+    "27": "RP-FND-001",
+    "28": "RP-ROF-002",
+    "29": "RP-ELC-002"
+  },
+  "mapping": {
+    "Roofing": {
+      "range": [
+        0,
+        29
+      ],
+      "ids": [
+        "ROF-001",
+        "ROF-002",
+        "ROF-003",
+        "PRB-ROF-001",
+        "PRB-ROF-002",
+        "PRB-ROF-003",
+        "RP-ROF-001",
+        "RP-ROF-002"
+      ]
+    },
+    "Plumbing": {
+      "range": [
+        3,
+        26
+      ],
+      "ids": [
+        "PLM-001",
+        "PLM-003",
+        "PRB-PLM-001",
+        "PRB-PLM-002",
+        "PRB-PLM-004",
+        "RP-PLM-002"
+      ]
+    },
+    "Electrical": {
+      "range": [
+        5,
+        30
+      ],
+      "ids": [
+        "ELC-001",
+        "PRB-ELC-001",
+        "PRB-ELC-002",
+        "RP-ELC-001",
+        "RP-ELC-002"
+      ]
+    },
+    "HVAC": {
+      "range": [
+        6,
+        25
+      ],
+      "ids": [
+        "HVC-001",
+        "HVC-002",
+        "PRB-HVC-001",
+        "PRB-HVC-002",
+        "RP-HVC-001"
+      ]
+    },
+    "Windows": {
+      "range": [
+        8,
+        27
+      ],
+      "ids": [
+        "WIN-001",
+        "RP-WIN-001"
+      ]
+    },
+    "Basement": {
+      "range": [
+        9,
+        10
+      ],
+      "ids": [
+        "SMP-001"
+      ]
+    },
+    "Repairs": {
+      "range": [
+        21,
+        22
+      ],
+      "ids": [
+        "RP-PLB-001"
+      ]
+    },
+    "Appliances": {
+      "range": [
+        23,
+        24
+      ],
+      "ids": [
+        "RP-APL-001"
+      ]
+    },
+    "Foundation": {
+      "range": [
+        27,
+        28
+      ],
+      "ids": [
+        "RP-FND-001"
+      ]
+    }
+  }
+}

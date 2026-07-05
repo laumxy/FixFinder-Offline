@@ -1,7 +1,27 @@
-fastapi==0.115.6
+# FixFinder Backend — Python dependencies
+# Install with: pip install -r requirements.txt
+
+# --- Web framework ---
+fastapi==0.111.0
 uvicorn[standard]==0.34.0
-pydantic==2.10.4
-sentence-transformers==3.3.1
+pydantic==2.13.4
+
+# --- AI / ML ---
 faiss-cpu==1.9.0.post1
 numpy==2.2.1
+sentence-transformers==3.3.1
+
+# --- HTTP ---
+httpx==0.25.2
 requests==2.32.3
+
+# --- Auth (if used) ---
+python-jose[cryptography]>=3.3.0
+passlib[bcrypt]>=1.7.4
+
+# --- Testing ---
+pytest>=9.0.3
+pytest-asyncio>=0.23.0
+
+# --- Utilities (stdlib, no install needed) ---
+# json, sqlite3, os, re, hashlib, subprocess, logging, pathlib, time, datetime

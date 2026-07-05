@@ -1,0 +1,340 @@
+{
+  "version": "2.0",
+  "name": "Electronics Taxonomy",
+  "description": "Complete knowledge taxonomy for consumer and professional electronics repair",
+  "total_categories": 20,
+  "total_subcategories": 115,
+  "categories": [
+    {
+      "id": "phones",
+      "name": "Phones",
+      "description": "Mobile phones, smartphones, and communication devices",
+      "total_systems": 4,
+      "total_problems": 85,
+      "total_repairs": 68,
+      "parts_count": 180,
+      "subcategories": [
+        {"id": "smartphones", "name": "Smartphones", "problems": 28, "repairs": 22},
+        {"id": "feature-phones", "name": "Feature Phones", "problems": 18, "repairs": 14},
+        {"id": "voip-phones", "name": "VoIP Phones", "problems": 20, "repairs": 16},
+        {"id": "satellite-phones", "name": "Satellite Phones", "problems": 19, "repairs": 16}
+      ]
+    },
+    {
+      "id": "tablets",
+      "name": "Tablets",
+      "description": "Tablet computers and e-readers",
+      "total_systems": 4,
+      "total_problems": 72,
+      "total_repairs": 56,
+      "parts_count": 145,
+      "subcategories": [
+        {"id": "ipads", "name": "iPads", "problems": 22, "repairs": 17},
+        {"id": "android-tablets", "name": "Android Tablets", "problems": 20, "repairs": 15},
+        {"id": "windows-tablets", "name": "Windows Tablets", "problems": 16, "repairs": 12},
+        {"id": "e-readers", "name": "E-Readers", "problems": 14, "repairs": 12}
+      ]
+    },
+    {
+      "id": "laptops",
+      "name": "Laptops",
+      "description": "Portable computers and notebooks",
+      "total_systems": 5,
+      "total_problems": 95,
+      "total_repairs": 75,
+      "parts_count": 210,
+      "subcategories": [
+        {"id": "ultrabooks", "name": "Ultrabooks", "problems": 20, "repairs": 16},
+        {"id": "gaming-laptops", "name": "Gaming Laptops", "problems": 22, "repairs": 17},
+        {"id": "business-laptops", "name": "Business Laptops", "problems": 19, "repairs": 15},
+        {"id": "chromebooks", "name": "Chromebooks", "problems": 16, "repairs": 12},
+        {"id": "2-in-1", "name": "2-in-1", "problems": 18, "repairs": 15}
+      ]
+    },
+    {
+      "id": "desktop-computers",
+      "name": "Desktop Computers",
+      "description": "Tower PCs, all-in-ones, and workstations",
+      "total_systems": 5,
+      "total_problems": 90,
+      "total_repairs": 72,
+      "parts_count": 240,
+      "subcategories": [
+        {"id": "towers", "name": "Towers", "problems": 22, "repairs": 17},
+        {"id": "all-in-one", "name": "All-in-One", "problems": 18, "repairs": 14},
+        {"id": "workstations", "name": "Workstations", "problems": 19, "repairs": 15},
+        {"id": "mini-pcs", "name": "Mini PCs", "problems": 15, "repairs": 12},
+        {"id": "gaming-pcs", "name": "Gaming PCs", "problems": 16, "repairs": 14}
+      ]
+    },
+    {
+      "id": "monitors",
+      "name": "Monitors",
+      "description": "Display screens and monitors",
+      "total_systems": 6,
+      "total_problems": 78,
+      "total_repairs": 60,
+      "parts_count": 135,
+      "subcategories": [
+        {"id": "lcd", "name": "LCD", "problems": 14, "repairs": 11},
+        {"id": "led", "name": "LED", "problems": 13, "repairs": 10},
+        {"id": "oled", "name": "OLED", "problems": 14, "repairs": 11},
+        {"id": "curved", "name": "Curved", "problems": 12, "repairs": 9},
+        {"id": "touchscreen", "name": "Touchscreen", "problems": 13, "repairs": 10},
+        {"id": "ultra-wide", "name": "Ultra-wide", "problems": 12, "repairs": 9}
+      ]
+    },
+    {
+      "id": "printers",
+      "name": "Printers",
+      "description": "Printing and imaging devices",
+      "total_systems": 6,
+      "total_problems": 82,
+      "total_repairs": 65,
+      "parts_count": 165,
+      "subcategories": [
+        {"id": "inkjet", "name": "Inkjet", "problems": 16, "repairs": 12},
+        {"id": "laser", "name": "Laser", "problems": 15, "repairs": 12},
+        {"id": "3d-printers", "name": "3D Printers", "problems": 14, "repairs": 11},
+        {"id": "multifunction", "name": "Multifunction", "problems": 14, "repairs": 11},
+        {"id": "photo", "name": "Photo", "problems": 12, "repairs": 9},
+        {"id": "label", "name": "Label", "problems": 11, "repairs": 10}
+      ]
+    },
+    {
+      "id": "networking",
+      "name": "Networking",
+      "description": "Network infrastructure and connectivity",
+      "total_systems": 7,
+      "total_problems": 88,
+      "total_repairs": 68,
+      "parts_count": 155,
+      "subcategories": [
+        {"id": "cables", "name": "Cables", "problems": 11, "repairs": 8},
+        {"id": "fiber-optic", "name": "Fiber Optic", "problems": 14, "repairs": 11},
+        {"id": "ethernet", "name": "Ethernet", "problems": 13, "repairs": 10},
+        {"id": "network-cards", "name": "Network Cards", "problems": 12, "repairs": 9},
+        {"id": "modems", "name": "Modems", "problems": 13, "repairs": 10},
+        {"id": "repeaters", "name": "Repeaters", "problems": 12, "repairs": 9},
+        {"id": "hubs", "name": "Hubs", "problems": 13, "repairs": 11}
+      ]
+    },
+    {
+      "id": "routers",
+      "name": "Routers",
+      "description": "Wireless and wired routing devices",
+      "total_systems": 5,
+      "total_problems": 70,
+      "total_repairs": 55,
+      "parts_count": 110,
+      "subcategories": [
+        {"id": "wifi-6", "name": "Wi-Fi 6", "problems": 15, "repairs": 12},
+        {"id": "mesh", "name": "Mesh", "problems": 14, "repairs": 11},
+        {"id": "enterprise", "name": "Enterprise", "problems": 15, "repairs": 11},
+        {"id": "gaming", "name": "Gaming", "problems": 13, "repairs": 10},
+        {"id": "lte-5g", "name": "LTE/5G", "problems": 13, "repairs": 11}
+      ]
+    },
+    {
+      "id": "switches",
+      "name": "Switches",
+      "description": "Network switches and related equipment",
+      "total_systems": 5,
+      "total_problems": 65,
+      "total_repairs": 50,
+      "parts_count": 95,
+      "subcategories": [
+        {"id": "managed", "name": "Managed", "problems": 14, "repairs": 11},
+        {"id": "unmanaged", "name": "Unmanaged", "problems": 12, "repairs": 9},
+        {"id": "poe", "name": "PoE", "problems": 13, "repairs": 10},
+        {"id": "stackable", "name": "Stackable", "problems": 13, "repairs": 10},
+        {"id": "industrial", "name": "Industrial", "problems": 13, "repairs": 10}
+      ]
+    },
+    {
+      "id": "nas",
+      "name": "NAS",
+      "description": "Network attached storage systems",
+      "total_systems": 5,
+      "total_problems": 68,
+      "total_repairs": 52,
+      "parts_count": 120,
+      "subcategories": [
+        {"id": "consumer", "name": "Consumer", "problems": 14, "repairs": 11},
+        {"id": "enterprise", "name": "Enterprise", "problems": 15, "repairs": 11},
+        {"id": "rackmount", "name": "Rackmount", "problems": 13, "repairs": 10},
+        {"id": "desktop", "name": "Desktop", "problems": 13, "repairs": 10},
+        {"id": "media", "name": "Media", "problems": 13, "repairs": 10}
+      ]
+    },
+    {
+      "id": "televisions",
+      "name": "Televisions",
+      "description": "TV sets and display technologies",
+      "total_systems": 6,
+      "total_problems": 85,
+      "total_repairs": 68,
+      "parts_count": 175,
+      "subcategories": [
+        {"id": "led-tv", "name": "LED", "problems": 15, "repairs": 12},
+        {"id": "oled-tv", "name": "OLED", "problems": 15, "repairs": 12},
+        {"id": "qled", "name": "QLED", "problems": 14, "repairs": 11},
+        {"id": "4k-8k", "name": "4K/8K", "problems": 14, "repairs": 11},
+        {"id": "smart-tvs", "name": "Smart TVs", "problems": 15, "repairs": 11},
+        {"id": "projection", "name": "Projection", "problems": 12, "repairs": 11}
+      ]
+    },
+    {
+      "id": "gaming-consoles",
+      "name": "Gaming Consoles",
+      "description": "Video game consoles and VR systems",
+      "total_systems": 6,
+      "total_problems": 80,
+      "total_repairs": 64,
+      "parts_count": 160,
+      "subcategories": [
+        {"id": "playstation", "name": "PlayStation", "problems": 15, "repairs": 12},
+        {"id": "xbox", "name": "Xbox", "problems": 14, "repairs": 11},
+        {"id": "nintendo-switch", "name": "Nintendo Switch", "problems": 14, "repairs": 11},
+        {"id": "handheld", "name": "Handheld", "problems": 12, "repairs": 10},
+        {"id": "retro", "name": "Retro", "problems": 12, "repairs": 10},
+        {"id": "vr", "name": "VR", "problems": 13, "repairs": 10}
+      ]
+    },
+    {
+      "id": "cctv",
+      "name": "CCTV",
+      "description": "Security cameras and surveillance systems",
+      "total_systems": 6,
+      "total_problems": 75,
+      "total_repairs": 58,
+      "parts_count": 140,
+      "subcategories": [
+        {"id": "ip-cameras", "name": "IP Cameras", "problems": 14, "repairs": 11},
+        {"id": "analog", "name": "Analog", "problems": 12, "repairs": 9},
+        {"id": "dvr", "name": "DVR", "problems": 13, "repairs": 10},
+        {"id": "nvr", "name": "NVR", "problems": 13, "repairs": 10},
+        {"id": "ptz", "name": "PTZ", "problems": 12, "repairs": 9},
+        {"id": "wireless", "name": "Wireless", "problems": 11, "repairs": 9}
+      ]
+    },
+    {
+      "id": "smart-home",
+      "name": "Smart Home",
+      "description": "Home automation and IoT devices",
+      "total_systems": 8,
+      "total_problems": 92,
+      "total_repairs": 70,
+      "parts_count": 150,
+      "subcategories": [
+        {"id": "smart-speakers", "name": "Smart Speakers", "problems": 12, "repairs": 9},
+        {"id": "hubs", "name": "Hubs", "problems": 11, "repairs": 8},
+        {"id": "smart-lighting", "name": "Lighting", "problems": 12, "repairs": 9},
+        {"id": "smart-thermostats", "name": "Thermostats", "problems": 12, "repairs": 9},
+        {"id": "smart-locks", "name": "Locks", "problems": 12, "repairs": 9},
+        {"id": "smart-plugs", "name": "Plugs", "problems": 10, "repairs": 8},
+        {"id": "smart-security", "name": "Security", "problems": 12, "repairs": 9},
+        {"id": "smart-doorbells", "name": "Doorbells", "problems": 11, "repairs": 9}
+      ]
+    },
+    {
+      "id": "wearables",
+      "name": "Wearables",
+      "description": "Wearable technology and devices",
+      "total_systems": 5,
+      "total_problems": 65,
+      "total_repairs": 50,
+      "parts_count": 115,
+      "subcategories": [
+        {"id": "smartwatches", "name": "Smartwatches", "problems": 15, "repairs": 11},
+        {"id": "fitness-trackers", "name": "Fitness Trackers", "problems": 13, "repairs": 10},
+        {"id": "smart-glasses", "name": "Smart Glasses", "problems": 12, "repairs": 10},
+        {"id": "medical", "name": "Medical", "problems": 13, "repairs": 10},
+        {"id": "ar-vr", "name": "AR/VR", "problems": 12, "repairs": 9}
+      ]
+    },
+    {
+      "id": "drones",
+      "name": "Drones",
+      "description": "Unmanned aerial vehicles",
+      "total_systems": 5,
+      "total_problems": 70,
+      "total_repairs": 55,
+      "parts_count": 130,
+      "subcategories": [
+        {"id": "consumer", "name": "Consumer", "problems": 15, "repairs": 12},
+        {"id": "professional", "name": "Professional", "problems": 14, "repairs": 11},
+        {"id": "racing", "name": "Racing", "problems": 14, "repairs": 11},
+        {"id": "fpv", "name": "FPV", "problems": 14, "repairs": 11},
+        {"id": "camera", "name": "Camera", "problems": 13, "repairs": 10}
+      ]
+    },
+    {
+      "id": "audio-equipment",
+      "name": "Audio Equipment",
+      "description": "Audio and sound equipment",
+      "total_systems": 7,
+      "total_problems": 82,
+      "total_repairs": 64,
+      "parts_count": 155,
+      "subcategories": [
+        {"id": "headphones", "name": "Headphones", "problems": 13, "repairs": 10},
+        {"id": "speakers", "name": "Speakers", "problems": 13, "repairs": 10},
+        {"id": "microphones", "name": "Microphones", "problems": 12, "repairs": 9},
+        {"id": "amplifiers", "name": "Amplifiers", "problems": 12, "repairs": 9},
+        {"id": "mixers", "name": "Mixers", "problems": 11, "repairs": 9},
+        {"id": "soundbars", "name": "Soundbars", "problems": 11, "repairs": 8},
+        {"id": "studio-monitors", "name": "Studio Monitors", "problems": 10, "repairs": 9}
+      ]
+    },
+    {
+      "id": "projectors",
+      "name": "Projectors",
+      "description": "Projection systems and displays",
+      "total_systems": 5,
+      "total_problems": 62,
+      "total_repairs": 48,
+      "parts_count": 105,
+      "subcategories": [
+        {"id": "home-theater", "name": "Home Theater", "problems": 13, "repairs": 10},
+        {"id": "business", "name": "Business", "problems": 13, "repairs": 10},
+        {"id": "portable", "name": "Portable", "problems": 12, "repairs": 9},
+        {"id": "short-throw", "name": "Short Throw", "problems": 12, "repairs": 10},
+        {"id": "laser", "name": "Laser", "problems": 12, "repairs": 9}
+      ]
+    },
+    {
+      "id": "pos-systems",
+      "name": "POS Systems",
+      "description": "Point of sale and payment systems",
+      "total_systems": 5,
+      "total_problems": 60,
+      "total_repairs": 46,
+      "parts_count": 100,
+      "subcategories": [
+        {"id": "terminal", "name": "Terminal", "problems": 13, "repairs": 10},
+        {"id": "mobile", "name": "Mobile", "problems": 12, "repairs": 9},
+        {"id": "tablet-pos", "name": "Tablet", "problems": 12, "repairs": 9},
+        {"id": "retail", "name": "Retail", "problems": 12, "repairs": 9},
+        {"id": "restaurant", "name": "Restaurant", "problems": 11, "repairs": 9}
+      ]
+    },
+    {
+      "id": "office-equipment",
+      "name": "Office Equipment",
+      "description": "Office machines and equipment",
+      "total_systems": 6,
+      "total_problems": 72,
+      "total_repairs": 56,
+      "parts_count": 125,
+      "subcategories": [
+        {"id": "copiers", "name": "Copiers", "problems": 14, "repairs": 11},
+        {"id": "scanners", "name": "Scanners", "problems": 12, "repairs": 9},
+        {"id": "fax", "name": "Fax", "problems": 11, "repairs": 8},
+        {"id": "shredders", "name": "Shredders", "problems": 11, "repairs": 9},
+        {"id": "binding", "name": "Binding", "problems": 12, "repairs": 9},
+        {"id": "laminators", "name": "Laminators", "problems": 12, "repairs": 10}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,311 @@
+{
+  "RP-PHN-001": {
+    "id": "RP-PHN-001",
+    "name": "iPhone Battery Replacement",
+    "category": "Phones",
+    "difficulty": "Moderate",
+    "estimated_time": "45-60 minutes",
+    "estimated_time_minutes": 52,
+    "tools_required": [
+      "Pentalobe P2 screwdriver",
+      "Phillips #000 screwdriver",
+      "Suction cup handle",
+      "Plastic opening picks",
+      "Spudger",
+      "Tweezers",
+      "Heat gun or iOpener",
+      "Anti-static mat"
+    ],
+    "materials_required": [
+      "OEM-grade replacement battery (model-specific)",
+      "Replacement Pentalobe screws (included in most battery kits)",
+      "Adhesive strips for battery",
+      "90% or higher isopropyl alcohol",
+      "Lint-free cloth"
+    ],
+    "safety_notes": "Discharge battery to below 25% before repair to reduce fire risk. Do not puncture the old battery. If battery is swollen, use extra caution — the device may need to stay in a fireproof container.",
+    "pre_repair_checks": [
+      "Back up all data via iCloud or iTunes",
+      "Confirm correct battery model for your iPhone variant",
+      "Discharge battery to 25% or less"
+    ],
+    "procedure_steps": [
+      {
+        "step": 1,
+        "title": "Remove Bottom Screws",
+        "detail": "Power off the iPhone. Remove the two Pentalobe P2 screws on either side of the Lightning/USB-C port at the bottom of the device."
+      },
+      {
+        "step": 2,
+        "title": "Apply Heat and Open Display",
+        "detail": "Apply heat along the bottom edge of the display for 90 seconds with a heat gun on low or an iOpener bag. This softens the adhesive. Attach suction cup to the lower display and gently pull while inserting a plastic pick at the bottom gap. Slide picks around the perimeter to cut adhesive. Do not open more than 90 degrees — the display cables run up the right side."
+      },
+      {
+        "step": 3,
+        "title": "Disconnect Battery Connector",
+        "detail": "Remove the screws from the battery connector bracket. Use a spudger to gently pry the battery flex cable connector straight up off the logic board. This prevents current flow during repair."
+      },
+      {
+        "step": 4,
+        "title": "Remove Display Assembly",
+        "detail": "Disconnect the display and digitizer flex cables using the spudger. Lift the display assembly free and set aside on the anti-static mat."
+      },
+      {
+        "step": 5,
+        "title": "Remove Old Battery",
+        "detail": "Locate the battery adhesive pull-tabs (typically 2-3 strips). Pull each tab slowly at a low angle (almost parallel to the battery) to stretch and release the adhesive. If tabs break, use isopropyl alcohol at the battery edges to dissolve remaining adhesive."
+      },
+      {
+        "step": 6,
+        "title": "Install New Battery",
+        "detail": "Peel the backing off the new adhesive strips and position the new battery in the same orientation. Press firmly for 10 seconds. Reconnect the battery flex cable connector — press down until it clicks."
+      },
+      {
+        "step": 7,
+        "title": "Reconnect Display and Close",
+        "detail": "Reconnect the display and digitizer connectors. Replace their bracket and screws. Close the display by pressing first at the top and working down to the bottom edge. Press all edges firmly to re-seat adhesive."
+      },
+      {
+        "step": 8,
+        "title": "Reinstall Pentalobe Screws and Test",
+        "detail": "Replace the two Pentalobe screws at the bottom. Power on the device. Navigate to Settings > Battery > Battery Health to confirm the new battery is recognized and shows 100% capacity."
+      }
+    ],
+    "post_repair_checks": [
+      "Verify battery health shows 100% in Settings",
+      "Perform a full charge cycle to calibrate the battery",
+      "Check all buttons, cameras, and sensors work correctly"
+    ],
+    "warnings": [
+      "Never use metal tools to pry the battery — puncture causes thermal runaway",
+      "Do not overtighten screws in the logic board brackets — stripped screws are a common mistake"
+    ]
+  },
+  "RP-PHN-002": {
+    "id": "RP-PHN-002",
+    "name": "Samsung Galaxy Screen Replacement",
+    "category": "Phones",
+    "difficulty": "Expert",
+    "estimated_time": "60-90 minutes",
+    "estimated_time_minutes": 75,
+    "tools_required": [
+      "T3 Torx screwdriver",
+      "Phillips #000 screwdriver",
+      "Heat gun",
+      "Suction cup handle",
+      "Plastic opening picks and spudger",
+      "Tweezers",
+      "UV lamp (if using UV adhesive)",
+      "Anti-static mat and wrist strap"
+    ],
+    "materials_required": [
+      "OEM or OEM-grade AMOLED screen assembly with frame",
+      "B7000 or UV-cure LOCA adhesive",
+      "Pre-cut adhesive gasket",
+      "90% isopropyl alcohol",
+      "Lint-free cloth"
+    ],
+    "safety_notes": "Samsung OLED displays are fragile and glued directly to the frame. Rushing heat or prying will crack the display. Disconnect the battery FIRST before any other step.",
+    "pre_repair_checks": [
+      "Back up all data",
+      "Confirm the exact model number (e.g., SM-S928B vs SM-S928U — parts differ)",
+      "Order a frame-included assembly to avoid adhesive re-gluing of the panel"
+    ],
+    "procedure_steps": [
+      {
+        "step": 1,
+        "title": "Heat and Remove Back Glass",
+        "detail": "Apply heat to the back panel for 2 minutes on medium. Attach suction cup and slowly peel the back glass using picks. Work slowly — Samsung back glass is extremely thin and cracks easily. Remove all back panel screws after removing the back glass."
+      },
+      {
+        "step": 2,
+        "title": "Disconnect Battery",
+        "detail": "Locate the battery connector and use a spudger to disconnect it immediately. Do not proceed with any other disassembly until the battery is disconnected."
+      },
+      {
+        "step": 3,
+        "title": "Disconnect All Flex Cables",
+        "detail": "Systematically disconnect the charging port flex, fingerprint sensor, and any mid-frame antenna cables. Label or photograph each connection point."
+      },
+      {
+        "step": 4,
+        "title": "Heat and Remove Front Display",
+        "detail": "Apply heat to the display edges for 2-3 minutes. Insert a pick at one corner with a suction cup pulling gently. Work picks along all four edges cutting the LOCA adhesive. The OLED panel bonds directly to the glass — do not flex it."
+      },
+      {
+        "step": 5,
+        "title": "Clean Frame",
+        "detail": "Remove all old adhesive residue from the frame using isopropyl alcohol and a plastic scraper. The mating surface must be completely clean and flat for proper adhesion of the new screen."
+      },
+      {
+        "step": 6,
+        "title": "Install New Screen Assembly",
+        "detail": "Apply new adhesive gasket to the frame. Press the new screen assembly into the frame evenly, starting from the top. Apply firm, even pressure around all edges for 60 seconds."
+      },
+      {
+        "step": 7,
+        "title": "Reconnect Everything and Test",
+        "detail": "Reconnect all flex cables in reverse order of removal. Reconnect the battery last. Power on to test display, touch, fingerprint, and all sensors before applying the back glass."
+      },
+      {
+        "step": 8,
+        "title": "Apply Back Glass",
+        "detail": "Apply new pre-cut back glass adhesive. Press back glass firmly for 90 seconds. Replace all screws and verify waterproofing adhesive is fully seated."
+      }
+    ],
+    "post_repair_checks": [
+      "Test full touch digitizer response across entire screen",
+      "Test fingerprint sensor, front camera, Face ID equivalents",
+      "Run display burn-in test (uniform color test)",
+      "Verify IP rating adhesive is intact"
+    ],
+    "warnings": [
+      "OLED panels crack instantly if over-bent — never force open",
+      "Heat gun distance must be maintained — direct contact will burn the panel"
+    ]
+  },
+  "RP-LAP-001": {
+    "id": "RP-LAP-001",
+    "name": "MacBook Thermal Paste Replacement",
+    "category": "Laptops",
+    "difficulty": "Moderate",
+    "estimated_time": "30-45 minutes",
+    "estimated_time_minutes": 37,
+    "tools_required": [
+      "Pentalobe P5 screwdriver (bottom case)",
+      "Torx T3 screwdriver",
+      "Plastic spudger",
+      "Thermal paste applicator / plastic spreader",
+      "Lint-free cloth",
+      "Anti-static mat and wrist strap"
+    ],
+    "materials_required": [
+      "High-quality thermal compound (e.g., Thermal Grizzly Kryonaut or MX-6)",
+      "90% isopropyl alcohol",
+      "Cotton swabs"
+    ],
+    "safety_notes": "Discharge battery or disconnect it before touching the logic board. Ground yourself with an anti-static wrist strap before touching any components.",
+    "pre_repair_checks": [
+      "Confirm overheating by checking fan speed and CPU temps with iStatMenus or Activity Monitor",
+      "Verify MacBook is out of AppleCare before opening (opening voids warranty on some models)"
+    ],
+    "procedure_steps": [
+      {
+        "step": 1,
+        "title": "Remove Bottom Case",
+        "detail": "Remove the eight Pentalobe P5 screws on the bottom of the MacBook. Note that two screws near the hinge are longer than the rest. Gently pry the bottom case off with a plastic spudger inserted near the rear vents."
+      },
+      {
+        "step": 2,
+        "title": "Disconnect Battery",
+        "detail": "Locate the battery connector (a flat ZIF connector near the logic board). Use a spudger to gently lift and disconnect it. This prevents accidental power during repairs."
+      },
+      {
+        "step": 3,
+        "title": "Remove Heat Sink",
+        "detail": "Locate the screws securing the heat sink to the CPU/GPU. Remove them in a cross pattern (opposite corners) to release pressure evenly. Gently lift the heat sink straight up — do not slide it, as this can damage the CPU die."
+      },
+      {
+        "step": 4,
+        "title": "Clean Old Thermal Paste",
+        "detail": "Use cotton swabs and 90% isopropyl alcohol to completely remove old thermal paste from both the CPU/GPU die and the heat sink contact plate. Allow to dry fully before applying new paste."
+      },
+      {
+        "step": 5,
+        "title": "Apply New Thermal Paste",
+        "detail": "Apply a rice-grain-sized dot of thermal compound to the center of the CPU die. For MacBooks with a larger heat spreader (e.g., M1/M2 chips), use a thin spread method. Less is more — excess paste causes no benefit and may contact board components."
+      },
+      {
+        "step": 6,
+        "title": "Reinstall Heat Sink and Close",
+        "detail": "Lower the heat sink straight down onto the CPU. Replace screws in a cross pattern, tightening gradually and evenly. Reconnect the battery. Reattach the bottom case and replace all Pentalobe screws."
+      }
+    ],
+    "post_repair_checks": [
+      "Boot the MacBook and verify it powers on normally",
+      "Run CPU stress test (e.g., Geekbench or Prime95) for 15 minutes",
+      "Monitor CPU temperature — should stay below 85°C under full load",
+      "Confirm fan noise has decreased compared to before repair"
+    ],
+    "warnings": [
+      "Only apply thermal paste to the CPU/GPU die — not the surrounding board",
+      "Do not over-tighten heat sink screws — apply even, moderate torque only"
+    ]
+  },
+  "RP-CON-001": {
+    "id": "RP-CON-001",
+    "name": "PS5 Liquid Metal Application",
+    "category": "Gaming",
+    "difficulty": "Expert",
+    "estimated_time": "45-60 minutes",
+    "estimated_time_minutes": 52,
+    "tools_required": [
+      "Phillips #1 screwdriver",
+      "Torx T8 screwdriver",
+      "Plastic spudger and pry tool",
+      "Anti-static mat and wrist strap",
+      "Liquid metal applicator pen or small brush",
+      "Electrical tape or liquid metal barrier pen",
+      "Magnifying glass"
+    ],
+    "materials_required": [
+      "Thermal Grizzly Conductonaut liquid metal compound (or equivalent)",
+      "90% isopropyl alcohol",
+      "Cotton swabs",
+      "Kapton tape (for masking)"
+    ],
+    "safety_notes": "CRITICAL: Liquid metal is electrically conductive. Any contact with surrounding SMD components or the PCB will cause a short circuit and permanent damage. Work slowly and mask all surrounding areas with Kapton tape before applying liquid metal.",
+    "pre_repair_checks": [
+      "Confirm PS5 is overheating (thermal throttling, loud fan, shutdowns under load)",
+      "Gather all tools before opening — reassembly must happen the same session",
+      "Watch a model-specific disassembly video (Disc vs. Digital editions differ slightly)"
+    ],
+    "procedure_steps": [
+      {
+        "step": 1,
+        "title": "Remove PS5 Shell",
+        "detail": "Stand the PS5 vertically. Pull the white top panel upward and toward you — it unclips without screws. Repeat for the second panel. Remove the corner screw holding the fan shroud."
+      },
+      {
+        "step": 2,
+        "title": "Remove Fan and Heat Sink",
+        "detail": "Unplug the fan connector. Remove the four screws holding the large heat sink — use a cross pattern. Gently lift the heat sink from the APU (Accelerated Processing Unit) die."
+      },
+      {
+        "step": 3,
+        "title": "Clean Old Liquid Metal",
+        "detail": "Sony uses liquid metal from the factory. Use cotton swabs with 90% isopropyl alcohol to carefully clean both the APU die and the copper heat sink contact plate. The APU die is small — work carefully around it."
+      },
+      {
+        "step": 4,
+        "title": "Mask Surrounding Area",
+        "detail": "Apply Kapton tape or the electrical barrier from the liquid metal kit to protect all SMD components and board traces within 5mm of the APU die. Liquid metal will short out anything it touches."
+      },
+      {
+        "step": 5,
+        "title": "Apply Liquid Metal",
+        "detail": "Apply a tiny amount of liquid metal to the center of the APU die — approximately the size of a small pea. Use the applicator pen or a small brush to spread it in a thin, even layer covering only the die surface. Apply the same thin layer to the copper heat sink contact plate."
+      },
+      {
+        "step": 6,
+        "title": "Reinstall Heat Sink",
+        "detail": "Carefully lower the heat sink straight down onto the APU — any sliding motion will spread liquid metal onto unmasked areas. Tighten screws in cross pattern to manufacturer torque. Remove Kapton tape masking."
+      },
+      {
+        "step": 7,
+        "title": "Reassemble and Test",
+        "detail": "Reconnect the fan. Reattach the heat sink shroud and screw. Replace the PS5 shell panels. Power on and run a demanding game for 30 minutes while monitoring temperatures with a thermal logger app on a linked smartphone."
+      }
+    ],
+    "post_repair_checks": [
+      "APU temperature under full load should drop 10-20°C vs. before repair",
+      "Fan noise should decrease noticeably under gaming load",
+      "Verify no artifacts or crashes during extended gameplay"
+    ],
+    "warnings": [
+      "NEVER let liquid metal contact any area other than the die surface and heat sink plate",
+      "Never tilt the console while liquid metal is fresh — it can flow off the die",
+      "This repair voids all remaining warranty"
+    ]
+  }
+}

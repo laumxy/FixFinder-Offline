@@ -1,0 +1,95 @@
+# =============================================================================
+# FixFinder AI Engine — docker-compose.yml
+# =============================================================================
+#
+# Services:
+#   api  — FixFinder standalone REST API (port 8000)
+#
+# Volumes:
+#   fixfinder_v1_data  — Version 1 (Home Maintenance) databases & indices
+#   fixfinder_v2_data  — Version 2 (Electronics) databases & indices
+#   fixfinder_v3_data  — Version 3 (Industrial / Automotive) databases & indices
+#   fixfinder_logs     — Application log files
+#
+# Usage:
+#   docker compose up --build          # build & start
+#   docker compose up -d               # start detached
+#   docker compose logs -f api         # follow logs
+#   docker compose down                # stop & remove containers
+#   docker compose down -v             # stop + delete volumes
+# =============================================================================
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: fixfinder:latest
+    container_name: fixfinder_api
+
+    ports:
+      - "${API_PORT:-8000}:8000"
+
+    environment:
+      # Application
+      - FIXFINDER_ENV=${FIXFINDER_ENV:-production}
+      - FIXFINDER_LOG_LEVEL=${FIXFINDER_LOG_LEVEL:-info}
+      - FIXFINDER_API_PORT=8000
+
+      # Rate limiter
+      - RATE_LIMIT_REQUESTS=${RATE_LIMIT_REQUESTS:-60}
+      - RATE_LIMIT_PERIOD=${RATE_LIMIT_PERIOD:-60}
+
+      # CORS (comma-separated allowed origins)
+      - ALLOWED_ORIGINS=${ALLOWED_ORIGINS:-http://localhost:3000,http://localhost:8080}
+
+      # Python
+      - PYTHONUNBUFFERED=1
+      - PYTHONDONTWRITEBYTECODE=1
+
+    volumes:
+      # Version data directories — mounted read-write so scripts can
+      # regenerate artefacts if the container is started from a slim image
+      - fixfinder_v1_data:/app/Version_1
+      - fixfinder_v2_data:/app/Version_2
+      - fixfinder_v3_data:/app/Version_3
+
+      # Persistent log output
+      - fixfinder_logs:/app/logs
+
+    healthcheck:
+      test: ["CMD", "python", "-c",
+             "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 30s
+      timeout:  10s
+      start_period: 120s
+      retries: 3
+
+    restart: unless-stopped
+
+    # Resource limits — adjust for your host
+    deploy:
+      resources:
+        limits:
+          memory: 4G
+        reservations:
+          memory: 1G
+
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "20m"
+        max-file: "5"
+
+# =============================================================================
+# Named volumes
+# =============================================================================
+volumes:
+  fixfinder_v1_data:
+    driver: local
+  fixfinder_v2_data:
+    driver: local
+  fixfinder_v3_data:
+    driver: local
+  fixfinder_logs:
+    driver: local

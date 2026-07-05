@@ -1,0 +1,127 @@
+{
+  "version": "2.0",
+  "dimension": 768,
+  "index_type": "IndexFlatIP",
+  "total_entries": 30,
+  "index_path": "Version_2/12_FAISS\\index.faiss",
+  "id_mapping": {
+    "0": "PHN-001",
+    "1": "PHN-002",
+    "2": "PHN-003",
+    "3": "LAP-001",
+    "4": "LAP-002",
+    "5": "DKT-001",
+    "6": "TV-001",
+    "7": "TV-002",
+    "8": "GAM-001",
+    "9": "NET-001",
+    "10": "PRB-PHN-001",
+    "11": "PRB-PHN-002",
+    "12": "PRB-PHN-003",
+    "13": "PRB-PHN-004",
+    "14": "PRB-LAP-001",
+    "15": "PRB-LAP-002",
+    "16": "PRB-LAP-003",
+    "17": "PRB-DKT-001",
+    "18": "PRB-TV-001",
+    "19": "PRB-GAM-001",
+    "20": "RP-PHN-001",
+    "21": "RP-PHN-002",
+    "22": "RP-LAP-001",
+    "23": "RP-CON-001",
+    "24": "RP-LAP-002",
+    "25": "RP-DKT-001",
+    "26": "RP-TV-001",
+    "27": "RP-PHN-003",
+    "28": "RP-NET-001",
+    "29": "RP-GAM-001"
+  },
+  "mapping": {
+    "Phones": {
+      "range": [
+        0,
+        28
+      ],
+      "ids": [
+        "PHN-001",
+        "PHN-002",
+        "PHN-003",
+        "PRB-PHN-001",
+        "PRB-PHN-002",
+        "PRB-PHN-003",
+        "PRB-PHN-004",
+        "RP-PHN-001",
+        "RP-PHN-002",
+        "RP-PHN-003"
+      ]
+    },
+    "Laptops": {
+      "range": [
+        3,
+        25
+      ],
+      "ids": [
+        "LAP-001",
+        "LAP-002",
+        "PRB-LAP-001",
+        "PRB-LAP-002",
+        "PRB-LAP-003",
+        "RP-LAP-001",
+        "RP-LAP-002"
+      ]
+    },
+    "Desktops": {
+      "range": [
+        5,
+        26
+      ],
+      "ids": [
+        "DKT-001",
+        "PRB-DKT-001",
+        "RP-DKT-001"
+      ]
+    },
+    "TVs": {
+      "range": [
+        6,
+        27
+      ],
+      "ids": [
+        "TV-001",
+        "TV-002",
+        "PRB-TV-001",
+        "RP-TV-001"
+      ]
+    },
+    "Gaming": {
+      "range": [
+        8,
+        30
+      ],
+      "ids": [
+        "GAM-001",
+        "PRB-GAM-001",
+        "RP-GAM-001"
+      ]
+    },
+    "Networking": {
+      "range": [
+        9,
+        29
+      ],
+      "ids": [
+        "NET-001",
+        "RP-NET-001"
+      ]
+    },
+    "Repairs": {
+      "range": [
+        23,
+        24
+      ],
+      "ids": [
+        "RP-CON-001"
+      ]
+    }
+  }
+}

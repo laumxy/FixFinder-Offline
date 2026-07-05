@@ -19,9 +19,18 @@ data/*.db
 data/*.db-shm
 data/*.db-wal
 
-# FAISS index (rebuilt from seed data on first run)
+# Versioned SQLite databases (rebuilt by generate scripts)
+Version_*/03_SQLite_Database/*.db
+Version_*/03_SQLite_Database/*.db-shm
+Version_*/03_SQLite_Database/*.db-wal
+
+# FAISS indices (rebuilt by build_faiss_indices.py)
 embeddings/index.faiss
 embeddings/metadata.json
+Version_*/12_FAISS/index.faiss
+
+# Temp / scratch files (single-underscore prefix, e.g. _check_reports.py)
+# Note: does NOT match __init__.py or other dunder files
 
 # Logs
 *.log

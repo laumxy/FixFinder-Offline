@@ -1,0 +1,24 @@
+id,part_name,unit,cost,coverage
+PT-ROF-001,Asphalt Shingles Bundle,Bundle,25.99,33.3 sq ft
+PT-ROF-002,Roofing Felt (15 lb),Roll,18.49,400 sq ft
+PT-ROF-003,Step Flashing Kit,Kit,34.99,1 roof section
+PT-ROF-004,Ridge Cap Shingles,Bundle,38.0,35 lin ft
+PT-ROF-005,Roof Deck Nails (1 lb),Box,7.49,1 square
+PT-FND-001,Hydraulic Cement (10 lb),Bag,14.99,3 lin ft crack
+PT-FND-002,Waterproofing Membrane (5 gal),Pail,89.99,100 sq ft
+PT-PLM-001,"1/2"" Copper Pipe (10 ft)",Length,12.5,10 ft run
+PT-PLM-002,Faucet Repair Kit,Kit,8.99,1 faucet
+PT-PLM-003,PVC P-Trap,Unit,6.49,1 drain
+PT-PLM-004,Water Heater Anode Rod,Unit,19.99,1 water heater
+PT-PLM-005,Heating Element (4500W),Unit,15.99,1 water heater
+PT-ELC-001,20A Breaker (Single Pole),Unit,11.99,1 circuit
+PT-ELC-002,GFCI Outlet 15A,Unit,16.49,1 outlet
+PT-ELC-003,14/2 Romex Wire (50 ft),Roll,34.99,50 ft circuit
+PT-HVC-001,16x25x1 HVAC Filter,Unit,9.99,1 HVAC system
+PT-HVC-002,Furnace Ignitor,Unit,29.99,1 furnace
+PT-HVC-003,Capacitor (45+5 MFD),Unit,18.99,1 AC unit
+PT-HVC-004,Thermostat (Programmable),Unit,49.99,1 HVAC system
+PT-EXT-001,Vinyl Siding Panel (12 ft),Panel,5.99,12 sq ft
+PT-WIN-001,Window Weatherstrip (10 ft),Roll,7.99,1 window
+PT-GRG-001,Torsion Spring (Garage Door),Pair,54.99,1 garage door
+PT-SMP-001,Sump Pump 1/2 HP,Unit,149.99,1 sump pit

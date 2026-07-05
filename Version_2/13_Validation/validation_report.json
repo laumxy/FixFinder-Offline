@@ -1,0 +1,587 @@
+{
+  "version": 2,
+  "version_str": "2.0",
+  "version_label": "Electronics",
+  "generated_at": "2026-07-05T10:42:56Z",
+  "overall_status": "PASS",
+  "summary": {
+    "total": 95,
+    "passed": 95,
+    "failed": 0,
+    "pass_rate_pct": 100.0
+  },
+  "groups": {
+    "schema_integrity": {
+      "passed": 24,
+      "failed": 0,
+      "tests": [
+        {
+          "name": "table_exists:categories",
+          "passed": true,
+          "message": "Table 'categories' found"
+        },
+        {
+          "name": "table_exists:subcategories",
+          "passed": true,
+          "message": "Table 'subcategories' found"
+        },
+        {
+          "name": "table_exists:systems",
+          "passed": true,
+          "message": "Table 'systems' found"
+        },
+        {
+          "name": "table_exists:symptoms",
+          "passed": true,
+          "message": "Table 'symptoms' found"
+        },
+        {
+          "name": "table_exists:diagnostic_trees",
+          "passed": true,
+          "message": "Table 'diagnostic_trees' found"
+        },
+        {
+          "name": "table_exists:repair_procedures",
+          "passed": true,
+          "message": "Table 'repair_procedures' found"
+        },
+        {
+          "name": "table_exists:parts_inventory",
+          "passed": true,
+          "message": "Table 'parts_inventory' found"
+        },
+        {
+          "name": "table_exists:embeddings",
+          "passed": true,
+          "message": "Table 'embeddings' found"
+        },
+        {
+          "name": "table_exists:faiss_metadata",
+          "passed": true,
+          "message": "Table 'faiss_metadata' found"
+        },
+        {
+          "name": "columns_present:categories",
+          "passed": true,
+          "message": "All required columns present in 'categories'"
+        },
+        {
+          "name": "columns_present:subcategories",
+          "passed": true,
+          "message": "All required columns present in 'subcategories'"
+        },
+        {
+          "name": "columns_present:systems",
+          "passed": true,
+          "message": "All required columns present in 'systems'"
+        },
+        {
+          "name": "columns_present:symptoms",
+          "passed": true,
+          "message": "All required columns present in 'symptoms'"
+        },
+        {
+          "name": "columns_present:diagnostic_trees",
+          "passed": true,
+          "message": "All required columns present in 'diagnostic_trees'"
+        },
+        {
+          "name": "columns_present:repair_procedures",
+          "passed": true,
+          "message": "All required columns present in 'repair_procedures'"
+        },
+        {
+          "name": "columns_present:parts_inventory",
+          "passed": true,
+          "message": "All required columns present in 'parts_inventory'"
+        },
+        {
+          "name": "columns_present:embeddings",
+          "passed": true,
+          "message": "All required columns present in 'embeddings'"
+        },
+        {
+          "name": "columns_present:faiss_metadata",
+          "passed": true,
+          "message": "All required columns present in 'faiss_metadata'"
+        },
+        {
+          "name": "fk_declared:symptoms.system_id->systems.system_id",
+          "passed": true,
+          "message": "FK symptoms.system_id→systems.system_id declared"
+        },
+        {
+          "name": "fk_declared:symptoms.category_id->categories.category_id",
+          "passed": true,
+          "message": "FK symptoms.category_id→categories.category_id declared"
+        },
+        {
+          "name": "fk_declared:systems.subcategory_id->subcategories.subcategory_id",
+          "passed": true,
+          "message": "FK systems.subcategory_id→subcategories.subcategory_id declared"
+        },
+        {
+          "name": "fk_declared:repair_procedures.system_id->systems.system_id",
+          "passed": true,
+          "message": "FK repair_procedures.system_id→systems.system_id declared"
+        },
+        {
+          "name": "fk_declared:repair_procedures.tree_id->diagnostic_trees.tree_id",
+          "passed": true,
+          "message": "FK repair_procedures.tree_id→diagnostic_trees.tree_id declared"
+        },
+        {
+          "name": "fk_declared:parts_inventory.category_id->categories.category_id",
+          "passed": true,
+          "message": "FK parts_inventory.category_id→categories.category_id declared"
+        }
+      ]
+    },
+    "data_completeness": {
+      "passed": 26,
+      "failed": 0,
+      "tests": [
+        {
+          "name": "row_count:systems",
+          "passed": true,
+          "message": "'systems' has 41 rows (min 1)",
+          "details": {
+            "count": 41
+          }
+        },
+        {
+          "name": "row_count:symptoms",
+          "passed": true,
+          "message": "'symptoms' has 48 rows (min 1)",
+          "details": {
+            "count": 48
+          }
+        },
+        {
+          "name": "row_count:repair_procedures",
+          "passed": true,
+          "message": "'repair_procedures' has 15 rows (min 1)",
+          "details": {
+            "count": 15
+          }
+        },
+        {
+          "name": "row_count:parts_inventory",
+          "passed": true,
+          "message": "'parts_inventory' has 41 rows (min 1)",
+          "details": {
+            "count": 41
+          }
+        },
+        {
+          "name": "row_count:categories",
+          "passed": true,
+          "message": "'categories' has 30 rows (min 1)",
+          "details": {
+            "count": 30
+          }
+        },
+        {
+          "name": "row_count:subcategories",
+          "passed": true,
+          "message": "'subcategories' has 30 rows (min 1)",
+          "details": {
+            "count": 30
+          }
+        },
+        {
+          "name": "no_nulls:systems.system_name",
+          "passed": true,
+          "message": "'systems.system_name' has no nulls/blanks"
+        },
+        {
+          "name": "no_nulls:systems.system_code",
+          "passed": true,
+          "message": "'systems.system_code' has no nulls/blanks"
+        },
+        {
+          "name": "no_nulls:systems.brand",
+          "passed": true,
+          "message": "'systems.brand' has no nulls/blanks"
+        },
+        {
+          "name": "no_nulls:symptoms.symptom_name",
+          "passed": true,
+          "message": "'symptoms.symptom_name' has no nulls/blanks"
+        },
+        {
+          "name": "no_nulls:symptoms.symptom_code",
+          "passed": true,
+          "message": "'symptoms.symptom_code' has no nulls/blanks"
+        },
+        {
+          "name": "no_nulls:symptoms.severity",
+          "passed": true,
+          "message": "'symptoms.severity' has no nulls/blanks"
+        },
+        {
+          "name": "no_nulls:repair_procedures.repair_name",
+          "passed": true,
+          "message": "'repair_procedures.repair_name' has no nulls/blanks"
+        },
+        {
+          "name": "no_nulls:repair_procedures.repair_code",
+          "passed": true,
+          "message": "'repair_procedures.repair_code' has no nulls/blanks"
+        },
+        {
+          "name": "no_nulls:repair_procedures.difficulty",
+          "passed": true,
+          "message": "'repair_procedures.difficulty' has no nulls/blanks"
+        },
+        {
+          "name": "no_nulls:parts_inventory.part_name",
+          "passed": true,
+          "message": "'parts_inventory.part_name' has no nulls/blanks"
+        },
+        {
+          "name": "no_nulls:parts_inventory.part_code",
+          "passed": true,
+          "message": "'parts_inventory.part_code' has no nulls/blanks"
+        },
+        {
+          "name": "no_nulls:parts_inventory.average_cost",
+          "passed": true,
+          "message": "'parts_inventory.average_cost' has no nulls/blanks"
+        },
+        {
+          "name": "no_nulls:categories.category_name",
+          "passed": true,
+          "message": "'categories.category_name' has no nulls/blanks"
+        },
+        {
+          "name": "no_nulls:subcategories.subcategory_name",
+          "passed": true,
+          "message": "'subcategories.subcategory_name' has no nulls/blanks"
+        },
+        {
+          "name": "valid_severity_values",
+          "passed": true,
+          "message": "All symptom severity values are valid"
+        },
+        {
+          "name": "valid_difficulty_values",
+          "passed": true,
+          "message": "All repair difficulty values are valid"
+        },
+        {
+          "name": "parts_cost_nonnegative",
+          "passed": true,
+          "message": "All part costs are >= 0"
+        },
+        {
+          "name": "repair_time_nonnegative",
+          "passed": true,
+          "message": "All repair estimated times are >= 0"
+        },
+        {
+          "name": "system_lifespan_nonnegative",
+          "passed": true,
+          "message": "All system lifespans are >= 0"
+        },
+        {
+          "name": "embeddings_table_populated",
+          "passed": true,
+          "message": "embeddings table has 92 rows",
+          "details": {
+            "total": 92
+          }
+        }
+      ]
+    },
+    "referential_integrity": {
+      "passed": 11,
+      "failed": 0,
+      "tests": [
+        {
+          "name": "fk_resolves:symptoms→systems",
+          "passed": true,
+          "message": "All symptoms.system_id values resolve in systems"
+        },
+        {
+          "name": "fk_resolves:symptoms→categories",
+          "passed": true,
+          "message": "All symptoms.category_id values resolve in categories"
+        },
+        {
+          "name": "fk_resolves:systems→subcategories",
+          "passed": true,
+          "message": "All systems.subcategory_id values resolve in subcategories"
+        },
+        {
+          "name": "fk_resolves:repair_procedures→systems",
+          "passed": true,
+          "message": "All repair_procedures.system_id values resolve in systems"
+        },
+        {
+          "name": "fk_resolves:repair_procedures→diagnostic_trees",
+          "passed": true,
+          "message": "All repair_procedures.tree_id values resolve in diagnostic_trees"
+        },
+        {
+          "name": "fk_resolves:parts_inventory→categories",
+          "passed": true,
+          "message": "All parts_inventory.category_id values resolve in categories"
+        },
+        {
+          "name": "fk_resolves:subcategories→categories",
+          "passed": true,
+          "message": "All subcategories.category_id values resolve in categories"
+        },
+        {
+          "name": "no_orphaned_diagnostic_trees",
+          "passed": true,
+          "message": "All diagnostic trees linked to a valid symptom"
+        },
+        {
+          "name": "unique_system_codes",
+          "passed": true,
+          "message": "All system_code values are unique"
+        },
+        {
+          "name": "unique_symptom_codes",
+          "passed": true,
+          "message": "All symptom_code values are unique"
+        },
+        {
+          "name": "unique_repair_codes",
+          "passed": true,
+          "message": "All repair_code values are unique"
+        }
+      ]
+    },
+    "embedding_quality": {
+      "passed": 8,
+      "failed": 0,
+      "tests": [
+        {
+          "name": "embeddings_json_exists",
+          "passed": true,
+          "message": "embeddings.json found: C:\\Users\\Fidempa\\OneDrive\\Desktop\\FixFinder Backend\\Version_2\\06_Embeddings\\embeddings.json"
+        },
+        {
+          "name": "embeddings_count_matches_header",
+          "passed": true,
+          "message": "Embedding count matches header: 30"
+        },
+        {
+          "name": "embeddings_dimension_correct",
+          "passed": true,
+          "message": "Embedding dimension is 768",
+          "details": {
+            "dimension": 768
+          }
+        },
+        {
+          "name": "embeddings_have_required_keys",
+          "passed": true,
+          "message": "All 30 embeddings have required keys"
+        },
+        {
+          "name": "embeddings_vector_length",
+          "passed": true,
+          "message": "All embedding vectors are 768-dimensional"
+        },
+        {
+          "name": "embeddings_are_normalized",
+          "passed": true,
+          "message": "All 30 embedding vectors are L2-normalised"
+        },
+        {
+          "name": "embeddings_entity_type_valid",
+          "passed": true,
+          "message": "All entity_type values are valid ({'symptom', 'system', 'repair'})"
+        },
+        {
+          "name": "faiss_metadata_consistent",
+          "passed": true,
+          "message": "FAISS metadata consistent: 30 entries, dim 768",
+          "details": {
+            "faiss_total": 30,
+            "embed_total": 30
+          }
+        }
+      ]
+    },
+    "diagnostic_coverage": {
+      "passed": 8,
+      "failed": 0,
+      "tests": [
+        {
+          "name": "diagnostic_trees_json_exists",
+          "passed": true,
+          "message": "diagnostic_trees.json found"
+        },
+        {
+          "name": "diagnostic_trees_json_nonempty",
+          "passed": true,
+          "message": "diagnostic_trees.json contains 4 trees",
+          "details": {
+            "count": 4
+          }
+        },
+        {
+          "name": "trees_have_required_fields",
+          "passed": true,
+          "message": "All 4 trees have required fields"
+        },
+        {
+          "name": "trees_have_steps_decisions_resolutions",
+          "passed": true,
+          "message": "All trees have steps, decision_points, and resolution_paths"
+        },
+        {
+          "name": "db_diagnostic_trees_populated",
+          "passed": true,
+          "message": "DB diagnostic_trees table has 12 rows",
+          "details": {
+            "count": 12
+          }
+        },
+        {
+          "name": "db_trees_have_steps",
+          "passed": true,
+          "message": "All DB diagnostic tree rows have steps"
+        },
+        {
+          "name": "symptoms_have_diagnostic_trees",
+          "passed": true,
+          "message": "12/48 symptoms linked to a diagnostic tree (25.0%)",
+          "details": {
+            "linked": 12,
+            "total": 48,
+            "coverage_pct": 25.0
+          }
+        },
+        {
+          "name": "resolution_paths_have_required_keys",
+          "passed": true,
+          "message": "All resolution paths have path_id/condition/action"
+        }
+      ]
+    },
+    "repair_procedures": {
+      "passed": 10,
+      "failed": 0,
+      "tests": [
+        {
+          "name": "repair_procedures_json_exists",
+          "passed": true,
+          "message": "repair_procedures.json found"
+        },
+        {
+          "name": "repair_procedures_json_nonempty",
+          "passed": true,
+          "message": "repair_procedures.json contains 4 repairs"
+        },
+        {
+          "name": "json_repairs_have_required_fields",
+          "passed": true,
+          "message": "All 4 JSON repairs have required fields"
+        },
+        {
+          "name": "json_repairs_have_min_steps",
+          "passed": true,
+          "message": "All JSON repairs have >= 2 procedure steps"
+        },
+        {
+          "name": "json_repairs_have_tools",
+          "passed": true,
+          "message": "All JSON repairs list at least one tool"
+        },
+        {
+          "name": "json_repairs_have_materials",
+          "passed": true,
+          "message": "All JSON repairs list at least one material"
+        },
+        {
+          "name": "json_repairs_difficulty_valid",
+          "passed": true,
+          "message": "All JSON repair difficulty values are valid"
+        },
+        {
+          "name": "db_repair_procedures_populated",
+          "passed": true,
+          "message": "DB repair_procedures table has 15 rows",
+          "details": {
+            "count": 15
+          }
+        },
+        {
+          "name": "db_repairs_have_steps",
+          "passed": true,
+          "message": "All DB repair rows have procedure_steps"
+        },
+        {
+          "name": "db_repairs_time_positive",
+          "passed": true,
+          "message": "All DB repairs have positive estimated_time_minutes"
+        }
+      ]
+    },
+    "parts_availability": {
+      "passed": 8,
+      "failed": 0,
+      "tests": [
+        {
+          "name": "parts_inventory_populated",
+          "passed": true,
+          "message": "parts_inventory has 41 rows",
+          "details": {
+            "count": 41
+          }
+        },
+        {
+          "name": "parts_no_null:part_name",
+          "passed": true,
+          "message": "No null/blank 'part_name' in parts_inventory"
+        },
+        {
+          "name": "parts_no_null:part_code",
+          "passed": true,
+          "message": "No null/blank 'part_code' in parts_inventory"
+        },
+        {
+          "name": "parts_cost_positive",
+          "passed": true,
+          "message": "All parts have positive average_cost"
+        },
+        {
+          "name": "parts_stock_nonnegative",
+          "passed": true,
+          "message": "All parts have non-negative stock levels"
+        },
+        {
+          "name": "parts_in_stock_rate",
+          "passed": true,
+          "message": "23/41 parts have stock > 0 (56.1%)",
+          "details": {
+            "in_stock": 23,
+            "total": 41,
+            "rate_pct": 56.1
+          }
+        },
+        {
+          "name": "parts_category_resolves",
+          "passed": true,
+          "message": "All parts category_id values resolve to categories"
+        },
+        {
+          "name": "repair_materials_matched_in_inventory",
+          "passed": true,
+          "message": "6/17 repair materials match parts_inventory (35.3%)",
+          "details": {
+            "matched": 6,
+            "total": 17,
+            "match_rate_pct": 35.3
+          }
+        }
+      ]
+    }
+  }
+}

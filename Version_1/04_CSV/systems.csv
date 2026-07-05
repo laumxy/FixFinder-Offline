@@ -1,0 +1,19 @@
+id,system,subcategory,brand,lifespan,maintenance
+ROF-001,Asphalt Shingle Roof,Asphalt Shingles,GAF,20,12
+ROF-002,Metal Roof,Metal Roofing,Englert,50,24
+ROF-003,Flat Roof (EPDM),Flat Roofing,Firestone,25,12
+FND-001,Poured Concrete Foundation,Foundations,Generic,80,60
+FND-002,Crawl Space,Foundations,Generic,50,12
+PLM-001,Copper Plumbing,Supply Lines,Mueller,50,12
+PLM-002,PVC Drain Lines,Drain Lines,Charlotte,40,12
+PLM-003,Water Heater (Gas),Water Heaters,Rheem,12,12
+ELC-001,200A Electrical Panel,Electrical Panels,Square D,40,24
+ELC-002,GFCI Outlets,Outlets,Leviton,15,12
+HVC-001,Central Air Conditioner,Cooling Systems,Carrier,15,6
+HVC-002,Gas Furnace,Heating Systems,Lennox,20,12
+HVC-003,Heat Pump,Heating/Cooling,Trane,15,6
+EXT-001,Vinyl Siding,Exterior Cladding,CertainTeed,30,12
+EXT-002,Fiber Cement Siding,Exterior Cladding,HardiePlank,50,12
+WIN-001,Double-Pane Windows,Windows,Andersen,20,12
+GRG-001,Garage Door Opener,Garage Systems,Chamberlain,15,12
+SMP-001,Sump Pump,Water Management,Zoeller,10,6

@@ -1,0 +1,18 @@
+id,system,subcategory,brand,lifespan,maintenance
+PHN-001,iPhone 15 Pro Max,Smartphones,Apple,6,0
+PHN-002,Samsung Galaxy S24 Ultra,Smartphones,Samsung,5,0
+PHN-003,Google Pixel 8 Pro,Smartphones,Google,5,0
+TAB-001,"iPad Pro 12.9""",Tablets,Apple,6,0
+TAB-002,Samsung Galaxy Tab S9,Tablets,Samsung,5,0
+LAP-001,"MacBook Pro 16""",Laptops,Apple,7,0
+LAP-002,Dell XPS 15,Laptops,Dell,6,0
+LAP-003,HP Spectre x360,Laptops,HP,5,0
+DKT-001,"iMac 27""",Desktops,Apple,8,0
+DKT-002,Custom Gaming PC,Desktops,Custom,7,6
+TV-001,"Samsung QLED 65""",Televisions,Samsung,7,0
+TV-002,"LG OLED C3 55""",Televisions,LG,7,0
+AUD-001,Sony WH-1000XM5,Headphones,Sony,4,0
+CAM-001,Canon EOS R5,DSLR/Mirrorless,Canon,8,12
+NET-001,Cisco RV340 Router,Networking,Cisco,8,12
+GAM-001,PlayStation 5,Game Consoles,Sony,7,0
+WRB-001,Apple Watch Series 9,Wearables,Apple,4,0

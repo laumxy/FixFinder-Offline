@@ -4,6 +4,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 
 from app.api.routes import pipeline, router
+from app.api.v2_routes import router as v2_router
 from app.core.bootstrap import ensure_runtime_assets
 from fixfinder_engine.config import settings
 
@@ -40,6 +41,7 @@ def create_app() -> FastAPI:
         lifespan=lifespan,
     )
     app.include_router(router)
+    app.include_router(v2_router)
     return app
 
 

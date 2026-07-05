@@ -1,0 +1,349 @@
+{
+  "DT-PHN-001": {
+    "id": "DT-PHN-001",
+    "name": "Phone Battery Not Charging Diagnostic Tree",
+    "symptom_code": "PRB-PHN-001",
+    "category": "Phones",
+    "total_steps": 4,
+    "avg_resolution_time_minutes": 25,
+    "success_rate_percentage": 90.0,
+    "steps": [
+      {
+        "step": 1,
+        "title": "Test Cable and Charger",
+        "instruction": "Try a different certified cable and wall adapter. Attempt charging from a different outlet and also via a PC USB port. If the phone charges with a different cable, the cable is at fault.",
+        "tools": [
+          "Alternate charging cable",
+          "Alternate charger"
+        ],
+        "decision": "Does the phone charge with a different cable/charger?"
+      },
+      {
+        "step": 2,
+        "title": "Inspect Charging Port",
+        "instruction": "Shine a flashlight into the charging port. Look for lint, debris, bent pins, or corrosion. Use a wooden toothpick or soft brush to carefully remove any debris. Do not use metal tools inside the port.",
+        "tools": [
+          "Flashlight",
+          "Wooden toothpick",
+          "Soft brush"
+        ],
+        "decision": "Is debris or damage visible in the port?"
+      },
+      {
+        "step": 3,
+        "title": "Soft Reset and Software Check",
+        "instruction": "Perform a soft reset (hold Power + Volume Down for 10 seconds). Boot into safe mode to rule out a rogue app consuming power. Check battery health in Settings > Battery.",
+        "tools": [
+          "Phone only"
+        ],
+        "decision": "Does the phone charge normally after soft reset?"
+      },
+      {
+        "step": 4,
+        "title": "Battery Health Assessment",
+        "instruction": "Check battery health percentage (iOS: Settings > Battery > Battery Health; Android: use a battery diagnostic app). Below 80% capacity is considered degraded and replacement is recommended.",
+        "tools": [
+          "Battery diagnostic app"
+        ],
+        "decision": "Is battery health below 80%?"
+      }
+    ],
+    "decision_points": [
+      {
+        "id": "DP-1",
+        "question": "Cable/charger swap fixes it?",
+        "yes": "Replace cable or charger",
+        "no": "Inspect port"
+      },
+      {
+        "id": "DP-2",
+        "question": "Port has debris/damage?",
+        "yes": "Clean port or RP-PHN-003",
+        "no": "Try soft reset"
+      },
+      {
+        "id": "DP-3",
+        "question": "Battery health below 80%?",
+        "yes": "RP-PHN-001",
+        "no": "Logic board issue — professional service"
+      }
+    ],
+    "resolution_paths": [
+      {
+        "path_id": "RES-1",
+        "condition": "Faulty charging cable or adapter",
+        "action": "Replace with MFi-certified cable and charger",
+        "repair_code": null,
+        "estimated_time_minutes": 5,
+        "difficulty": "Easy"
+      },
+      {
+        "path_id": "RES-2",
+        "condition": "Debris or lint in charging port",
+        "action": "Clean charging port carefully",
+        "repair_code": "RP-PHN-003",
+        "estimated_time_minutes": 10,
+        "difficulty": "Easy"
+      },
+      {
+        "path_id": "RES-3",
+        "condition": "Degraded battery (below 80% health)",
+        "action": "Replace phone battery",
+        "repair_code": "RP-PHN-001",
+        "estimated_time_minutes": 60,
+        "difficulty": "Moderate"
+      }
+    ]
+  },
+  "DT-PHN-002": {
+    "id": "DT-PHN-002",
+    "name": "Cracked Screen Diagnosis",
+    "symptom_code": "PRB-PHN-002",
+    "category": "Phones",
+    "total_steps": 3,
+    "avg_resolution_time_minutes": 15,
+    "success_rate_percentage": 98.0,
+    "steps": [
+      {
+        "step": 1,
+        "title": "Assess Display Functionality",
+        "instruction": "Check if the display still shows an image. Tap, swipe, and type across the entire screen to test touch responsiveness. Note any dark spots, lines, or areas with no touch response.",
+        "tools": [
+          "None"
+        ],
+        "decision": "Is the display showing an image and responding to touch?"
+      },
+      {
+        "step": 2,
+        "title": "Check for Digitizer Damage",
+        "instruction": "Test touch response in all four corners and the center. Try drawing or writing in a notes app. Dead zones or erratic touch indicate digitizer failure, not just a glass crack.",
+        "tools": [
+          "Stylus (optional)"
+        ],
+        "decision": "Are there dead zones or erratic touch behavior?"
+      },
+      {
+        "step": 3,
+        "title": "Evaluate Repair vs. Replace",
+        "instruction": "Compare cost of screen replacement (typically $120-$350 for flagship phones) against device trade-in or replacement cost. If device is over 3 years old, factor in battery and overall condition.",
+        "tools": [
+          "None"
+        ],
+        "decision": "Is screen repair cost less than 50% of device replacement cost?"
+      }
+    ],
+    "decision_points": [
+      {
+        "id": "DP-1",
+        "question": "Display dead or no image?",
+        "yes": "Full OLED/LCD assembly needed — RP-PHN-002",
+        "no": "Assess touch function"
+      },
+      {
+        "id": "DP-2",
+        "question": "Touch digitizer unresponsive?",
+        "yes": "RP-PHN-002 (full assembly)",
+        "no": "Glass-only replacement feasible"
+      },
+      {
+        "id": "DP-3",
+        "question": "Repair cost-effective?",
+        "yes": "RP-PHN-002",
+        "no": "Consider device replacement"
+      }
+    ],
+    "resolution_paths": [
+      {
+        "path_id": "RES-1",
+        "condition": "Glass cracked but display and touch intact",
+        "action": "Apply tempered glass screen protector as temp fix; schedule glass-only replacement",
+        "repair_code": null,
+        "estimated_time_minutes": 10,
+        "difficulty": "Easy"
+      },
+      {
+        "path_id": "RES-2",
+        "condition": "Display dead or touch digitizer failed",
+        "action": "Replace full screen assembly (OLED + digitizer)",
+        "repair_code": "RP-PHN-002",
+        "estimated_time_minutes": 60,
+        "difficulty": "Expert"
+      }
+    ]
+  },
+  "DT-LAP-001": {
+    "id": "DT-LAP-001",
+    "name": "Laptop Won't Turn On Diagnostic Tree",
+    "symptom_code": "PRB-LAP-003",
+    "category": "Laptops",
+    "total_steps": 4,
+    "avg_resolution_time_minutes": 30,
+    "success_rate_percentage": 82.0,
+    "steps": [
+      {
+        "step": 1,
+        "title": "Check Power Supply",
+        "instruction": "Verify the charger LED is lit and charger is firmly connected. Try a different outlet. Inspect the charging port and cable for damage. Remove battery (if removable) and run on AC power only.",
+        "tools": [
+          "Multimeter (to test charger output voltage)",
+          "Alternate charger"
+        ],
+        "decision": "Does the laptop show any sign of life with confirmed-good charger?"
+      },
+      {
+        "step": 2,
+        "title": "Perform Hard Reset",
+        "instruction": "Disconnect the charger. Hold the power button for 30 seconds to drain residual power. Reconnect charger and attempt power-on. This clears stuck power states common after updates or crashes.",
+        "tools": [
+          "None"
+        ],
+        "decision": "Does the laptop power on after hard reset?"
+      },
+      {
+        "step": 3,
+        "title": "Check RAM Seating",
+        "instruction": "Open the bottom access panel. Remove and firmly re-seat each RAM stick. Try booting with one stick at a time in the primary slot. A beep code on power-on indicates RAM is being detected.",
+        "tools": [
+          "Phillips screwdriver",
+          "Anti-static wrist strap"
+        ],
+        "decision": "Does the laptop POST (show manufacturer logo) with RAM re-seated?"
+      },
+      {
+        "step": 4,
+        "title": "External Display Test",
+        "instruction": "Connect the laptop to an external monitor via HDMI or DisplayPort. Power on and check if the external display shows activity. This isolates whether the issue is the internal display or the motherboard/GPU.",
+        "tools": [
+          "HDMI cable",
+          "External monitor"
+        ],
+        "decision": "Does the external display show output?"
+      }
+    ],
+    "decision_points": [
+      {
+        "id": "DP-1",
+        "question": "No power with known-good charger?",
+        "yes": "Likely dead battery or DC jack — service needed",
+        "no": "Try hard reset"
+      },
+      {
+        "id": "DP-2",
+        "question": "Hard reset resolved it?",
+        "yes": "Monitor and update BIOS/firmware",
+        "no": "Check RAM"
+      },
+      {
+        "id": "DP-3",
+        "question": "External display has output?",
+        "yes": "Replace internal display/cable",
+        "no": "Motherboard/GPU failure — professional service"
+      }
+    ],
+    "resolution_paths": [
+      {
+        "path_id": "RES-1",
+        "condition": "Stuck power state",
+        "action": "Hard reset resolves the issue",
+        "repair_code": null,
+        "estimated_time_minutes": 5,
+        "difficulty": "Easy"
+      },
+      {
+        "path_id": "RES-2",
+        "condition": "Overheating causing shutdown/no boot",
+        "action": "Clean fan and replace thermal paste",
+        "repair_code": "RP-LAP-001",
+        "estimated_time_minutes": 45,
+        "difficulty": "Moderate"
+      },
+      {
+        "path_id": "RES-3",
+        "condition": "Internal display failure with external output OK",
+        "action": "Replace display panel or display cable",
+        "repair_code": "RP-LAP-002",
+        "estimated_time_minutes": 60,
+        "difficulty": "Moderate"
+      }
+    ]
+  },
+  "DT-CON-001": {
+    "id": "DT-CON-001",
+    "name": "Console HDMI Port Failure Diagnostic Tree",
+    "symptom_code": "PRB-CON-001",
+    "category": "Gaming",
+    "total_steps": 3,
+    "avg_resolution_time_minutes": 20,
+    "success_rate_percentage": 88.0,
+    "steps": [
+      {
+        "step": 1,
+        "title": "Isolate Cable and TV",
+        "instruction": "Test the same HDMI cable on another device connected to the same TV port. Then try a different HDMI cable on the console. Test the console on a different TV or monitor.",
+        "tools": [
+          "Spare HDMI 2.1 cable",
+          "Second display"
+        ],
+        "decision": "Does the console output video on a different TV/cable combination?"
+      },
+      {
+        "step": 2,
+        "title": "Inspect HDMI Port",
+        "instruction": "Shine a flashlight into the console's HDMI port. Look for bent or pushed-in pins, debris, or visible damage. A single bent pin is often repairable with fine tweezers.",
+        "tools": [
+          "Flashlight",
+          "Fine-tip tweezers",
+          "Magnifying glass"
+        ],
+        "decision": "Are pins bent or is there visible port damage?"
+      },
+      {
+        "step": 3,
+        "title": "Safe Mode / Software Check",
+        "instruction": "Boot the console in Safe Mode (hold power button until second beep). Select 'Change Resolution' or 'Reset Video Output'. This can resolve black-screen issues from incorrect resolution settings.",
+        "tools": [
+          "Console controller"
+        ],
+        "decision": "Did Safe Mode video reset restore output?"
+      }
+    ],
+    "decision_points": [
+      {
+        "id": "DP-1",
+        "question": "Works on different TV/cable?",
+        "yes": "Replace HDMI cable or fix TV HDMI port",
+        "no": "Inspect console port"
+      },
+      {
+        "id": "DP-2",
+        "question": "Port pins bent/damaged?",
+        "yes": "RP-CON-001 (HDMI port replacement)",
+        "no": "Try Safe Mode reset"
+      },
+      {
+        "id": "DP-3",
+        "question": "Safe Mode reset restored output?",
+        "yes": "Adjust display settings",
+        "no": "HDMI IC chip failure — professional service"
+      }
+    ],
+    "resolution_paths": [
+      {
+        "path_id": "RES-1",
+        "condition": "Faulty HDMI cable",
+        "action": "Replace with HDMI 2.1 certified cable",
+        "repair_code": null,
+        "estimated_time_minutes": 5,
+        "difficulty": "Easy"
+      },
+      {
+        "path_id": "RES-2",
+        "condition": "Damaged HDMI port on console",
+        "action": "Replace console HDMI port",
+        "repair_code": "RP-CON-001",
+        "estimated_time_minutes": 45,
+        "difficulty": "Expert"
+      }
+    ]
+  }
+}

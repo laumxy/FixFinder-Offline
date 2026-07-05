@@ -1,0 +1,135 @@
+{
+  "version": "3.0",
+  "dimension": 768,
+  "index_type": "IndexFlatIP",
+  "total_entries": 30,
+  "index_path": "Version_3/12_FAISS\\index.faiss",
+  "id_mapping": {
+    "0": "CAR-001",
+    "1": "CAR-002",
+    "2": "CAR-003",
+    "3": "HVY-001",
+    "4": "HVY-002",
+    "5": "GEN-001",
+    "6": "CMP-001",
+    "7": "MOT-001",
+    "8": "MCY-001",
+    "9": "SUV-001",
+    "10": "PRB-CAR-001",
+    "11": "PRB-CAR-002",
+    "12": "PRB-CAR-003",
+    "13": "PRB-CAR-004",
+    "14": "PRB-CAR-005",
+    "15": "PRB-HVY-001",
+    "16": "PRB-HVY-002",
+    "17": "PRB-GEN-001",
+    "18": "PRB-MOT-001",
+    "19": "PRB-MCY-001",
+    "20": "RP-CAR-001",
+    "21": "RP-HEQ-001",
+    "22": "RP-GEN-001",
+    "23": "RP-SOL-001",
+    "24": "RP-CAR-002",
+    "25": "RP-CAR-003",
+    "26": "RP-HVY-002",
+    "27": "RP-GEN-002",
+    "28": "RP-MOT-001",
+    "29": "RP-MCY-001"
+  },
+  "mapping": {
+    "Cars": {
+      "range": [
+        0,
+        26
+      ],
+      "ids": [
+        "CAR-001",
+        "CAR-002",
+        "CAR-003",
+        "PRB-CAR-001",
+        "PRB-CAR-002",
+        "PRB-CAR-003",
+        "PRB-CAR-004",
+        "PRB-CAR-005",
+        "RP-CAR-001",
+        "RP-CAR-002",
+        "RP-CAR-003"
+      ]
+    },
+    "Heavy Equipment": {
+      "range": [
+        3,
+        27
+      ],
+      "ids": [
+        "HVY-001",
+        "HVY-002",
+        "PRB-HVY-001",
+        "PRB-HVY-002",
+        "RP-HEQ-001",
+        "RP-HVY-002"
+      ]
+    },
+    "Generators": {
+      "range": [
+        5,
+        28
+      ],
+      "ids": [
+        "GEN-001",
+        "PRB-GEN-001",
+        "RP-GEN-001",
+        "RP-GEN-002"
+      ]
+    },
+    "Compressors": {
+      "range": [
+        6,
+        7
+      ],
+      "ids": [
+        "CMP-001"
+      ]
+    },
+    "Motors": {
+      "range": [
+        7,
+        29
+      ],
+      "ids": [
+        "MOT-001",
+        "PRB-MOT-001",
+        "RP-MOT-001"
+      ]
+    },
+    "Motorcycles": {
+      "range": [
+        8,
+        30
+      ],
+      "ids": [
+        "MCY-001",
+        "PRB-MCY-001",
+        "RP-MCY-001"
+      ]
+    },
+    "SUVs": {
+      "range": [
+        9,
+        10
+      ],
+      "ids": [
+        "SUV-001"
+      ]
+    },
+    "Solar Systems": {
+      "range": [
+        23,
+        24
+      ],
+      "ids": [
+        "RP-SOL-001"
+      ]
+    }
+  }
+}
