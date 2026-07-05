@@ -19,7 +19,7 @@
       "Replacement O2 sensor (match exact part number from OBD code and vehicle VIN)",
       "Anti-seize compound (if not pre-applied to new sensor)"
     ],
-    "safety_notes": "Allow exhaust system to cool fully before touching. Hot exhaust pipes cause severe burns. Use jack stands — never work under a vehicle supported only by a floor jack.",
+    "safety_notes": "Allow exhaust system to cool fully before touching. Hot exhaust pipes cause severe burns. Use jack stands â€” never work under a vehicle supported only by a floor jack.",
     "pre_repair_checks": [
       "Confirm which sensor is faulty: Bank 1/Bank 2, Sensor 1 (upstream) or Sensor 2 (downstream)",
       "Apply penetrating oil to sensor threads the evening before repair if possible",
@@ -39,7 +39,7 @@
       {
         "step": 3,
         "title": "Remove Old Sensor",
-        "detail": "Apply penetrating oil around the sensor base and let it soak for 10 minutes. Use the O2 sensor socket with a breaker bar to break the sensor loose — turn counterclockwise. If it won't budge, apply more penetrating oil and wait. Forcing it risks rounding the sensor or stripping threads."
+        "detail": "Apply penetrating oil around the sensor base and let it soak for 10 minutes. Use the O2 sensor socket with a breaker bar to break the sensor loose â€” turn counterclockwise. If it won't budge, apply more penetrating oil and wait. Forcing it risks rounding the sensor or stripping threads."
       },
       {
         "step": 4,
@@ -59,11 +59,11 @@
     ],
     "post_repair_checks": [
       "Confirm CEL is off after one full drive cycle",
-      "Monitor O2 sensor live data — upstream should oscillate between 0.1-0.9V",
+      "Monitor O2 sensor live data â€” upstream should oscillate between 0.1-0.9V",
       "Check for exhaust leaks at the sensor bung"
     ],
     "warnings": [
-      "Never overtighten O2 sensors — threads in the exhaust bung strip easily",
+      "Never overtighten O2 sensors â€” threads in the exhaust bung strip easily",
       "Some sensors require a PCM relearn drive cycle before the CEL clears"
     ]
   },
@@ -89,11 +89,11 @@
       "Track master pin and retaining clip",
       "High-pressure grease (for track adjuster)"
     ],
-    "safety_notes": "NEVER work under an excavator supported only by the arm. Always block the machine on cribbing. Tracks under spring tension can snap back violently when the master pin is removed — keep clear of the sides. Minimum two-person operation.",
+    "safety_notes": "NEVER work under an excavator supported only by the arm. Always block the machine on cribbing. Tracks under spring tension can snap back violently when the master pin is removed â€” keep clear of the sides. Minimum two-person operation.",
     "pre_repair_checks": [
       "Order replacement track matched to machine model and current pad width",
       "Verify replacement track link count matches original",
-      "Have all tools staged before beginning — track work requires continuous attention"
+      "Have all tools staged before beginning â€” track work requires continuous attention"
     ],
     "procedure_steps": [
       {
@@ -104,7 +104,7 @@
       {
         "step": 2,
         "title": "Release Track Tension",
-        "detail": "Locate the track adjuster grease valve on the front idler. Using a wrench, slowly open the valve to release grease and relieve track tension. Open only enough to allow slack — do not fully remove the valve."
+        "detail": "Locate the track adjuster grease valve on the front idler. Using a wrench, slowly open the valve to release grease and relieve track tension. Open only enough to allow slack â€” do not fully remove the valve."
       },
       {
         "step": 3,
@@ -114,7 +114,7 @@
       {
         "step": 4,
         "title": "Remove the Master Pin",
-        "detail": "Rotate the track by hand to bring the master pin to an accessible position (usually the top run, between idler and sprocket). Use the master pin driver and sledgehammer to drive out the master pin. Stand clear of the track sides when the pin releases — the track will drop and snap."
+        "detail": "Rotate the track by hand to bring the master pin to an accessible position (usually the top run, between idler and sprocket). Use the master pin driver and sledgehammer to drive out the master pin. Stand clear of the track sides when the pin releases â€” the track will drop and snap."
       },
       {
         "step": 5,
@@ -124,7 +124,7 @@
       {
         "step": 6,
         "title": "Inspect Undercarriage Components",
-        "detail": "Before installing the new track, inspect all rollers (bottom and top), the front idler, and the drive sprocket for wear. Replace worn components now — labor costs make it uneconomical to do later."
+        "detail": "Before installing the new track, inspect all rollers (bottom and top), the front idler, and the drive sprocket for wear. Replace worn components now â€” labor costs make it uneconomical to do later."
       },
       {
         "step": 7,
@@ -135,11 +135,11 @@
     "post_repair_checks": [
       "Measure track sag and confirm within specification",
       "Operate machine through full range of motion and check for unusual noise",
-      "Re-check track tension after first 8 hours of operation — new tracks stretch"
+      "Re-check track tension after first 8 hours of operation â€” new tracks stretch"
     ],
     "warnings": [
-      "Track spring tension is extremely high — incorrect master pin removal causes serious injury",
-      "Never run a machine with incorrect track tension — too tight damages rollers; too loose causes de-tracking"
+      "Track spring tension is extremely high â€” incorrect master pin removal causes serious injury",
+      "Never run a machine with incorrect track tension â€” too tight damages rollers; too loose causes de-tracking"
     ]
   },
   "RP-GEN-001": {
@@ -199,16 +199,16 @@
       {
         "step": 6,
         "title": "Test and Validate",
-        "detail": "Reconnect battery. Attempt to start the generator per manufacturer procedure. Measure output voltage (should be 120V ±5% at no load). Connect a test load and measure under-load voltage and frequency stability. Clear any remaining fault codes."
+        "detail": "Reconnect battery. Attempt to start the generator per manufacturer procedure. Measure output voltage (should be 120V Â±5% at no load). Connect a test load and measure under-load voltage and frequency stability. Clear any remaining fault codes."
       }
     ],
     "post_repair_checks": [
-      "Verify output voltage: 120V AC ±5% no-load, ±10% full-load",
-      "Verify output frequency: 60 Hz ±0.5 Hz (or 50 Hz per region)",
+      "Verify output voltage: 120V AC Â±5% no-load, Â±10% full-load",
+      "Verify output frequency: 60 Hz Â±0.5 Hz (or 50 Hz per region)",
       "Run generator under 75% rated load for 30 minutes and monitor temperature"
     ],
     "warnings": [
-      "120/240V AC output is present immediately on starting — keep panel cover secure",
+      "120/240V AC output is present immediately on starting â€” keep panel cover secure",
       "Incorrect AVR adjustment causes over-voltage and can destroy connected equipment"
     ]
   },
@@ -232,27 +232,27 @@
       "pH-neutral soap (a small amount, optional for heavy soiling)",
       "Deionized water squeegee rinse"
     ],
-    "safety_notes": "Work in early morning or late afternoon when panels are cool — cleaning hot panels with cold water can cause thermal shock and micro-cracking. Never use a pressure washer on solar panels. On pitched roofs, always use a safety harness.",
+    "safety_notes": "Work in early morning or late afternoon when panels are cool â€” cleaning hot panels with cold water can cause thermal shock and micro-cracking. Never use a pressure washer on solar panels. On pitched roofs, always use a safety harness.",
     "pre_repair_checks": [
       "Turn off the solar system at the inverter (AC disconnect and DC isolator)",
       "Check inverter monitoring to confirm current baseline output before cleaning",
-      "Inspect panels from ground first — if physical damage is found, cleaning alone will not fix output issues"
+      "Inspect panels from ground first â€” if physical damage is found, cleaning alone will not fix output issues"
     ],
     "procedure_steps": [
       {
         "step": 1,
         "title": "Shut Down the Solar System",
-        "detail": "Switch the inverter to 'OFF' mode via the inverter display or app. Open the AC disconnect and DC isolator switches on the inverter. This ensures panels are de-energized from the inverter side. Note: panels still produce DC voltage in sunlight — avoid touching wires or connectors."
+        "detail": "Switch the inverter to 'OFF' mode via the inverter display or app. Open the AC disconnect and DC isolator switches on the inverter. This ensures panels are de-energized from the inverter side. Note: panels still produce DC voltage in sunlight â€” avoid touching wires or connectors."
       },
       {
         "step": 2,
         "title": "Rinse Panels with Water",
-        "detail": "Using a garden hose on a gentle setting or deionized water feed, rinse all panels from top to bottom to remove loose dust and debris. Do not use high-pressure spray — it can drive water under panel frame seals and damage junction boxes."
+        "detail": "Using a garden hose on a gentle setting or deionized water feed, rinse all panels from top to bottom to remove loose dust and debris. Do not use high-pressure spray â€” it can drive water under panel frame seals and damage junction boxes."
       },
       {
         "step": 3,
         "title": "Scrub with Soft Brush",
-        "detail": "Mix a small amount of pH-neutral soap in water if panels are heavily soiled with bird droppings or pollen. Using the telescoping soft-bristle brush, gently scrub each panel in straight lines — do not use circular motions as they can leave swirl marks that reduce light transmission."
+        "detail": "Mix a small amount of pH-neutral soap in water if panels are heavily soiled with bird droppings or pollen. Using the telescoping soft-bristle brush, gently scrub each panel in straight lines â€” do not use circular motions as they can leave swirl marks that reduce light transmission."
       },
       {
         "step": 4,
@@ -272,12 +272,80 @@
     ],
     "post_repair_checks": [
       "Confirm inverter is operating without fault codes after restart",
-      "Compare output kW to pre-cleaning baseline — document improvement",
+      "Compare output kW to pre-cleaning baseline â€” document improvement",
       "Schedule recurring cleaning: every 6 months in dry climates, annually in wet climates"
     ],
     "warnings": [
-      "Do not use abrasive materials — scratches permanently reduce panel output",
-      "Avoid cleaning in full midday sun — panels reach 60-70°C and cold water causes micro-cracks"
+      "Do not use abrasive materials â€” scratches permanently reduce panel output",
+      "Avoid cleaning in full midday sun â€” panels reach 60-70Â°C and cold water causes micro-cracks"
+    ]
+  },
+  "RP-CAR-004": {
+    "id": "RP-CAR-004",
+    "name": "Car Won't Start — Diagnosis and Repair",
+    "category": "Cars",
+    "difficulty": "Moderate",
+    "estimated_time": "30-90 minutes",
+    "estimated_time_minutes": 60,
+    "tools_required": [
+      "Multimeter",
+      "Battery load tester",
+      "Jump cables or jump starter",
+      "OBD-II scanner",
+      "Socket wrench set",
+      "Flashlight"
+    ],
+    "materials_required": [
+      "Replacement car battery (if failed)",
+      "Replacement starter (if failed)",
+      "Battery terminal cleaning brush"
+    ],
+    "safety_notes": "Never short circuit battery terminals. Keep sparks away from the battery — it produces hydrogen gas. When jump-starting, always connect positive to positive first.",
+    "pre_repair_checks": [
+      "Check battery voltage with multimeter — should be 12.4V+ at rest",
+      "Listen for sound when key is turned: no sound = battery/starter; single click = starter; rapid clicks = weak battery",
+      "Check if interior lights and radio work — they confirm battery has some charge"
+    ],
+    "procedure_steps": [
+      {
+        "step": 1,
+        "title": "Identify the Symptom",
+        "detail": "Turn the key and listen carefully. No sound at all = electrical issue (fuse, battery, switch). Single heavy CLUNK = starter solenoid engaging but motor not turning (starter or seized engine). Rapid clicking = battery too weak to crank. Engine cranks but won't fire = fuel or ignition issue."
+      },
+      {
+        "step": 2,
+        "title": "Test Battery Voltage and Load",
+        "detail": "Measure battery voltage with multimeter: 12.6V = full; 12.4V = OK; below 12.0V = needs charging. Do a load test: crank the engine while measuring — voltage should stay above 9.6V. If it drops below, the battery cannot deliver sufficient current."
+      },
+      {
+        "step": 3,
+        "title": "Clean Battery Terminals",
+        "detail": "White or blue-green crust on terminals causes high resistance and no-start. Disconnect negative first, then positive. Clean with a wire brush and baking soda/water solution. Reconnect positive first, then negative. Tighten firmly."
+      },
+      {
+        "step": 4,
+        "title": "Jump Start Test",
+        "detail": "Jump-start with jumper cables from a good battery. If the car starts immediately, the battery is bad. If it still won't start after a jump, the issue is the starter, alternator, or fuel/ignition system."
+      },
+      {
+        "step": 5,
+        "title": "Check Starter and Fuel",
+        "detail": "With a charged battery confirmed: tap the starter with a rubber mallet while someone tries to start — a failed starter sometimes responds. Check fuel level and listen for the fuel pump hum (2-second hum after key-on = pump working). No hum = fuel pump failure."
+      },
+      {
+        "step": 6,
+        "title": "Read Fault Codes",
+        "detail": "Connect OBD-II scanner. Codes like P0335 (crankshaft sensor), P0340 (camshaft sensor), P06xx (fuel system) explain no-start conditions. Address the stored code's root cause."
+      }
+    ],
+    "post_repair_checks": [
+      "Verify engine starts reliably 3 times in a row",
+      "Check charging voltage at battery with engine running — should be 13.8–14.8V",
+      "Clear OBD codes and verify no return after a short drive"
+    ],
+    "warnings": [
+      "Incorrect jump-start polarity can destroy electronics — positive to positive always",
+      "Do not crank engine for more than 10 seconds at a time — starter overheating"
     ]
   }
 }

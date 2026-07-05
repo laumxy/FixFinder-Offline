@@ -66,13 +66,19 @@ _DIFFICULTY_ORDER: dict[str, int] = {
 _CATEGORY_KEYWORDS: dict[str, list[str]] = {
     # V1 — Home Maintenance
     "Roofing":     ["roof", "shingle", "flashing", "leak", "gutter", "ridge"],
-    "Plumbing":    ["water", "pipe", "faucet", "drain", "toilet", "pressure", "heater", "plumb"],
-    "Electrical":  ["outlet", "breaker", "circuit", "gfci", "wire", "electric", "panel"],
-    "HVAC":        ["hvac", "furnace", "heat", "cool", "ac", "filter", "capacitor", "thermostat"],
-    "Appliances":  ["fridge", "refrigerator", "appliance", "relay", "compressor", "washer"],
-    "Foundation":  ["foundation", "crack", "basement", "sump", "water intrusion"],
+    "Plumbing":    ["water", "pipe", "faucet", "drain", "toilet", "pressure", "heater", "plumb",
+                    "pump", "tank", "hose", "valve", "strainer"],
+    "Electrical":  ["outlet", "breaker", "circuit", "gfci", "wire", "electric", "panel", "fuse"],
+    "HVAC":        ["hvac", "furnace", "heat", "cool", "ac", "filter", "capacitor", "thermostat",
+                    "generator", "carburetor", "fuel", "starts", "dies", "stall"],
+    "Appliances":  ["fridge", "refrigerator", "propane", "gas", "appliance", "relay", "compressor",
+                    "washer", "stove", "oven", "burner", "igniter", "thermocouple", "orifice",
+                    "cooling", "absorption", "flue", "pilot", "light"],
+    "Foundation":  ["foundation", "crack", "basement", "sump", "water intrusion", "leveling",
+                    "hydraulic", "jack", "sensor"],
     "Windows":     ["window", "draft", "seal", "weatherstrip", "glass"],
-    "Garage":      ["garage", "door", "spring", "opener"],
+    "Garage":      ["garage", "door", "spring", "opener", "slide", "awning", "retract",
+                    "extend", "motor", "gear", "stuck", "rv"],
     # V2 — Electronics
     "Phones":      ["phone", "iphone", "samsung", "battery", "screen", "charging", "port"],
     "Laptops":     ["laptop", "macbook", "thermal", "overheat", "keyboard", "display", "paste"],
@@ -235,9 +241,43 @@ class AIRepairReasoningEngine:
         }
         category_hint = tree_category or _PREFIX_TO_CAT.get(prefix, "")
 
+        # For sym_* codes that don't resolve via prefix, look up the DB
+        # to get the symptom name and category for keyword generation
+        symptom_name_hint = ""
+        if not category_hint and symptom_code.lower().startswith("sym_"):
+            try:
+                self._require_db()
+                row = self._db_conn.execute(
+                    "SELECT s.symptom_name, c.category_name "
+                    "FROM symptoms s "
+                    "LEFT JOIN categories c ON s.category_id = c.category_id "
+                    "WHERE s.symptom_code = ?",
+                    (symptom_code,)
+                ).fetchone()
+                if row:
+                    category_hint    = row["category_name"] or ""
+                    symptom_name_hint = row["symptom_name"] or ""
+            except Exception:
+                pass
+
         # keyword bag for fuzzy matching
         query_keywords = self._keywords_for_category(category_hint)
+
+        # Also inject tokens from the symptom name itself for sym_* codes
+        if symptom_name_hint:
+            extra = set(re.findall(r"[a-z]+", symptom_name_hint.lower()))
+            query_keywords = query_keywords | extra
+
         action_tokens  = set(re.findall(r"[a-z]+", recommended_action.lower()))
+
+        # For sym_* symptom codes, also try direct name-match against repair names
+        # by constructing a boosted keyword set from the symptom name tokens
+        symptom_name_tokens: set[str] = set()
+        if symptom_name_hint:
+            symptom_name_tokens = set(
+                t for t in re.findall(r"[a-z]+", symptom_name_hint.lower())
+                if len(t) > 3
+            )
 
         scored: list[dict] = []
         for rid, rep in repairs.items():
@@ -249,6 +289,21 @@ class AIRepairReasoningEngine:
                 action_tokens=action_tokens,
                 res_path_code=resolution_path.get("repair_code"),
             )
+            # Boost score for sym_* codes: check if repair name tokens
+            # overlap strongly with the symptom name tokens
+            if symptom_name_tokens and score > 0:
+                rep_name_tokens = set(
+                    t for t in re.findall(r"[a-z]+", rep.get("name", "").lower())
+                    if len(t) > 3
+                )
+                name_overlap = len(symptom_name_tokens & rep_name_tokens)
+                if name_overlap >= 2:
+                    # Strong name match: boost to near-perfect
+                    score = max(score, 0.85)
+                    reason = f"symptom name match ({name_overlap} tokens)"
+                elif name_overlap == 1:
+                    score = max(score, 0.60)
+                    reason = f"partial name match"
             if score <= 0:
                 continue
 

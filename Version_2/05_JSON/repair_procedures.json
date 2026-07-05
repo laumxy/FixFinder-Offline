@@ -23,7 +23,7 @@
       "90% or higher isopropyl alcohol",
       "Lint-free cloth"
     ],
-    "safety_notes": "Discharge battery to below 25% before repair to reduce fire risk. Do not puncture the old battery. If battery is swollen, use extra caution — the device may need to stay in a fireproof container.",
+    "safety_notes": "Discharge battery to below 25% before repair to reduce fire risk. Do not puncture the old battery. If battery is swollen, use extra caution â€” the device may need to stay in a fireproof container.",
     "pre_repair_checks": [
       "Back up all data via iCloud or iTunes",
       "Confirm correct battery model for your iPhone variant",
@@ -38,7 +38,7 @@
       {
         "step": 2,
         "title": "Apply Heat and Open Display",
-        "detail": "Apply heat along the bottom edge of the display for 90 seconds with a heat gun on low or an iOpener bag. This softens the adhesive. Attach suction cup to the lower display and gently pull while inserting a plastic pick at the bottom gap. Slide picks around the perimeter to cut adhesive. Do not open more than 90 degrees — the display cables run up the right side."
+        "detail": "Apply heat along the bottom edge of the display for 90 seconds with a heat gun on low or an iOpener bag. This softens the adhesive. Attach suction cup to the lower display and gently pull while inserting a plastic pick at the bottom gap. Slide picks around the perimeter to cut adhesive. Do not open more than 90 degrees â€” the display cables run up the right side."
       },
       {
         "step": 3,
@@ -58,7 +58,7 @@
       {
         "step": 6,
         "title": "Install New Battery",
-        "detail": "Peel the backing off the new adhesive strips and position the new battery in the same orientation. Press firmly for 10 seconds. Reconnect the battery flex cable connector — press down until it clicks."
+        "detail": "Peel the backing off the new adhesive strips and position the new battery in the same orientation. Press firmly for 10 seconds. Reconnect the battery flex cable connector â€” press down until it clicks."
       },
       {
         "step": 7,
@@ -77,8 +77,8 @@
       "Check all buttons, cameras, and sensors work correctly"
     ],
     "warnings": [
-      "Never use metal tools to pry the battery — puncture causes thermal runaway",
-      "Do not overtighten screws in the logic board brackets — stripped screws are a common mistake"
+      "Never use metal tools to pry the battery â€” puncture causes thermal runaway",
+      "Do not overtighten screws in the logic board brackets â€” stripped screws are a common mistake"
     ]
   },
   "RP-PHN-002": {
@@ -108,14 +108,14 @@
     "safety_notes": "Samsung OLED displays are fragile and glued directly to the frame. Rushing heat or prying will crack the display. Disconnect the battery FIRST before any other step.",
     "pre_repair_checks": [
       "Back up all data",
-      "Confirm the exact model number (e.g., SM-S928B vs SM-S928U — parts differ)",
+      "Confirm the exact model number (e.g., SM-S928B vs SM-S928U â€” parts differ)",
       "Order a frame-included assembly to avoid adhesive re-gluing of the panel"
     ],
     "procedure_steps": [
       {
         "step": 1,
         "title": "Heat and Remove Back Glass",
-        "detail": "Apply heat to the back panel for 2 minutes on medium. Attach suction cup and slowly peel the back glass using picks. Work slowly — Samsung back glass is extremely thin and cracks easily. Remove all back panel screws after removing the back glass."
+        "detail": "Apply heat to the back panel for 2 minutes on medium. Attach suction cup and slowly peel the back glass using picks. Work slowly â€” Samsung back glass is extremely thin and cracks easily. Remove all back panel screws after removing the back glass."
       },
       {
         "step": 2,
@@ -130,7 +130,7 @@
       {
         "step": 4,
         "title": "Heat and Remove Front Display",
-        "detail": "Apply heat to the display edges for 2-3 minutes. Insert a pick at one corner with a suction cup pulling gently. Work picks along all four edges cutting the LOCA adhesive. The OLED panel bonds directly to the glass — do not flex it."
+        "detail": "Apply heat to the display edges for 2-3 minutes. Insert a pick at one corner with a suction cup pulling gently. Work picks along all four edges cutting the LOCA adhesive. The OLED panel bonds directly to the glass â€” do not flex it."
       },
       {
         "step": 5,
@@ -160,8 +160,8 @@
       "Verify IP rating adhesive is intact"
     ],
     "warnings": [
-      "OLED panels crack instantly if over-bent — never force open",
-      "Heat gun distance must be maintained — direct contact will burn the panel"
+      "OLED panels crack instantly if over-bent â€” never force open",
+      "Heat gun distance must be maintained â€” direct contact will burn the panel"
     ]
   },
   "RP-LAP-001": {
@@ -203,7 +203,7 @@
       {
         "step": 3,
         "title": "Remove Heat Sink",
-        "detail": "Locate the screws securing the heat sink to the CPU/GPU. Remove them in a cross pattern (opposite corners) to release pressure evenly. Gently lift the heat sink straight up — do not slide it, as this can damage the CPU die."
+        "detail": "Locate the screws securing the heat sink to the CPU/GPU. Remove them in a cross pattern (opposite corners) to release pressure evenly. Gently lift the heat sink straight up â€” do not slide it, as this can damage the CPU die."
       },
       {
         "step": 4,
@@ -213,7 +213,7 @@
       {
         "step": 5,
         "title": "Apply New Thermal Paste",
-        "detail": "Apply a rice-grain-sized dot of thermal compound to the center of the CPU die. For MacBooks with a larger heat spreader (e.g., M1/M2 chips), use a thin spread method. Less is more — excess paste causes no benefit and may contact board components."
+        "detail": "Apply a rice-grain-sized dot of thermal compound to the center of the CPU die. For MacBooks with a larger heat spreader (e.g., M1/M2 chips), use a thin spread method. Less is more â€” excess paste causes no benefit and may contact board components."
       },
       {
         "step": 6,
@@ -224,12 +224,12 @@
     "post_repair_checks": [
       "Boot the MacBook and verify it powers on normally",
       "Run CPU stress test (e.g., Geekbench or Prime95) for 15 minutes",
-      "Monitor CPU temperature — should stay below 85°C under full load",
+      "Monitor CPU temperature â€” should stay below 85Â°C under full load",
       "Confirm fan noise has decreased compared to before repair"
     ],
     "warnings": [
-      "Only apply thermal paste to the CPU/GPU die — not the surrounding board",
-      "Do not over-tighten heat sink screws — apply even, moderate torque only"
+      "Only apply thermal paste to the CPU/GPU die â€” not the surrounding board",
+      "Do not over-tighten heat sink screws â€” apply even, moderate torque only"
     ]
   },
   "RP-CON-001": {
@@ -257,24 +257,24 @@
     "safety_notes": "CRITICAL: Liquid metal is electrically conductive. Any contact with surrounding SMD components or the PCB will cause a short circuit and permanent damage. Work slowly and mask all surrounding areas with Kapton tape before applying liquid metal.",
     "pre_repair_checks": [
       "Confirm PS5 is overheating (thermal throttling, loud fan, shutdowns under load)",
-      "Gather all tools before opening — reassembly must happen the same session",
+      "Gather all tools before opening â€” reassembly must happen the same session",
       "Watch a model-specific disassembly video (Disc vs. Digital editions differ slightly)"
     ],
     "procedure_steps": [
       {
         "step": 1,
         "title": "Remove PS5 Shell",
-        "detail": "Stand the PS5 vertically. Pull the white top panel upward and toward you — it unclips without screws. Repeat for the second panel. Remove the corner screw holding the fan shroud."
+        "detail": "Stand the PS5 vertically. Pull the white top panel upward and toward you â€” it unclips without screws. Repeat for the second panel. Remove the corner screw holding the fan shroud."
       },
       {
         "step": 2,
         "title": "Remove Fan and Heat Sink",
-        "detail": "Unplug the fan connector. Remove the four screws holding the large heat sink — use a cross pattern. Gently lift the heat sink from the APU (Accelerated Processing Unit) die."
+        "detail": "Unplug the fan connector. Remove the four screws holding the large heat sink â€” use a cross pattern. Gently lift the heat sink from the APU (Accelerated Processing Unit) die."
       },
       {
         "step": 3,
         "title": "Clean Old Liquid Metal",
-        "detail": "Sony uses liquid metal from the factory. Use cotton swabs with 90% isopropyl alcohol to carefully clean both the APU die and the copper heat sink contact plate. The APU die is small — work carefully around it."
+        "detail": "Sony uses liquid metal from the factory. Use cotton swabs with 90% isopropyl alcohol to carefully clean both the APU die and the copper heat sink contact plate. The APU die is small â€” work carefully around it."
       },
       {
         "step": 4,
@@ -284,12 +284,12 @@
       {
         "step": 5,
         "title": "Apply Liquid Metal",
-        "detail": "Apply a tiny amount of liquid metal to the center of the APU die — approximately the size of a small pea. Use the applicator pen or a small brush to spread it in a thin, even layer covering only the die surface. Apply the same thin layer to the copper heat sink contact plate."
+        "detail": "Apply a tiny amount of liquid metal to the center of the APU die â€” approximately the size of a small pea. Use the applicator pen or a small brush to spread it in a thin, even layer covering only the die surface. Apply the same thin layer to the copper heat sink contact plate."
       },
       {
         "step": 6,
         "title": "Reinstall Heat Sink",
-        "detail": "Carefully lower the heat sink straight down onto the APU — any sliding motion will spread liquid metal onto unmasked areas. Tighten screws in cross pattern to manufacturer torque. Remove Kapton tape masking."
+        "detail": "Carefully lower the heat sink straight down onto the APU â€” any sliding motion will spread liquid metal onto unmasked areas. Tighten screws in cross pattern to manufacturer torque. Remove Kapton tape masking."
       },
       {
         "step": 7,
@@ -298,14 +298,136 @@
       }
     ],
     "post_repair_checks": [
-      "APU temperature under full load should drop 10-20°C vs. before repair",
+      "APU temperature under full load should drop 10-20Â°C vs. before repair",
       "Fan noise should decrease noticeably under gaming load",
       "Verify no artifacts or crashes during extended gameplay"
     ],
     "warnings": [
       "NEVER let liquid metal contact any area other than the die surface and heat sink plate",
-      "Never tilt the console while liquid metal is fresh — it can flow off the die",
+      "Never tilt the console while liquid metal is fresh â€” it can flow off the die",
       "This repair voids all remaining warranty"
+    ]
+  },
+  "RP-LAP-002": {
+    "id": "RP-LAP-002",
+    "name": "Laptop Won't Turn On — Power Troubleshooting",
+    "category": "Laptops",
+    "difficulty": "Moderate",
+    "estimated_time": "20-60 minutes",
+    "estimated_time_minutes": 40,
+    "tools_required": [
+      "Multimeter",
+      "Phillips screwdriver",
+      "Anti-static wrist strap",
+      "Alternate charger for testing"
+    ],
+    "materials_required": [
+      "Known-good compatible charger (for testing)",
+      "Replacement CMOS battery (CR2032) if needed"
+    ],
+    "safety_notes": "Disconnect the charger before opening the case. Ground yourself with an anti-static strap before touching internal components.",
+    "pre_repair_checks": [
+      "Try a different wall outlet and charger cable",
+      "Hold the power button for 30 seconds (hard reset) to drain residual power",
+      "Check for any LED indicator lights — even a faint glow indicates partial power"
+    ],
+    "procedure_steps": [
+      {
+        "step": 1,
+        "title": "Hard Reset",
+        "detail": "Disconnect the charger. If the battery is removable, remove it. Hold the power button for 30 full seconds to drain all residual charge from capacitors. Reconnect only the charger (no battery) and try powering on."
+      },
+      {
+        "step": 2,
+        "title": "Test Charger and Port",
+        "detail": "Measure the charger output with a multimeter — should match rated voltage (19V for most laptops). Inspect the charging port on the laptop for bent pins or debris. Try a known-good charger if available."
+      },
+      {
+        "step": 3,
+        "title": "Check RAM Seating",
+        "detail": "Open the bottom panel. Firmly reseat the RAM sticks — press each stick down until the retention clips click. Try booting with one RAM stick at a time in the primary slot."
+      },
+      {
+        "step": 4,
+        "title": "Test with External Display",
+        "detail": "Connect to an external monitor via HDMI. If the external display shows output, the issue is the internal display or its cable, not the logic board."
+      },
+      {
+        "step": 5,
+        "title": "Inspect for Physical Damage",
+        "detail": "Look for bulging battery, burnt smell, liquid damage, or cracked board. A swollen battery can physically block power distribution — it must be replaced before any power test."
+      },
+      {
+        "step": 6,
+        "title": "CMOS Battery",
+        "detail": "If the laptop is very old and powers on briefly then dies, the CMOS battery (CR2032 on the motherboard) may be dead. Replace it and attempt to boot."
+      }
+    ],
+    "post_repair_checks": [
+      "Verify laptop boots to OS without errors",
+      "Confirm battery charges normally",
+      "Run a memory diagnostic (Windows: mdsched, macOS: Apple Diagnostics)"
+    ],
+    "warnings": [
+      "Do not attempt power-on with a visibly swollen battery — fire risk",
+      "Static discharge can damage logic board — always use anti-static strap"
+    ]
+  },
+  "RP-TAB-001": {
+    "id": "RP-TAB-001",
+    "name": "Tablet Won't Turn On — Recovery Steps",
+    "category": "Tablets",
+    "difficulty": "Easy",
+    "estimated_time": "15-30 minutes",
+    "estimated_time_minutes": 22,
+    "tools_required": [
+      "USB-C or Lightning cable",
+      "Known-good charger"
+    ],
+    "materials_required": [
+      "Replacement charging cable if faulty"
+    ],
+    "safety_notes": "Do not attempt to open a swollen tablet — lithium battery expansion is a fire hazard.",
+    "pre_repair_checks": [
+      "Charge for at least 30 minutes before attempting power-on",
+      "Try a different cable and charger",
+      "Check if the charging indicator LED or screen briefly lights up"
+    ],
+    "procedure_steps": [
+      {
+        "step": 1,
+        "title": "Force Charge",
+        "detail": "Plug in charger and leave for 30 minutes without pressing any buttons. A completely drained battery needs time to accept charge before the device can power on."
+      },
+      {
+        "step": 2,
+        "title": "Force Restart",
+        "detail": "For iPad: Press and hold Power + Volume Down (or Home button on older models) for 10 seconds until Apple logo appears. For Android tablets: hold Power + Volume Down for 10–15 seconds."
+      },
+      {
+        "step": 3,
+        "title": "Recovery Mode",
+        "detail": "Connect to a computer. iTunes (Windows/Mac) or Finder (Mac) may detect the tablet in recovery mode and offer to restore. This will erase data but can recover a non-booting device."
+      },
+      {
+        "step": 4,
+        "title": "Check Charging Port",
+        "detail": "Inspect the charging port for lint, debris, or bent pins. Use a wooden toothpick to carefully remove debris. Test with a different cable."
+      },
+      {
+        "step": 5,
+        "title": "Assess Battery Health",
+        "detail": "If the tablet only works when plugged in and dies immediately on unplug, the battery is failed and must be replaced."
+      }
+    ],
+    "post_repair_checks": [
+      "Confirm device boots fully to home screen",
+      "Test touch response across entire screen",
+      "Verify battery charging percentage increases over time"
+    ],
+    "warnings": [
+      "Do not use sharp metal tools in the charging port",
+      "A swollen tablet must be handled carefully — do not puncture"
     ]
   }
 }

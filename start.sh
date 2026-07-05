@@ -51,6 +51,14 @@ echo "[startup] Seeding RV and appliance-specific symptoms ..."
 python seed_rv_symptoms.py
 echo "[startup] RV symptoms seeded."
 
+echo "[startup] Seeding RV repair procedures ..."
+python seed_rv_repairs.py
+echo "[startup] RV repair procedures seeded."
+
+echo "[startup] Adding missing repairs to v2/v3 JSON ..."
+python _add_missing_repairs.py
+echo "[startup] Missing repairs added."
+
 # ── 5. Generate embeddings (if missing) ───────────────────────────────────────
 EMB_MISSING=false
 for V in 1 2 3; do
