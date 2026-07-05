@@ -3,19 +3,15 @@
 # =============================================================================
 #
 # Multi-stage build:
-#   Stage 1 (builder)      — compile Python wheels
-#   Stage 2 (data-prep)    — generate CSVs, JSON, embeddings, FAISS indices
-#   Stage 3 (runtime)      — lean final image, no build tools
+#   Stage 1 (builder)   — compile Python wheels
+#   Stage 2 (runtime)   — lean final image, no build tools
 #
-# The resulting image is self-contained: all three versioned SQLite databases,
-# embeddings, and FAISS indices are baked in.  No network access is needed
-# at runtime.
+# Data artefacts (SQLite DBs, FAISS indices) are built at container startup
+# by start.sh, not baked into the image.  This keeps the image small and
+# avoids committing binary files to git.
 #
-# Build:
-#   docker build -t fixfinder:latest .
-#
-# Run:
-#   docker run -p 8000:8000 fixfinder:latest
+# Railway / Docker run:
+#   The PORT environment variable is respected — Railway injects it automatically.
 # =============================================================================
 
 # ── Stage 1: dependency builder ───────────────────────────────────────────────
@@ -31,67 +27,52 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 COPY requirements.txt .
 
-# Install all deps into a prefix directory for clean copying later
 RUN pip install --upgrade pip \
  && pip install --prefix=/install/deps --no-cache-dir -r requirements.txt
 
 
-# ── Stage 2: data preparation ─────────────────────────────────────────────────
-# Runs the build scripts so the data artefacts are ready inside the image.
-# This stage is skipped on re-builds if the source data hasn't changed
-# (Docker layer cache) — keeping iterative builds fast.
-FROM python:3.10-slim AS data-prep
-
-WORKDIR /app
-
-# Copy installed packages from builder
-COPY --from=builder /install/deps /usr/local
-
-# Copy everything needed for the build scripts
-COPY . .
-
-# Run data pipeline (only if artefacts are not already present in source tree)
-RUN python generate_csvs.py      && echo "[OK] CSVs generated" \
- && python generate_jsons.py     && echo "[OK] JSONs generated" \
- && python generate_embeddings.py && echo "[OK] Embeddings generated" \
- && python build_faiss_indices.py && echo "[OK] FAISS indices built"
-
-
-# ── Stage 3: final runtime image ──────────────────────────────────────────────
+# ── Stage 2: runtime image ────────────────────────────────────────────────────
 FROM python:3.10-slim
 
 LABEL maintainer="FixFinder" \
       version="2.0.0" \
-      description="FixFinder AI Engine — standalone REST API"
-
-# Non-root user for security
-RUN useradd -m -u 1000 appuser
+      description="FixFinder AI Engine — unified REST API"
 
 WORKDIR /app
 
-# Runtime system dependencies only (no build tools)
+# Runtime system dependencies (libgomp1 required by faiss-cpu)
 RUN apt-get update && apt-get install -y --no-install-recommends \
         libgomp1 \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy installed packages from builder
+# Copy installed Python packages from builder
 COPY --from=builder /install/deps /usr/local
 
-# Copy application source + data artefacts generated in Stage 2
-COPY --from=data-prep --chown=appuser:appuser /app /app
+# Copy all application source + data files (binaries excluded via .dockerignore)
+COPY . .
 
-# Create log and report directories
-RUN mkdir -p /app/logs \
- && chown -R appuser:appuser /app
+# Create required runtime directories
+RUN mkdir -p /app/data /app/logs /app/embeddings \
+    && mkdir -p /app/Version_1/03_SQLite_Database \
+                /app/Version_1/06_Embeddings \
+                /app/Version_1/12_FAISS \
+                /app/Version_2/03_SQLite_Database \
+                /app/Version_2/06_Embeddings \
+                /app/Version_2/12_FAISS \
+                /app/Version_3/03_SQLite_Database \
+                /app/Version_3/06_Embeddings \
+                /app/Version_3/12_FAISS
 
-USER appuser
+# Make start.sh executable
+RUN chmod +x /app/start.sh
 
-# Health check — hits /health every 30s, allows 120s startup for engine warm-up
-HEALTHCHECK --interval=30s --timeout=10s --start-period=120s --retries=3 \
-    CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')" \
+# Health check — Railway also uses healthcheckPath in railway.toml
+HEALTHCHECK --interval=30s --timeout=15s --start-period=180s --retries=5 \
+    CMD python -c \
+        "import urllib.request; urllib.request.urlopen('http://localhost:${PORT:-8000}/health')" \
     || exit 1
 
 EXPOSE 8000
 
-# Default: run the standalone api_server
-CMD ["python", "api_server.py", "--host", "0.0.0.0", "--port", "8000"]
+# Railway overrides CMD via startCommand in railway.toml
+CMD ["/app/start.sh"]

@@ -741,8 +741,10 @@ if __name__ == "__main__":
     )
     parser.add_argument("--host",   default="127.0.0.1",
                         help="Bind host address")
-    parser.add_argument("--port",   default=8000, type=int,
-                        help="Bind port")
+    parser.add_argument("--port",
+                        default=int(os.environ.get("PORT", 8000)),
+                        type=int,
+                        help="Bind port (default: $PORT env var, then 8000)")
     parser.add_argument("--reload", action="store_true",
                         help="Enable auto-reload on file changes (dev mode)")
     parser.add_argument("--workers", default=1, type=int,
