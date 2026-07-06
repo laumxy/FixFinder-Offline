@@ -7,6 +7,12 @@
 .gitignore
 .gitattributes
 
+# ── Testing artefacts ─────────────────────────────────────────────────────────
+.pytest_cache/
+*.pytest_cache
+htmlcov/
+.coverage
+
 # ── Python bytecode ───────────────────────────────────────────────────────────
 __pycache__/
 *.py[cod]
