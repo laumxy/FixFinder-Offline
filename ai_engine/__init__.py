@@ -42,6 +42,7 @@ from .rqu_engine              import RQUEngine                # noqa: F401
 from .ice_engine              import ICEEngine                # noqa: F401
 from .tee_engine              import TechnicalEntityExtractor # noqa: F401
 from .equipment_engine        import EquipmentResolver        # noqa: F401
+from .cie_engine              import ComponentIdentifier      # noqa: F401
 
 __all__ = [
     "AIRetrievalEngine",
@@ -51,5 +52,6 @@ __all__ = [
     "ICEEngine",
     "TechnicalEntityExtractor",
     "EquipmentResolver",
+    "ComponentIdentifier",
 ]
-__version__ = "1.6.0"
+__version__ = "1.7.0"

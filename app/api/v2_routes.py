@@ -48,6 +48,7 @@ from ai_engine.diagnostic_engine       import AIDiagnosticEngine
 from ai_engine.repair_reasoning_engine import AIRepairReasoningEngine
 from ai_engine.rqu_engine              import RQUEngine
 from ai_engine.ice_engine              import ICEEngine
+from ai_engine.cie_engine              import ComponentIdentifier
 from ai_engine.tee_engine              import TechnicalEntityExtractor
 from ai_engine.equipment_engine        import EquipmentResolver
 
@@ -62,9 +63,10 @@ _retrieval_pool: dict[int, AIRetrievalEngine]        = {}
 _diagnostic_pool: dict[int, AIDiagnosticEngine]      = {}
 _repair_pool:  dict[int, AIRepairReasoningEngine]     = {}
 
-# RQU is stateless — one shared instance is enough
+# RQU / ICE / CIE — stateless, one shared instance each
 _rqu = RQUEngine()
 _ice = ICEEngine()
+_cie = ComponentIdentifier()
 _tee = TechnicalEntityExtractor()
 _equipment_resolver = EquipmentResolver()
 
@@ -186,21 +188,23 @@ def v2_info() -> dict:
             "3": "Industrial / Automotive",
         },
         "endpoints": {
-            "health":    "GET  /v2/health",
-            "understand":"POST /v2/understand",
-            "resolve_equipment": "POST /v2/resolve-equipment",
+            "health":           "GET  /v2/health",
+            "understand":       "POST /v2/understand",
+            "classify":         "POST /v2/classify",
+            "components":       "POST /v2/components",
+            "resolve_equipment":"POST /v2/resolve-equipment",
             "extract_entities": "POST /v2/extract-entities",
-            "intent_search": "POST /v2/intent-search",
-            "search":    "POST /v2/{version}/search",
-            "system":    "GET  /v2/{version}/systems/{id}",
-            "symptom":   "GET  /v2/{version}/symptoms/{id}",
-            "repair_db": "GET  /v2/{version}/repairs/{id}",
-            "analyze":   "POST /v2/{version}/analyze",
-            "tree":      "GET  /v2/{version}/tree/{symptom_code}",
-            "diagnose":  "POST /v2/{version}/diagnose",
-            "recommend": "POST /v2/{version}/recommend",
-            "parts":     "GET  /v2/{version}/parts/{repair_id}",
-            "plan":      "POST /v2/{version}/plan",
+            "intent_search":    "POST /v2/intent-search",
+            "search":           "POST /v2/{version}/search",
+            "system":           "GET  /v2/{version}/systems/{id}",
+            "symptom":          "GET  /v2/{version}/symptoms/{id}",
+            "repair_db":        "GET  /v2/{version}/repairs/{id}",
+            "analyze":          "POST /v2/{version}/analyze",
+            "tree":             "GET  /v2/{version}/tree/{symptom_code}",
+            "diagnose":         "POST /v2/{version}/diagnose",
+            "recommend":        "POST /v2/{version}/recommend",
+            "parts":            "GET  /v2/{version}/parts/{repair_id}",
+            "plan":             "POST /v2/{version}/plan",
         },
     }
 
@@ -376,6 +380,43 @@ def classify_intent(body: UnderstandRequest) -> dict:
         raise HTTPException(
             status_code=500,
             detail=f"ICE engine error: {type(exc).__name__}: {exc}",
+        )
+
+
+@router.post(
+    "/components",
+    summary="Component Identification Engine (CIE)",
+    tags=["CIE"],
+    description=(
+        "Identify every component involved in a repair query. "
+        "Returns each component with its canonical name, type "
+        "(mechanical / electrical / electronic / gas / fluid / structural / control), "
+        "functional role, and whether it is the suspected failing part. "
+        "No diagnosis, no repair guidance — components only."
+    ),
+)
+def identify_components(body: UnderstandRequest) -> dict:
+    """
+    Parse a raw repair query and return every component involved.
+
+    Suspects (likely failing components) are listed first.
+
+    Example input: `"My RV fridge won't light on propane"`
+
+    Returns:
+    - `components[]` — list of every component identified
+    - `suspects` — count of likely-failing components
+    - `total` — total components identified
+    """
+    try:
+        result = _cie.identify(body.query)
+        return result
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc))
+    except Exception as exc:
+        raise HTTPException(
+            status_code=500,
+            detail=f"CIE engine error: {type(exc).__name__}: {exc}",
         )
 
 
