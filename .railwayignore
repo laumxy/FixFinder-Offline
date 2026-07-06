@@ -1,0 +1,43 @@
+# Railway CLI packager exclusions
+# These files are excluded from the railway up upload.
+
+# SQLite databases and WAL files (rebuilt at container startup)
+*.db
+*.db-shm
+*.db-wal
+*.db-journal
+data/fixfinder.db
+data/fixfinder.db-wal
+data/fixfinder.db-shm
+Version_*/03_SQLite_Database/
+
+# FAISS binary indices (rebuilt at container startup)
+Version_*/12_FAISS/index.faiss
+embeddings/index.faiss
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+*.pytest_cache
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Logs and temp files
+*.log
+logs/
+_test_*.py
+_*.py
+
+# Git
+.git/
+
+# Node modules (Frontend)
+Frontend/node_modules/
+
+# Large data packs (not needed on Railway)
+data/packs/

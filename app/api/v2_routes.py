@@ -51,8 +51,280 @@ from ai_engine.ice_engine              import ICEEngine
 from ai_engine.cie_engine              import ComponentIdentifier
 from ai_engine.tee_engine              import TechnicalEntityExtractor
 from ai_engine.equipment_engine        import EquipmentResolver
+from ai_engine.failure_modes_engine   import FailureModesEngine
+
 
 router = APIRouter(prefix="/v2", tags=["AI Engine v2"])
+
+
+# ==========================================================================
+# SYSTEM ROLE — Conversation Engine Orchestrator
+# ==========================================================================
+
+
+class SystemRoleRequest(BaseModel):
+    query: str = Field(..., min_length=2, max_length=2000)
+    top_k: int = Field(default=3, ge=1, le=5)
+    # Optional: user provided diagnostic responses for /diagnose
+    # (ordered answers: yes/no/true/false). Used only when available.
+    responses: list[str] = Field(default_factory=list)
+
+
+def _systemrole_extract_diagnostics(
+    ruo: dict[str, Any],
+    tee_out: dict[str, Any],
+) -> dict[str, Any]:
+    """Extract diagnostic parameters (deterministically from TEE/RUO)."""
+    voltages = tee_out.get("voltages") or []
+    temperatures = tee_out.get("temperatures") or []
+    measurements = tee_out.get("measurements") or []
+
+    def _pick_first_value(items: list[dict[str, Any]], unit: str | None = None):
+        for it in items:
+            if unit is None:
+                return it.get("value"), it.get("unit")
+            if str(it.get("unit", "")).lower() == str(unit).lower():
+                return it.get("value"), it.get("unit")
+        return None, None
+
+    return {
+        "Voltage": {
+            "values": voltages,
+            "first": {"value": voltages[0].get("value"), "unit": voltages[0].get("unit")} if voltages else None,
+        },
+        "Temperature": {
+            "values": temperatures,
+            "first": {"value": temperatures[0].get("value"), "unit": temperatures[0].get("unit")} if temperatures else None,
+        },
+        "Flow Rate": {"values": measurements},
+        "Operating Hours": {"values": []},
+        "Mileage": {"values": []},
+        "Pressure": {"values": [m for m in measurements if str(m.get("unit", "")).lower() in {"psi", "bar"}]},
+        "Battery %": {"values": []},
+        "Model Number": {"values": tee_out.get("models") or []},
+        "Serial Number": {"values": []},
+        "Brand": {"values": tee_out.get("brands") or []},
+        "Environment": {"value": ruo.get("environment")},
+        "Age": {"values": []},
+        "Diagnostic Error Codes": {"values": tee_out.get("error_codes") or []},
+    }
+
+
+def _systemrole_missing_fields(ruo: dict[str, Any], tee_out: dict[str, Any]) -> list[str]:
+    """Determine whether diagnosis can proceed; list missing fields."""
+    missing: list[str] = []
+
+    if not ruo.get("equipment") or ruo.get("equipment") == "unknown":
+        missing.append("equipment")
+    if not ruo.get("symptoms") or ruo.get("symptoms") == ["unclear"]:
+        missing.append("symptom_description")
+
+    # Diagnostic tree matching generally needs a symptom_code.
+    # We only have free-text symptoms here; so diagnosis can proceed
+    # if /analyze + /plan can be executed.
+    # Still, we list key candidate fields for better plans.
+
+    # From TEE
+    if not (tee_out.get("error_codes") or []):
+        # not always required, but requested diagnostic parameters extraction
+        # and missing-field rule expects explicit listing.
+        missing.append("error code")
+
+    # Model/brand info helps reduce ambiguity
+    if not (tee_out.get("models") or []):
+        missing.append("model number")
+    if not (tee_out.get("brands") or []):
+        missing.append("brand")
+
+    # Pictures/noise/power source are not in the RUO/TEE schema, so treat as missing
+    missing.append("picture")
+    missing.append("noise description")
+    missing.append("power source")
+    missing.append("operating condition")
+
+    return sorted(set(missing))
+
+
+def _systemrole_clarification_questions(missing_fields: list[str], max_q: int = 5) -> list[str]:
+    """Generate minimum questions (<=5) based on missing fields."""
+    # Highest-value questions first.
+    ordered = [
+        ("symptom_description", "What exactly is the symptom?"),
+        ("equipment", "What device or equipment is this for?"),
+        ("error code", "Do you have any error code or warning lights?"),
+        ("model number", "What is the model number (and brand if you know it)?"),
+        ("operating condition", "What were the conditions when it happened (hot/cold, indoors/outdoors, etc.)?"),
+        ("noise description", "Is there any unusual noise (buzzing/clicking/rattling)?"),
+        ("power source", "What power source are you using (battery/shore power/propane/etc.)?"),
+        ("picture", "Can you share a photo of the display/error/area?"),
+        ("brand", "What brand is it?"),
+    ]
+    questions: list[str] = []
+    miss_set = set(missing_fields)
+    for key, q in ordered:
+        if key in miss_set and q not in questions:
+            questions.append(q)
+        if len(questions) >= max_q:
+            break
+    return questions
+
+
+def _systemrole_conversation_from_plan(plan: dict[str, Any]) -> str:
+    """Convert repair plan JSON into natural technician conversation."""
+    primary = plan.get("primary_repair") or {}
+    parts = primary.get("parts_availability") or {}
+
+    warnings = primary.get("warnings") or []
+    safety_notes = primary.get("safety_notes") or []
+
+    lines: list[str] = []
+
+    # Safety first
+    if plan.get("all_parts_available") is False:
+        lines.append("Safety note: don’t force a repair if parts aren’t available or the system looks damaged."
+                     " If anything smells like burning or you see sparks/smoke, stop and disconnect power.")
+
+    if safety_notes:
+        lines.append("Safety before you start: " + " ".join(str(x) for x in safety_notes[:3]))
+
+    lines.append(f"Here’s the repair plan for the reported symptom: {plan.get('summary','(plan ready)')}")
+
+    # Tools / pre-checks
+    plan_steps = plan.get("plan_steps") or []
+    if plan_steps:
+        lines.append("\nStep-by-step:")
+        for s in plan_steps[:20]:
+            lines.append(f"- {s}")
+
+    # Parts
+    if parts:
+        total_cost = plan.get("total_parts_cost")
+        lines.append(f"\nParts: estimated parts cost ${total_cost:.2f} (stock based).")
+
+        if not plan.get("all_parts_available"):
+            missing = parts.get("missing_parts") or []
+            if missing:
+                lines.append("Parts not available for these items yet: " + ", ".join(missing[:5]) + ".")
+        else:
+            lines.append("Good news: all required parts are marked available in inventory.")
+
+    # Warnings
+    if warnings:
+        lines.append("\nImportant warnings:")
+        for w in warnings[:5]:
+            lines.append(f"- {w}")
+
+    return "\n".join(lines).strip()
+
+
+@router.post(
+    "/system-role",
+    summary="SYSTEM ROLE conversation engine (orchestrated)",
+    tags=["SYSTEM ROLE"],
+    description=(
+        "Orchestrates RQU → ICE → entity/equipment/component/problem/parameter "
+        "extraction → missing-info detection → (optionally) FAISS retrieval → "
+        "repair planning → natural technician conversation. Returns conversational text only."
+    ),
+)
+def system_role_conversation(body: SystemRoleRequest) -> dict:
+    """Single-call orchestrator endpoint."""
+    try:
+        # 1. Repair Query Understanding
+        ruo = _rqu.understand(body.query)
+
+        # 2. Intent Classification
+        ico = _ice.classify(ruo)
+
+        # 3. Entity Extraction
+        tee_out = _tee.extract(body.query)
+
+        # 4. Equipment Detection
+        eq_out = _equipment_resolver.resolve(body.query)
+        if eq_out.get("equipment_name") and eq_out.get("equipment_name") != "unknown":
+            ruo["equipment_category"] = eq_out.get("equipment_category") or ruo.get("equipment_category")
+            ruo["equipment"] = eq_out.get("equipment_name") or ruo.get("equipment")
+
+        # 5. Component Detection
+        comp_out = _cie.identify(body.query)
+        components = comp_out.get("components") or []
+
+        # 6. Problem Detection
+        # Use diagnostic keyword symptom extraction from RUO
+        symptom_list = ruo.get("symptoms") or []
+
+        # 7. Parameter Extraction
+        diagnostics = _systemrole_extract_diagnostics(ruo, tee_out)
+
+        # 8. Missing Information Detection
+        missing_fields = _systemrole_missing_fields(ruo, tee_out)
+
+        # 9. Clarification Questions (IF required)
+        # Require clarification when ambiguity is high or error codes/model/brand missing.
+        need_clarify = (ruo.get("ambiguity_score", 1.0) >= 0.75) or (
+            not (tee_out.get("error_codes") or []) and len(symptom_list) == 1
+        )
+        if need_clarify:
+            questions = _systemrole_clarification_questions(missing_fields, max_q=5)
+            return {
+                "conversation": "\n".join([
+                    "I can start narrowing this down, but I need a bit more info first.",
+                    "Answer these so I can continue diagnosis:",
+                    "\n".join([f"{i+1}. {q}" for i, q in enumerate(questions)]),
+                ]).strip(),
+                "status": "clarification_needed",
+                "missing_fields": missing_fields,
+                "diagnostics": diagnostics,
+            }
+
+        # Determine knowledge base version from RUO category
+        version = _VERSION_BY_CATEGORY.get(ruo.get("equipment_category"), 1)
+        version = int(version) if version in {1,2,3} else 1
+
+        # 10. FAISS Retrieval
+        # Use intent-aware search to get top repair candidates/symptom matches.
+        # We only retrieve; no diagnosis beyond plan selection.
+        retrieval = _get_retrieval(version).search(
+            query_text=body.query,
+            top_k=max(5, body.top_k),
+            entity_type_filter=None,
+        )
+
+        # 11. Graph Reasoning
+        # Run symptom analysis -> choose best symptom_code -> optional guided tree.
+        diag = _get_diagnostic(version)
+        symptom_matches = diag.analyze_symptoms(body.query, top_k=3)
+        if symptom_matches:
+            symptom_code = symptom_matches[0].get("symptom_code")
+        else:
+            symptom_code = ""
+
+        # Run guided traversal only if user provided responses.
+        diagnostic_result = None
+        if symptom_code and body.responses:
+            diagnostic_result = diag.run_diagnostic(symptom_code, body.responses)
+
+        # 12. Repair Planning
+        plan = _get_repair(version).generate_repair_plan(
+            symptom_code=symptom_code,
+            diagnostic_result=(diagnostic_result or {}),
+            top_k=body.top_k,
+        )
+
+        # 13. Conversation Generation
+        conversation = _systemrole_conversation_from_plan(plan)
+        return {
+            "conversation": conversation,
+            "status": "plan_ready",
+            "diagnostics": diagnostics,
+            "intent_classification": ico,
+            "top_symptom_matches": symptom_matches if 'symptom_matches' in locals() else [],
+            "top_faiss_matches": retrieval[: body.top_k],
+        }
+
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=f"System role engine error: {type(exc).__name__}: {exc}")
+
 
 # ---------------------------------------------------------------------------
 # Engine pool – one instance per version, lazily loaded, thread-safe
@@ -69,8 +341,10 @@ _ice = ICEEngine()
 _cie = ComponentIdentifier()
 _tee = TechnicalEntityExtractor()
 _equipment_resolver = EquipmentResolver()
+_failure_modes_engine = FailureModesEngine()
 
 _VALID_VERSIONS = {1, 2, 3}
+
 _VERSION_LABELS = {
     1: "Home Maintenance",
     2: "Electronics",
@@ -205,8 +479,10 @@ def v2_info() -> dict:
             "recommend":        "POST /v2/{version}/recommend",
             "parts":            "GET  /v2/{version}/parts/{repair_id}",
             "plan":             "POST /v2/{version}/plan",
+            "failure_modes":   "POST /v2/failure-modes",
         },
     }
+
 
 
 @router.get("/health", summary="Engine health check")
@@ -861,6 +1137,7 @@ def generate_plan(
     version: int = Path(..., ge=1, le=3),
     body: PlanRequest = ...,
 ) -> dict:
+
     _validate_version(version)
     try:
         plan = _get_repair(version).generate_repair_plan(
@@ -875,3 +1152,38 @@ def generate_plan(
         }
     except Exception as exc:
         raise _engine_error(exc, "generate_repair_plan")
+
+
+# ===========================================================================
+# Failure Modes (SYSTEM ROLE)
+# ===========================================================================
+
+class FailureModesRequest(BaseModel):
+    user_input: str = Field(..., min_length=3, max_length=2000)
+    top_k: int = Field(default=5, ge=1, le=10)
+
+
+@router.post(
+    "/failure-modes",
+    summary="Identify failure modes",
+    tags=["SYSTEM ROLE"],
+    description=(
+        "Identify failure modes (NO_POWER, NO_COOLING, LEAK, BLOCKAGE, "
+        "SHORT_CIRCUIT, OVERHEATING, LOW_PRESSURE, NOISE, VIBRATION, "
+        "SMOKE, INTERMITTENT_FAILURE) from a free-text issue description. "
+        "Returns ranked failure modes with evidence tokens." )
+)
+def identify_failure_modes(body: FailureModesRequest) -> dict:
+    try:
+        modes = _failure_modes_engine.identify_failure_modes(
+            user_input=body.user_input,
+            top_k=body.top_k,
+        )
+        return {
+            "user_input": body.user_input,
+            "total_found": len(modes),
+            "failure_modes": modes,
+        }
+    except Exception as exc:
+        raise _engine_error(exc, "identify_failure_modes")
+
