@@ -52,12 +52,20 @@ python seed_rv_symptoms.py
 echo "[startup] RV symptoms seeded."
 
 echo "[startup] Seeding RV repair procedures ..."
-python seed_rv_repairs.py
-echo "[startup] RV repair procedures seeded."
+if [ -f "seed_rv_repairs.py" ]; then
+    python seed_rv_repairs.py
+    echo "[startup] RV repair procedures seeded."
+else
+    echo "[startup] [WARN] seed_rv_repairs.py not found — skipping RV repairs."
+fi
 
 echo "[startup] Adding missing repairs to v2/v3 JSON ..."
-python patch_repairs.py
-echo "[startup] Missing repairs added."
+if [ -f "patch_repairs.py" ]; then
+    python patch_repairs.py
+    echo "[startup] Missing repairs added."
+else
+    echo "[startup] [WARN] patch_repairs.py not found — skipping repair patches."
+fi
 
 # ── 5. Generate embeddings (if missing) ───────────────────────────────────────
 EMB_MISSING=false
