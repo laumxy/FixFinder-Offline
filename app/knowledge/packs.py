@@ -40,6 +40,7 @@ from app.database.models import KnowledgeProblem
 from app.retrieval.faiss_index import FaissSearch
 from app.utils.logger import get_logger
 from fixfinder_engine.config import settings
+from app.knowledge.pack_generator import PackGenerator
 from app.knowledge.validator import ValidationEngine
 
 
@@ -119,6 +120,24 @@ class KnowledgePackManager:
             "file_path": str(file_path),
             "file_size_bytes": file_size,
         }
+
+    def generate_pack(self, name: str, description: str = "", industries: list[str] | None = None, version: str = "1.0", incremental_since: str | None = None) -> dict[str, Any]:
+        """High-level generator that creates a compressed pack with extra artifacts and updates PWA manifest."""
+        gen = PackGenerator(self.packs_dir)
+        meta = gen.generate_pack(name=name, description=description, industries=industries, version=version, incremental_since=incremental_since)
+        # register pack in DB
+        self._register_pack(
+            pack_id=meta["pack_id"],
+            name=name,
+            description=description,
+            industries=industries or [],
+            version=version,
+            file_path=meta["file"],
+            file_size_bytes=meta["size_bytes"],
+            record_count=meta["record_count"],
+            installed=False,
+        )
+        return meta
 
     # ── Install ───────────────────────────────────────────────────────────────
 
