@@ -17,6 +17,12 @@ from app.retrieval.faiss_index import FaissSearch
 from app.utils.logger import get_logger
 from fixfinder_engine.config import settings
 
+# Optional: file-based import pipeline
+try:
+    from backend.knowledge_import.manual_processor import ManualProcessor
+except Exception:
+    ManualProcessor = None
+
 
 class KnowledgeUpdater:
     def __init__(self) -> None:
@@ -87,3 +93,27 @@ class KnowledgeUpdater:
         records = fetch_all_problem_records(settings.database_path)
         search = FaissSearch(settings.faiss_index_path, settings.faiss_metadata_path, settings.embedding_model_name)
         search.rebuild(records)
+
+    def learn_from_files(
+        self,
+        file_paths: list[str],
+        source_type: str = "manual",
+        category: str = "general",
+        min_reliability: float = 0.55,
+    ) -> dict[str, Any]:
+        """Process local files via the backend.knowledge_import pipeline and learn.
+
+        Returns same structure as `learn()`.
+        """
+        if ManualProcessor is None:
+            self.logger.error("ManualProcessor unavailable; import pipeline not installed.")
+            return {"status": "error", "message": "Import pipeline not available."}
+
+        processor = ManualProcessor()
+        sources = processor.process_file_batch(file_paths, source_type=source_type, category=category, version=latest_version(settings.database_path))
+        if not sources:
+            return {"status": "ok", "accepted": 0, "rejected": len(file_paths), "message": "No valid learning sources extracted from files."}
+
+        # Wrap into LearningRequest and call existing learn path
+        req = LearningRequest(sources=sources, min_reliability=min_reliability)
+        return self.learn(req)

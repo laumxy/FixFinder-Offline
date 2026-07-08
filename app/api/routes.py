@@ -206,6 +206,35 @@ def build_pack(
     )
 
 
+class FilesLearnRequest(BaseModel):
+    file_paths: list[str] = Field(..., min_length=1)
+    source_type: str = Field(default="manual")
+    category: str = Field(default="general")
+    min_reliability: float = Field(default=0.55, ge=0.0, le=1.0)
+
+
+@router.post("/learn/files")
+def learn_files(
+    request: FilesLearnRequest,
+    user: dict | None = Depends(_current_user),
+) -> dict:
+    result = knowledge_updater.learn_from_files(
+        file_paths=request.file_paths,
+        source_type=request.source_type,
+        category=request.category,
+        min_reliability=request.min_reliability,
+    )
+    if result.get("accepted", 0) > 0:
+        user_id = user["user_id"] if user else None
+        analytics_tracker.record_learn(
+            accepted=result["accepted"],
+            rejected=result.get("rejected", 0),
+            knowledge_version=result.get("knowledge_version", ""),
+            user_id=user_id,
+        )
+    return result
+
+
 @router.post("/install-pack")
 def install_pack(request: InstallPackRequest) -> dict:
     result = pack_manager.install_pack(request.file_path)

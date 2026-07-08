@@ -25,3 +25,9 @@ pytest-asyncio>=0.23.0
 
 # --- Utilities (stdlib, no install needed) ---
 # json, sqlite3, os, re, hashlib, subprocess, logging, pathlib, time, datetime
+
+# --- Document parsing ---
+# PDF, DOCX, HTML parsing for knowledge import pipeline
+PyPDF2
+python-docx
+beautifulsoup4
