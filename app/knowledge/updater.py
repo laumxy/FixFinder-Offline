@@ -84,7 +84,13 @@ class KnowledgeUpdater:
             "message": "Knowledge base updated." if accepted else "No high-quality new knowledge accepted.",
         }
         if validation_reports:
-            result["validation_reports"] = validation_reports
+            # write validation report file
+            try:
+                report_path = validator.generate_report(validation_reports, tag="learn")
+                result["validation_reports"] = validation_reports
+                result["validation_report_path"] = report_path
+            except Exception:
+                result["validation_reports"] = validation_reports
         return result
 
     def _hydrate_source(self, source: LearningSource) -> LearningSource:

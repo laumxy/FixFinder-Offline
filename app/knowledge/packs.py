@@ -179,6 +179,23 @@ class KnowledgePackManager:
             self._rebuild_faiss()
             self._mark_pack_installed(pack_data.get("pack_id", ""), str(path))
 
+        # If any skipped or errors, create validation report
+        if skipped or errors:
+            try:
+                validator = ValidationEngine(self.db_path)
+                reports = []
+                # we only have counts here; create a minimal report
+                if skipped:
+                    reports.append({"note": f"skipped_records", "count": skipped})
+                if errors:
+                    reports.append({"note": f"errors", "count": errors})
+                report_path = validator.generate_report(reports, tag=f"install_{pack_data.get('pack_id','?')}")
+                self._mark_pack_installed(pack_data.get("pack_id", ""), str(path))
+            except Exception:
+                report_path = ""
+        else:
+            report_path = ""
+
         logger.info(
             "Installed pack %s: accepted=%d skipped=%d errors=%d",
             pack_data.get("pack_id"), accepted, skipped, errors,
@@ -191,6 +208,7 @@ class KnowledgePackManager:
             "skipped": skipped,
             "errors": errors,
             "new_version": new_ver if accepted else current_ver,
+            "validation_report_path": report_path,
         }
 
     # ── List ──────────────────────────────────────────────────────────────────

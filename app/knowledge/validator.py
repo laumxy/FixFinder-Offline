@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import sqlite3
+import json
+from datetime import datetime, timezone
 from typing import Any
 
 from app.database.models import KnowledgeProblem
@@ -25,6 +27,12 @@ class ValidationEngine:
     def __init__(self, db_path: str | None = None) -> None:
         self.db_path = db_path or settings.database_path
         self.cleaner = KnowledgeCleaner()
+        # build a category whitelist from existing DB records
+        try:
+            records = fetch_all_problem_records(self.db_path)
+            self._category_whitelist = {r["category"] for r in records}
+        except Exception:
+            self._category_whitelist = set()
 
     def validate(self, problem: KnowledgeProblem, connection: sqlite3.Connection | None = None) -> dict[str, Any]:
         issues: list[str] = []
@@ -47,11 +55,20 @@ class ValidationEngine:
         # Basic category check
         if not isinstance(problem.category, str) or len(problem.category.strip()) < 2:
             issues.append("invalid_category")
+        else:
+            if self._category_whitelist and problem.category not in self._category_whitelist:
+                issues.append("category_not_in_whitelist")
 
-        # Unsafe instructions check
+        # Unsafe instructions check (expanded): reuse cleaner and also flag hazardous verbs
         combined_instructions = "\n".join(problem.repair_steps or []) + "\n" + "\n".join(problem.inspection_steps or [])
         if not self.cleaner.is_safe(combined_instructions):
             issues.append("unsafe_instructions")
+        # Look for explicit hazardous imperative patterns
+        hazardous_terms = ["bypass", "short", "remove safety", "do not wear", "cut live"]
+        lowered = combined_instructions.lower()
+        for term in hazardous_terms:
+            if term in lowered:
+                issues.append(f"hazardous_term:{term}")
 
         # Missing safety warnings
         if not problem.safety or all(not s.strip() for s in problem.safety):
@@ -91,12 +108,32 @@ class ValidationEngine:
                     if overlap < 0.5:
                         issues.append("conflicting_repairs")
 
+            # basic relationship check: inspection steps should reference symptoms or causes
+            inspect_text = " ".join(problem.inspection_steps or [])
+            if inspect_text and not any(k.lower() in inspect_text.lower() for k in (problem.symptoms or []) + (problem.causes or [])):
+                issues.append("inspection_not_linked_to_symptoms_or_causes")
+
         finally:
             if close_conn and conn:
                 conn.close()
 
         valid = len(issues) == 0
         return {"valid": valid, "issues": issues}
+
+    def generate_report(self, reports: list[dict[str, Any]], tag: str | None = None) -> str:
+        """Write a validation report JSON to the packs directory and return path."""
+        now = datetime.now(timezone.utc).isoformat()
+        payload = {
+            "generated_at": now,
+            "tag": tag or "validation",
+            "reports": reports,
+        }
+        out_dir = settings.packs_dir
+        out_dir.mkdir(parents=True, exist_ok=True)
+        fname = f"validation_report_{tag or 'run'}_{datetime.now().strftime('%Y%m%dT%H%M%S')}.json"
+        path = out_dir / fname
+        path.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
+        return str(path)
 
 
 __all__ = ["ValidationEngine"]
