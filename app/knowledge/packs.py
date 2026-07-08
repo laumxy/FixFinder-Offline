@@ -40,6 +40,7 @@ from app.database.models import KnowledgeProblem
 from app.retrieval.faiss_index import FaissSearch
 from app.utils.logger import get_logger
 from fixfinder_engine.config import settings
+from app.knowledge.validator import ValidationEngine
 
 
 logger = get_logger(__name__)
@@ -160,6 +161,11 @@ class KnowledgePackManager:
                     raw["knowledge_version"] = new_ver
                     raw["source_type"] = raw.get("source_type", "pack")
                     problem = KnowledgeProblem.model_validate(raw)
+                    validator = ValidationEngine(self.db_path)
+                    v = validator.validate(problem, connection=conn)
+                    if not v.get("valid"):
+                        skipped += 1
+                        continue
                     upsert_problem(conn, problem)
                     accepted += 1
                 except Exception:

@@ -23,6 +23,9 @@ try:
 except Exception:
     ManualProcessor = None
 
+# Validation engine
+from app.knowledge.validator import ValidationEngine
+
 
 class KnowledgeUpdater:
     def __init__(self) -> None:
@@ -38,6 +41,8 @@ class KnowledgeUpdater:
 
         accepted: list[KnowledgeProblem] = []
         rejected = 0
+        validation_reports: list[dict[str, Any]] = []
+        validator = ValidationEngine(settings.database_path)
 
         for source in request.sources:
             hydrated = self._hydrate_source(source)
@@ -49,8 +54,15 @@ class KnowledgeUpdater:
                 rejected += 1
                 continue
             key = (extracted.category, extracted.problem.lower())
+            # validate record before accepting
+            vreport = validator.validate(extracted)
+            if not vreport.get("valid"):
+                rejected += 1
+                validation_reports.append({"problem": extracted.problem, "issues": vreport.get("issues", [])})
+                continue
             if key in existing_keys:
                 rejected += 1
+                validation_reports.append({"problem": extracted.problem, "issues": ["duplicate_record"]})
                 continue
             accepted.append(extracted)
             existing_keys.add(key)
@@ -63,7 +75,7 @@ class KnowledgeUpdater:
                 record_version(connection, new_version, total_records, f"Learned {len(accepted)} structured records.")
             self._rebuild_faiss()
 
-        return {
+        result = {
             "status": "ok",
             "previous_version": current_version,
             "knowledge_version": new_version if accepted else current_version,
@@ -71,6 +83,9 @@ class KnowledgeUpdater:
             "rejected": rejected,
             "message": "Knowledge base updated." if accepted else "No high-quality new knowledge accepted.",
         }
+        if validation_reports:
+            result["validation_reports"] = validation_reports
+        return result
 
     def _hydrate_source(self, source: LearningSource) -> LearningSource:
         if source.text or not source.url:
